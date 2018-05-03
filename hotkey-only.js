@@ -1440,11 +1440,9 @@ function get_equipment() {
 
 // wait for everything to load up and then throw this in...
 setTimeout(replaceDelayBars, 1000);
-
 function replaceDelayBars () {
   const $ = top.main.document.querySelector.bind(top.main.document);
 
-  var delayBar = $('#s_ActionDelay');
   var purpleBar = $('#s_ActionDelay td').nextElementSibling;
   var greyBar = purpleBar.nextElementSibling;
   var subbut2Style = top.frames.main.s_subbut2.style;
@@ -1471,7 +1469,6 @@ function replaceDelayBars () {
       stopPrevBar();
     }
     delayDirection = 'up';
-    delayBar = $('#s_ActionDelay');
     purpleBar = $('#s_ActionDelay td').nextElementSibling;
     greyBar = purpleBar.nextElementSibling;
     greyBar.width = '100%';
@@ -1531,11 +1528,14 @@ function replaceDelayBars () {
     top.dActionDelay += 1000;
     // top.Visible is set to 1 once you do an action while another action is queuing
     // top.dActionInc is always 10000
-    // original conditionals were if time waiting is less than 10 seconds, written idiotically
+    // (msecs waiting * 100) / 10000
+    // (msecs waiting / 100) < 100
+    // (msecs waiting) < 10000
+    // if time waiting is less than 1 second, written idiotically
     if (top.dActionDelay <= 10000) {
       if (!top.Visible) {
         stopPrevBar = timeout(fasterDowndelay, 1000);
-        return;
+        return stopPrevBar;
       } else {
         if (delayDirection === 'up') {
           stopPrevBar = and(animatePurpleBar((top.dActionDelay - 1000) / 10000 * 100, 100, 10000 - top.dActionDelay), timeout(fasterDowndelay, 100));
@@ -1549,7 +1549,7 @@ function replaceDelayBars () {
         lockButtons();
       }
     } else {
-      top.frames.main.s_Response.innerHTML = "<font size=4>Request timed out...check your connection and try again.</font>"
+      top.frames.main.s_Response.innerHTML = '<font size=4>Request timed out...check your connection and try again.</font>';
       top.Update = 0;
       top.dActionDelay = 0;
       restoreButtons();
@@ -1563,7 +1563,6 @@ function replaceDelayBars () {
       stopBarAnimation = null;
       return;
     }
-    delayBar = $('#s_ActionDelay');
     purpleBar = $('#s_ActionDelay td').nextElementSibling;
     greyBar = purpleBar.nextElementSibling;
     greyBar.width = '100%';
@@ -1578,7 +1577,6 @@ function replaceDelayBars () {
       stopBarAnimation = null;
       return;
     }
-    delayBar = $('#s_ActionDelay');
     purpleBar = $('#s_ActionDelay td').nextElementSibling;
     greyBar = purpleBar.nextElementSibling;
     greyBar.width = '100%';

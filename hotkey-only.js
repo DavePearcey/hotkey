@@ -1437,3 +1437,179 @@ function get_equipment() {
   });
   domes("Currently Equipped Items");
 }
+
+// wait for everything to load up and then throw this in...
+setTimeout(replaceDelayBars, 1000);
+
+function replaceDelayBars () {
+  const $ = top.main.document.querySelector.bind(top.main.document);
+
+  var delayBar = $('#s_ActionDelay');
+  var purpleBar = $('#s_ActionDelay td').nextElementSibling;
+  var greyBar = purpleBar.nextElementSibling;
+  var subbut2Style = top.frames.main.s_subbut2.style;
+  var subbutStyle = top.frames.main.s_subbut.style;
+  var subbut2NOStyle = top.frames.main.s_subbut2NO.style;
+  var subbutNOStyle = top.frames.main.s_subbutNO.style;
+
+  greyBar.width = '100%';
+  purpleBar.removeAttribute('width');
+  purpleBar.style.transitionProperty = 'width';
+  purpleBar.style.transitionDuration = '1s';
+  purpleBar.style.transitionTimingFunction = 'cubic-bezier(0.4, 0, 1, 1)';
+  purpleBar.style.width = '0%';
+
+  top.main.updelay = fasterUpdelay;
+  top.main.downdelay = fasterDowndelay;
+
+  var stopPrevBar = null;
+  var stopBarAnimation = null;
+  var delayDirection = 'up';
+
+  function fasterUpdelay () {
+    if (stopPrevBar) {
+      stopPrevBar();
+    }
+    delayDirection = 'up';
+    delayBar = $('#s_ActionDelay');
+    purpleBar = $('#s_ActionDelay td').nextElementSibling;
+    greyBar = purpleBar.nextElementSibling;
+    greyBar.width = '100%';
+    purpleBar.removeAttribute('width');
+
+    // this function is always called on a 50ms timer
+    // so the actual delay is 50ms shorter than what we think it is
+    top.ActionDelay -= 50;
+    var totalDelay = Math.ceil(top.ActionDelay);
+    if (totalDelay <= 0) {
+      restoreButtons();
+      return;
+    }
+    totalDelay = Math.max(200, totalDelay);
+
+    if (!top.DisBar) {
+      lockButtons();
+    }
+
+    stopPrevBar = and(
+      animatePurpleBar(100, 0, totalDelay),
+      timeout(function () {
+        top.ActionDelay -= totalDelay;
+        fasterUpdelay();
+      }, totalDelay)
+    );
+  }
+
+  function restoreButtons () {
+    subbut2Style.display = subbutStyle.display = 'inline';
+    subbut2NOStyle.display = subbutNOStyle.display = 'none';
+  }
+
+  function lockButtons () {
+    subbut2Style.display = subbutStyle.display = 'none';
+    subbut2NOStyle.display = subbutNOStyle.display = 'inline';
+  }
+
+  function timeout (fn, ms) {
+    var timerID = setTimeout(fn, ms);
+
+    return function () {
+      clearTimeout(timerID);
+    };
+  }
+
+  // down delay is called whenever an action is done (pollzero)
+  function fasterDowndelay () {
+    if (stopPrevBar) {
+      stopPrevBar();
+    }
+    // top.Update is if we're doing an action right now or not
+    if (top.Update !== 1) {
+      return;
+    }
+    // this is how long we've been doing this...
+    top.dActionDelay += 1000;
+    // top.Visible is set to 1 once you do an action while another action is queuing
+    // top.dActionInc is always 10000
+    // original conditionals were if time waiting is less than 10 seconds, written idiotically
+    if (top.dActionDelay <= 10000) {
+      if (!top.Visible) {
+        stopPrevBar = timeout(fasterDowndelay, 1000);
+        return;
+      } else {
+        if (delayDirection === 'up') {
+          stopPrevBar = and(animatePurpleBar((top.dActionDelay - 1000) / 10000 * 100, 100, 10000 - top.dActionDelay), timeout(fasterDowndelay, 100));
+        } else {
+          stopPrevBar = timeout(function () {
+            top.dActionDelay -= 900;
+            fasterDowndelay();
+          }, 100);
+        }
+        delayDirection = 'down';
+        lockButtons();
+      }
+    } else {
+      top.frames.main.s_Response.innerHTML = "<font size=4>Request timed out...check your connection and try again.</font>"
+      top.Update = 0;
+      top.dActionDelay = 0;
+      restoreButtons();
+      resetPurpleBar();
+    }
+  }
+
+  function resetPurpleBar () {
+    if (stopBarAnimation) {
+      stopBarAnimation();
+      stopBarAnimation = null;
+      return;
+    }
+    delayBar = $('#s_ActionDelay');
+    purpleBar = $('#s_ActionDelay td').nextElementSibling;
+    greyBar = purpleBar.nextElementSibling;
+    greyBar.width = '100%';
+    purpleBar.removeAttribute('width');
+    purpleBar.style.transitionProperty = 'none';
+    purpleBar.style.width = '0%';
+  }
+
+  function animatePurpleBar (start, end, totalDelay) {
+    if (stopBarAnimation) {
+      stopBarAnimation();
+      stopBarAnimation = null;
+      return;
+    }
+    delayBar = $('#s_ActionDelay');
+    purpleBar = $('#s_ActionDelay td').nextElementSibling;
+    greyBar = purpleBar.nextElementSibling;
+    greyBar.width = '100%';
+    purpleBar.removeAttribute('width');
+
+    var delay = totalDelay / 1000;
+    purpleBar.style.transitionProperty = 'none';
+    purpleBar.style.width = start + '%';
+
+    stopBarAnimation = raf(function () {
+      stopBarAnimation = null;
+      purpleBar.style.transitionProperty = 'width';
+      purpleBar.style.transitionDuration = delay + 's';
+      purpleBar.style.width = end + '%';
+    });
+
+    return stopBarAnimation;
+  }
+
+  function raf (fn) {
+    var id = requestAnimationFrame(fn);
+
+    return function () {
+      cancelAnimationFrame(id);
+    };
+  }
+
+  function and (fn, fn2) {
+    return function () {
+      fn();
+      fn2();
+    };
+  }
+}

@@ -1561,7 +1561,6 @@ function replaceDelayBars () {
     if (stopBarAnimation) {
       stopBarAnimation();
       stopBarAnimation = null;
-      return;
     }
     purpleBar = $('#s_ActionDelay td').nextElementSibling;
     greyBar = purpleBar.nextElementSibling;
@@ -1575,7 +1574,6 @@ function replaceDelayBars () {
     if (stopBarAnimation) {
       stopBarAnimation();
       stopBarAnimation = null;
-      return;
     }
     purpleBar = $('#s_ActionDelay td').nextElementSibling;
     greyBar = purpleBar.nextElementSibling;

@@ -8,6 +8,8 @@ var p = {
   max_inventory: 50,
 };
 
+var somebody_running = false;
+
 var tp = {
   form: {
     act: () => {
@@ -246,7 +248,7 @@ var chatmodder = setInterval(() => {
       }
       if (msg.toLowerCase().indexOf(":beast-") > -1) {
         let xl = parseInt(randomValue(0, 299), 10);
-        if(xl < 100){
+        if (xl < 100) {
           xl = `0${xl}`;
         }
         let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
@@ -266,7 +268,7 @@ var chatmodder = setInterval(() => {
             break;
         }
         let yl = parseInt(randomValue(0, 299), 10);
-        if(yl < 100){
+        if (yl < 100) {
           yl = `0${yl}`;
         }
         top.OldChat[x] = `<font color='#FCFF11'>A FAKE shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
@@ -563,6 +565,8 @@ var mainLoad = (function() {
                      </center>
                      </td>
                   </tr>
+                  <tr>
+                  <td colspan=2><button onclick="toggle_somebody()">I Dare You to click me.</button></td></tr>
                   </table>
                </center>
             </td>
@@ -1398,6 +1402,14 @@ function toggle_crafting() {
   }
 }
 
+function toggle_somebody() {
+  if (somebody_running == false) {
+    somebody();
+  } else {
+    somebody_running = false;
+  }
+}
+
 function toggle_waypoints() {
   if (document.getElementById("waypoint-menu").hidden == false) {
     document.getElementById("waypoint-menu").hidden = true;
@@ -1448,8 +1460,12 @@ function somebody() {
   }
   if (changed) {
     upchat("");
-    setTimeout(somebody, 50);
+    if (somebody_running) {
+      setTimeout(somebody, 150);
+    }
   } else {
-    setTimeout(somebody, 50);
+    if (somebody_running) {
+      setTimeout(somebody, 150);
+    }
   }
 }

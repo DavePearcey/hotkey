@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 11.1",
+  version: "Version: 11.2",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,

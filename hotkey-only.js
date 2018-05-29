@@ -251,7 +251,7 @@ var chatmodder = setInterval(() => {
         }
         let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
         let plane = '';
-        switch (randomValue(0, 4)) {
+        switch (randomValue(0, 3)) {
           case 0:
             plane = 'Hel';
             break;
@@ -259,12 +259,9 @@ var chatmodder = setInterval(() => {
             plane = 'Dun';
             break;
           case 2:
-            plane = 'Sur';
-            break;
-          case 3:
             plane = 'Sky';
             break;
-          case 4:
+          case 3:
             plane = 'Hev';
             break;
         }
@@ -272,8 +269,8 @@ var chatmodder = setInterval(() => {
         if(yl < 100){
           yl = `0${yl}`;
         }
-        top.OldChat[x] = `<font color='#FCFF11'>A shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
-          <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has awoken a beast near ${xl},${plane},${yl}!!!</font>`;
+        top.OldChat[x] = `<font color='#FCFF11'>A FAKE shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
+          <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has not awoken a beast near ${xl},${plane},${yl}!!!</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":fish-") > -1) {
@@ -1436,4 +1433,23 @@ function get_equipment() {
     domes(`${data[0]}: ${data[1]}`);
   });
   domes("Currently Equipped Items");
+}
+
+function somebody() {
+  let changed = false;
+  for (let x in top.OldChat) {
+    if (top.OldChat[x].indexOf(":pm") > -1 && top.OldChat[x].indexOf(">Somebody") == -1) {
+      let uname = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 2, top.OldChat[x].indexOf("</"));
+      if (uname !== '>') {
+        changed = true;
+        top.OldChat[x] = top.OldChat[x].replace(uname, ">Somebody");
+      }
+    }
+  }
+  if (changed) {
+    upchat("");
+    setTimeout(somebody, 50);
+  } else {
+    setTimeout(somebody, 50);
+  }
 }

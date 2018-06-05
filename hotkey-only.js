@@ -1430,7 +1430,7 @@ function toggle_waypoints() {
 function deposit_gold() {
   let gold = parseInt(top.Gold, 10);
   let tres = parseInt(top.Tres, 10);
-  let fill_value = parseInt(2000000000 - tres, 10);|
+  let fill_value = parseInt(2000000000 - tres, 10);
   fields.kingdom.action.value = "deposit";
   fields.kingdom.upaction();
   fields.kingdom.othera.value = tres;

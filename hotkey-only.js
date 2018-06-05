@@ -604,7 +604,8 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <button onclick="deposit_gold()">Deposit Max</button>
+                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
+                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button>
                      </center>
                      </td>
                   </tr>
@@ -1435,6 +1436,23 @@ function deposit_gold() {
   fields.kingdom.upaction();
   fields.kingdom.othera.value = fill_value;
   fields.kingdom.submit();
+}
+
+function embezzle_gold() {
+  let gold = parseInt(top.Gold, 10);
+  let tres = parseInt(top.Tres, 10);
+  let fill_value = parseInt(2000000000 - gold, 10);
+  if (fill_value >= tres) {
+    fields.kingdom.action.value = "embezzle";
+    fields.kingdom.upaction();
+    fields.kingdom.othera.value = fill_value;
+    fields.kingdom.submit();
+  } else {
+    fields.kingdom.action.value = "embezzle";
+    fields.kingdom.upaction();
+    fields.kingdom.othera.value = tres;
+    fields.kingdom.submit();
+  }
 }
 
 function craft() {

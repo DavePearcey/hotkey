@@ -45,10 +45,10 @@ var fields = {
       document.getElementById("s_subbut2").childNodes[0].click()
     },
     upaction: () => {
-      updateaction(kingdom.fields.action.value, kingdom.form);
+      updateaction(fields.kingdom.action.value, fields.kingdom.form);
     },
     uptarget: () => {
-      updatetarget(kingdom.fields.action.value, kingdom.fields.target.value, kingdom.form);
+      updatetarget(fields.kingdom.action.value, fields.kingdom.target.value, fields.kingdom.form);
     }
   }
 };
@@ -1433,7 +1433,7 @@ function deposit_gold() {
   let fill_value = parseInt(2000000000 - tres, 10);
   fields.kingdom.action.value = "deposit";
   fields.kingdom.upaction();
-  fields.kingdom.othera.value = tres;
+  fields.kingdom.othera.value = fill_value;
   fields.kingdom.submit();
 }
 

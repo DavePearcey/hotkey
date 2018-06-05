@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 11.2",
+  version: "Version: 11.3",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -9,6 +9,49 @@ var p = {
 };
 
 var somebody_running = false;
+
+
+var fields = {
+  general: {
+    main: document.getElementById("general"),
+    action: document.getElementsByName("action")[0],
+    target: document.getElementsByName("target")[0],
+    other: document.getElementsByName("other")[0],
+    othera: document.getElementsByName("othera")[0],
+    submit: () => {
+      document.getElementById("s_subbut").childNodes[0].click();
+      return true;
+    },
+    upaction: () => {
+      updateaction(fields.general.action.value, fields.general.main);
+      return true;
+    },
+    uptarget: () => {
+      updatetarget(fields.general.action.value, fields.general.target.value, fields.general.main);
+      return true;
+    }
+  },
+  misc: {
+    security: document.getElementById("s_Response"),
+    message: document.getElementById("s_FightWin")
+  },
+  kingdom: {
+    action: document.getElementsByName("action")[1],
+    form: document.getElementById("king"),
+    target: document.getElementsByName("target")[1],
+    other: document.getElementsByName("other")[1],
+    othera: document.getElementsByName("othera")[1],
+    submit: () => {
+      document.getElementById("s_subbut2").childNodes[0].click()
+    },
+    upaction: () => {
+      updateaction(kingdom.fields.action.value, kingdom.form);
+    },
+    uptarget: () => {
+      updatetarget(kingdom.fields.action.value, kingdom.fields.target.value, kingdom.form);
+    }
+  }
+};
 
 var tp = {
   form: {
@@ -561,12 +604,10 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <button onclick="get_equipment()">List Equipment</button>
+                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <button onclick="deposit_gold()">Deposit Max</button>
                      </center>
                      </td>
                   </tr>
-                  <tr>
-                  <td colspan=2><button onclick="toggle_somebody()">I Dare You to click me.</button></td></tr>
                   </table>
                </center>
             </td>
@@ -1298,32 +1339,6 @@ setTimeout(() => {
   update_crafted_items();
 }, 1000);
 
-var fields = {
-  general: {
-    main: document.getElementById("general"),
-    action: document.getElementsByName("action")[0],
-    target: document.getElementsByName("target")[0],
-    other: document.getElementsByName("other")[0],
-    othera: document.getElementsByName("othera")[0],
-    submit: () => {
-      document.getElementById("s_subbut").childNodes[0].click();
-      return true;
-    },
-    upaction: () => {
-      updateaction(fields.general.action.value, fields.general.main);
-      return true;
-    },
-    uptarget: () => {
-      updatetarget(fields.general.action.value, fields.general.target.value, fields.general.main);
-      return true;
-    }
-  },
-  misc: {
-    security: document.getElementById("s_Response"),
-    message: document.getElementById("s_FightWin")
-  }
-};
-
 function craft() {
   fields.general.action.value = "ts";
   fields.general.upaction();
@@ -1402,14 +1417,6 @@ function toggle_crafting() {
   }
 }
 
-function toggle_somebody() {
-  if (somebody_running == false) {
-    somebody();
-  } else {
-    somebody_running = false;
-  }
-}
-
 function toggle_waypoints() {
   if (document.getElementById("waypoint-menu").hidden == false) {
     document.getElementById("waypoint-menu").hidden = true;
@@ -1420,52 +1427,24 @@ function toggle_waypoints() {
   }
 }
 
-function get_equipment() {
-  let temp = [];
-  let current_inventory = {
-    "Relic 6": getitem(top.Relic6),
-    "Relic 5": getitem(top.Relic5),
-    "Relic 4": getitem(top.Relic4),
-    "Relic 3": getitem(top.Relic3),
-    "Relic 2": getitem(top.Relic2),
-    "Relic 1": getitem(top.Relic1),
-    "Right Spell": getitem(top.Heal),
-    "Feet": getitem(top.Boots),
-    "Legs": getitem(top.Leggings),
-    "Left Spell": getitem(top.Cast),
-    "Arms": getitem(top.Sleeves),
-    "Chest": getitem(top.Mantle),
-    "Hands": getitem(top.Gauntlets),
-    "Right Hand": getitem(top.Shield),
-    "Head": getitem(top.Helmet),
-    "Left Hand": getitem(top.Weapon)
-  }
-
-  Object.entries(current_inventory).forEach((data) => {
-    domes(`${data[0]}: ${data[1]}`);
-  });
-  domes("Currently Equipped Items");
+function deposit_gold() {
+  let gold = parseInt(top.Gold, 10);
+  let tres = parseInt(top.Tres, 10);
+  let fill_value = parseInt(2000000000 - tres, 10);|
+  fields.kingdom.action.value = "deposit";
+  fields.kingdom.upaction();
+  fields.kingdom.othera.value = tres;
+  fields.kingdom.submit();
 }
 
-function somebody() {
-  let changed = false;
-  for (let x in top.OldChat) {
-    if (top.OldChat[x].indexOf(":pm") > -1 && top.OldChat[x].indexOf(">Somebody") == -1) {
-      let uname = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 2, top.OldChat[x].indexOf("</"));
-      if (uname !== '>') {
-        changed = true;
-        top.OldChat[x] = top.OldChat[x].replace(uname, ">Somebody");
-      }
-    }
-  }
-  if (changed) {
-    upchat("");
-    if (somebody_running) {
-      setTimeout(somebody, 150);
-    }
-  } else {
-    if (somebody_running) {
-      setTimeout(somebody, 150);
-    }
-  }
+function craft() {
+  fields.general.action.value = "ts";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("craft-item-type").value;
+  fields.general.uptarget();
+  fields.general.other.value = document.getElementById("craft-item-value").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_crafted_items();
+  }, 200);
 }

@@ -1438,10 +1438,17 @@ function deposit_gold() {
     let gold = parseInt(top.Gold, 10);
     let tres = parseInt(top.Tres, 10);
     let fill_value = parseInt(2000000000 - tres, 10);
-    fields.kingdom.action.value = "deposit";
-    fields.kingdom.upaction();
-    fields.kingdom.othera.value = fill_value;
-    fields.kingdom.submit();
+    if (gold >= fill_value) {
+      fields.kingdom.action.value = "deposit";
+      fields.kingdom.upaction();
+      fields.kingdom.othera.value = fill_value;
+      fields.kingdom.submit();
+    } else {
+      fields.kingdom.action.value = "deposit";
+      fields.kingdom.upaction();
+      fields.kingdom.othera.value = gold;
+      fields.kingdom.submit();
+    }
   } else {
     domes("Cannot be used in forge");
   }

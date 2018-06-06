@@ -605,7 +605,7 @@ var mainLoad = (function() {
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
-                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="genchat('chat', '/dt', 0);">Dump Trivial</button>
+                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="genfull('chat', '/dt', 0);">Dump Trivial</button>
                      </center>
                      </td>
                   </tr>

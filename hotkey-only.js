@@ -289,6 +289,11 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
         upchat("");
       }
+      if (msg.toLowerCase().indexOf(":relic-") > -1) {
+        let username = msg.substring(msg.indexOf(':relic-') + 5, msg.lastIndexOf(':'));
+        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
+        upchat("");
+      }
       if (msg.toLowerCase().indexOf(":beast-") > -1) {
         let xl = parseInt(randomValue(0, 299), 10);
         if (xl < 100) {

@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 11.3",
+  version: "Version: 11.4",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -1486,3 +1486,18 @@ function craft() {
     update_crafted_items();
   }, 200);
 }
+
+document.getElementById("chattybox").addEventListener("keypress", (event) => {
+  if (event.keyCode === 13) {
+    if (document.getElementById("chattybox").value === "/rwk1") {
+      window.open("http://rwk1.racewarkingdoms.com");
+      event.preventDefault();
+      document.getElementById("chattybox").value = "";
+    } else if (document.getElementById("chattybox").value != "/rwk2") {
+      window.open("http://rwk2.racewarkingdoms.com");
+      event.preventDefault();
+      document.getElementById("chattybox").value = "";
+    }
+
+  }
+});

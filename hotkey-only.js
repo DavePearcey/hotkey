@@ -10,7 +10,6 @@ var p = {
 
 var somebody_running = false;
 
-
 var fields = {
   general: {
     main: document.getElementById("general"),
@@ -610,7 +609,7 @@ var mainLoad = (function() {
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
-                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="genfull('chat', '/dt', 0);">Dump Trivial</button>
+                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button>
                      </center>
                      </td>
                   </tr>
@@ -1493,7 +1492,7 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
       window.open("http://rwk1.racewarkingdoms.com");
       event.preventDefault();
       document.getElementById("chattybox").value = "";
-    } else if (document.getElementById("chattybox").value != "/rwk2") {
+    } else if (document.getElementById("chattybox").value === "/rwk2") {
       window.open("http://rwk2.racewarkingdoms.com");
       event.preventDefault();
       document.getElementById("chattybox").value = "";
@@ -1501,3 +1500,32 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
 
   }
 });
+
+function peaValue() {
+  let kingdoms = parseInt(prompt("Number of kingdoms"), 10) || 0;
+  let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10) || 0;
+  let hours = parseInt(prompt("Number of hours"), 10) || 24;
+  let collectia = confirm("Do you have collectia") || false;
+  let corruption = 0;
+  let interest = 0.0;
+  let embezzle = 0;
+
+  if (kingdoms >= 1000 && kingdoms < 2499) {
+    corruption = ((500 / kingdoms) + .5);
+  } else if (kingdoms >= 2500) {
+    corruption = (1750 / kingdoms);
+  } else {
+    corruption = 1;
+  }
+
+  if (collectia) {
+    interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1.1);
+  } else {
+    interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1);
+  }
+
+  embezzle = Math.floor(2000000000 - (2000000000 / Math.pow((1 + (interest * corruption)), hours))) - 10000;
+  //document.getElementById("chattybox").value = `/pe ${embezzle}`;
+  genfull("chat", `/pea ${embezzle}`, 0);
+  domes("<font color='red'>Total Bezz: " + parseInt(embezzle * kingdoms, 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</font>");
+}

@@ -1,7 +1,7 @@
 'use strict'
 
 var p = {
-  version: "Version: 11.4",
+  version: "Version: 11.5",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -291,6 +291,11 @@ var chatmodder = setInterval(() => {
       if (msg.toLowerCase().indexOf(":ban-") > -1) {
         let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
         top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+        upchat("");
+      }
+      if (msg.toLowerCase().indexOf(":sys-") > -1) {
+        let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
+        top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
         upchat("");
       }
       if (msg.toLowerCase().indexOf(":relic-") > -1) {

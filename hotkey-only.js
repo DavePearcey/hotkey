@@ -298,41 +298,47 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
         upchat("");
       }
+      if (msg.indexOf(">Auctioneer<") > -1) {
+        if(msg.indexOf('009933') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('009933', 'FABBBB');
+          upchat("");
+        }
+      }
       if (msg.indexOf(">Anubis<") > -1) {
         if(msg.indexOf('6666FF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('BBBBFF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('C8C8C8') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('FFBBBB') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('FF6666') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('969696') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('CC00CC') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('CC00CC', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('CC00CC', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('4444FF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('4444FF', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('4444FF', 'FFA500');
           upchat("");
         }
         if(msg.indexOf('FF2222') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500')
+          top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500');
           upchat("");
         }
       }

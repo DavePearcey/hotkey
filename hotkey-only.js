@@ -298,6 +298,32 @@ var chatmodder = setInterval(() => {
         top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
         upchat("");
       }
+      if (msg.indexOf("pm('Anubis')") > -1) {
+        if(msg.indexOf('6666FF') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500')
+          upchat("");
+        }
+        if(msg.indexOf('#BBBBFF') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500')
+          upchat("");
+        }
+        if(msg.indexOf('C8C8C8') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500')
+          upchat("");
+        }
+        if(msg.indexOf('FFBBBB') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500')
+          upchat("");
+        }
+        if(msg.indexOf('FF6666') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500')
+          upchat("");
+        }
+        if(msg.indexOf('#969696') > -1){
+          top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500')
+          upchat("");
+        }
+      }
       if (msg.toLowerCase().indexOf(":relic-") > -1) {
         let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
         top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;

@@ -648,7 +648,6 @@ function randomValue(min, max) {
 }
 
 function porter(location) {
-  let lastval = document.getElementsByName("action")[0].value;
   switch (location) {
     case "palace":
       tp.heaven.palace();
@@ -740,10 +739,6 @@ function porter(location) {
       console.log(location);
       break;
   }
-  setTimeout(()=>{
-    document.getElementsByName("action")[0].value = lastval;
-  })
-
 }
 
 function log(message, log_level) {

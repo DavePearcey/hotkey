@@ -1498,7 +1498,6 @@ function setAction(action = 'fight', target = '0', other = '0', othera = 'none')
   fields.general.uptarget();
   fields.general.other.value = other;
   fields.general.othera.value = othera;
-  fields.general.submit();
 }
 
 document.getElementById("chattybox").addEventListener("keypress", (event) => {

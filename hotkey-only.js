@@ -65,10 +65,15 @@ var tp = {
     },
   },
   to: (x, y) => {
+    let action = document.getElementsByName("action")[0].value;
+    let target = document.getElementsByName("target")[0].value;
+    let other = document.getElementsByName("other")[0].value;
+    let othera = document.getElementsByName("othera")[0].value;
     tp.form.act();
     tp.form.x.value = x;
     tp.form.y.value = y;
     tp.form.sub();
+    setAction(action, target, other, othera);
   },
   heaven: {
     palace: () => {
@@ -643,6 +648,7 @@ function randomValue(min, max) {
 }
 
 function porter(location) {
+  let lastval = document.getElementsByName("action")[0].value;
   switch (location) {
     case "palace":
       tp.heaven.palace();
@@ -734,6 +740,10 @@ function porter(location) {
       console.log(location);
       break;
   }
+  setTimeout(()=>{
+    document.getElementsByName("action")[0].value = lastval;
+  })
+
 }
 
 function log(message, log_level) {
@@ -1484,6 +1494,16 @@ function craft() {
   setTimeout(() => {
     update_crafted_items();
   }, 200);
+}
+
+function setAction(action = 'fight', target = '0', other = '0', othera = 'none'){
+  fields.general.action.value = action;
+  fields.general.upaction();
+  fields.general.target.value = target;
+  fields.general.uptarget();
+  fields.general.other.value = other;
+  fields.general.othera.value = othera;
+  fields.general.submit();
 }
 
 document.getElementById("chattybox").addEventListener("keypress", (event) => {

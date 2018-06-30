@@ -279,184 +279,186 @@ var tp = {
 }
 
 var chatmodder = setInterval(() => {
-  for (let x = 0; x <= 4; x++) {
-    if (top.OldChat[x] != "") {
-      let msg = top.OldChat[x];
-      if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
-        let upperletter = top.login.substring(0, 1).toUpperCase();
-        let lowername = top.login.substring(1, top.login.length);
-        top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":ban-") > -1) {
-        let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":sys-") > -1) {
-        let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
-        upchat("");
-      }
-      if (msg.indexOf(">Auctioneer<") > -1) {
-        if(msg.indexOf('009933') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('009933', 'FABBBB');
+  if (mod_chat) {
+    for (let x = 0; x <= 4; x++) {
+      if (top.OldChat[x] != "") {
+        let msg = top.OldChat[x];
+        if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
+          let upperletter = top.login.substring(0, 1).toUpperCase();
+          let lowername = top.login.substring(1, top.login.length);
+          top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
           upchat("");
         }
-      }
-      if (msg.indexOf(">Anubis<") > -1) {
-        if(msg.indexOf('6666FF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500');
+        if (msg.toLowerCase().indexOf(":ban-") > -1) {
+          let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
+          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
           upchat("");
         }
-        if(msg.indexOf('BBBBFF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500');
+        if (msg.toLowerCase().indexOf(":sys-") > -1) {
+          let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
+          top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
           upchat("");
         }
-        if(msg.indexOf('C8C8C8') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500');
+        if (msg.indexOf(">Auctioneer<") > -1) {
+          if (msg.indexOf('009933') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('009933', '66C19B');
+            upchat("");
+          }
+        }
+        if (msg.indexOf(">Anubis<") > -1) {
+          if (msg.indexOf('6666FF') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('BBBBFF') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('C8C8C8') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('FFBBBB') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('FF6666') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('969696') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('CC00CC') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('CC00CC', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('4444FF') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('4444FF', 'FFA500');
+            upchat("");
+          }
+          if (msg.indexOf('FF2222') > -1) {
+            top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500');
+            upchat("");
+          }
+        }
+        if (msg.toLowerCase().indexOf(":relic-") > -1) {
+          let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
+          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
           upchat("");
         }
-        if(msg.indexOf('FFBBBB') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500');
-          upchat("");
-        }
-        if(msg.indexOf('FF6666') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500');
-          upchat("");
-        }
-        if(msg.indexOf('969696') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500');
-          upchat("");
-        }
-        if(msg.indexOf('CC00CC') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('CC00CC', 'FFA500');
-          upchat("");
-        }
-        if(msg.indexOf('4444FF') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('4444FF', 'FFA500');
-          upchat("");
-        }
-        if(msg.indexOf('FF2222') > -1){
-          top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500');
-          upchat("");
-        }
-      }
-      if (msg.toLowerCase().indexOf(":relic-") > -1) {
-        let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":beast-") > -1) {
-        let xl = parseInt(randomValue(0, 299), 10);
-        if (xl < 100) {
-          xl = `0${xl}`;
-        }
-        let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
-        let plane = '';
-        switch (randomValue(0, 3)) {
-          case 0:
-            plane = 'Hel';
-            break;
-          case 1:
-            plane = 'Dun';
-            break;
-          case 2:
-            plane = 'Sky';
-            break;
-          case 3:
-            plane = 'Hev';
-            break;
-        }
-        let yl = parseInt(randomValue(0, 299), 10);
-        if (yl < 100) {
-          yl = `0${yl}`;
-        }
-        top.OldChat[x] = `<font color='#FCFF11'>A FAKE shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
+        if (msg.toLowerCase().indexOf(":beast-") > -1) {
+          let xl = parseInt(randomValue(0, 299), 10);
+          if (xl < 100) {
+            xl = `0${xl}`;
+          }
+          let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
+          let plane = '';
+          switch (randomValue(0, 3)) {
+            case 0:
+              plane = 'Hel';
+              break;
+            case 1:
+              plane = 'Dun';
+              break;
+            case 2:
+              plane = 'Sky';
+              break;
+            case 3:
+              plane = 'Hev';
+              break;
+          }
+          let yl = parseInt(randomValue(0, 299), 10);
+          if (yl < 100) {
+            yl = `0${yl}`;
+          }
+          top.OldChat[x] = `<font color='#FCFF11'>A FAKE shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
           <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has not awoken a beast near ${xl},${plane},${yl}!!!</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":fish-") > -1) {
-        let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":fish-") > -1) {
+          let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
 
-        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":piss-") > -1) {
-        let username = msg.substring(msg.indexOf(':piss-') + 6, msg.lastIndexOf(':'));
-        top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":banac:") > -1) {
-        top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
-        top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":banpk:") > -1) {
-        top.OldChat[x] = `<font color='#C89468'>Puddle Keeper</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
-        top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":hadoken:") > -1) {
-        top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img width="32px" height="32px" src="https://imgur.com/Ds160kg.gif">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":adumb:") > -1) {
-        top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":migs:") > -1) {
-        top.OldChat[x] = msg.replace(/:migs:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":hevmap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:hevmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hev.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":skymap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:skymap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sky.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":surmap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:surmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sur.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":dunmap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:dunmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Dun.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":helmap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:helmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hel.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":formap:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:formap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/For.bmp">`);
-        upchat("");
-      }
-      if (msg.toLowerCase().indexOf(":bighadoken:") > -1) {
-        let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-        top.OldChat[x] = msg.replace(/:bighadoken:/gi, `<img width="300px" height="300px" src="https://imgur.com/Ds160kg.gif">`);
-        upchat("");
+          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":piss-") > -1) {
+          let username = msg.substring(msg.indexOf(':piss-') + 6, msg.lastIndexOf(':'));
+          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":banac:") > -1) {
+          top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
+          top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":banpk:") > -1) {
+          top.OldChat[x] = `<font color='#C89468'>Puddle Keeper</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
+          top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
+          top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
+          top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":hadoken:") > -1) {
+          top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img width="32px" height="32px" src="https://imgur.com/Ds160kg.gif">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":adumb:") > -1) {
+          top.OldChat[x] = msg.replace(/:adumb:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":migs:") > -1) {
+          top.OldChat[x] = msg.replace(/:migs:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":hevmap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:hevmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hev.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":skymap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:skymap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sky.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":surmap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:surmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sur.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":dunmap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:dunmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Dun.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":helmap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:helmap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hel.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":formap:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:formap:/gi, `<img width="300px" height="300px" src="http://${url}.racewarkingdoms.com/For.bmp">`);
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":bighadoken:") > -1) {
+          let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
+          top.OldChat[x] = msg.replace(/:bighadoken:/gi, `<img width="300px" height="300px" src="https://imgur.com/Ds160kg.gif">`);
+          upchat("");
+        }
       }
     }
   }
@@ -1540,7 +1542,7 @@ function craft() {
   }, 200);
 }
 
-function setAction(action = 'fight', target = '0', other = '0', othera = 'none'){
+function setAction(action = 'fight', target = '0', other = '0', othera = 'none') {
   fields.general.action.value = action;
   fields.general.upaction();
   fields.general.target.value = target;

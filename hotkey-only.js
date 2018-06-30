@@ -9,6 +9,7 @@ var p = {
 };
 
 var somebody_running = false;
+var mod_chat = true;
 
 var fields = {
   general: {
@@ -665,7 +666,8 @@ var mainLoad = (function() {
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
-                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button>
+                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
+                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button> 
                      </center>
                      </td>
                   </tr>
@@ -1593,4 +1595,14 @@ function peaValue() {
   //document.getElementById("chattybox").value = `/pe ${embezzle}`;
   genfull("chat", `/pea ${embezzle}`, 0);
   domes("<font color='red'>Total Bezz: " + parseInt(embezzle * kingdoms, 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</font>");
+}
+
+function toggle_chatmod() {
+  if (mod_chat) {
+    mod_chat = false;
+    domes("No longer modding chat.");
+  } else {
+    mod_chat = true;
+    domes("Chat modder enabled");
+  }
 }

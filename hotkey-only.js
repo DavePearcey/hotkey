@@ -890,6 +890,9 @@ function maxInv() {
   if (p.current_inventory.includes("11082") || p.current_inventory.includes("11087")) {
     p.max_inventory = 90;
   }
+  if (p.current_inventory.includes("11110")) {
+    p.max_inventory = 165;
+  }
   document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory}`;
 }
 

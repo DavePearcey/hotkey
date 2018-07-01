@@ -284,22 +284,6 @@ var chatmodder = setInterval(() => {
     for (let x = 0; x <= 4; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
-        if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
-          let upperletter = top.login.substring(0, 1).toUpperCase();
-          let lowername = top.login.substring(1, top.login.length);
-          top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-          upchat("");
-        }
-        if (msg.toLowerCase().indexOf(":ban-") > -1) {
-          let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
-          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-          upchat("");
-        }
-        if (msg.toLowerCase().indexOf(":sys-") > -1) {
-          let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
-          top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
-          upchat("");
-        }
         if (msg.indexOf(">Auctioneer<") > -1) {
           if (msg.indexOf('009933') > -1) {
             top.OldChat[x] = top.OldChat[x].replace('009933', '66C19B');
@@ -307,6 +291,22 @@ var chatmodder = setInterval(() => {
           }
         }
         if (msg.indexOf(">Anubis<") > -1) {
+          if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
+            let upperletter = top.login.substring(0, 1).toUpperCase();
+            let lowername = top.login.substring(1, top.login.length);
+            top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+            upchat("");
+          }
+          if (msg.toLowerCase().indexOf(":ban-") > -1) {
+            let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
+            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
+            upchat("");
+          }
+          if (msg.toLowerCase().indexOf(":sys-") > -1) {
+            let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
+            top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
+            upchat("");
+          }
           if (msg.indexOf('6666FF') > -1) {
             top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500');
             upchat("");
@@ -343,40 +343,11 @@ var chatmodder = setInterval(() => {
             top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500');
             upchat("");
           }
-        }
-        if (msg.toLowerCase().indexOf(":relic-") > -1) {
-          let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
-          top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
-          upchat("");
-        }
-        if (msg.toLowerCase().indexOf(":beast-") > -1) {
-          let xl = parseInt(randomValue(0, 299), 10);
-          if (xl < 100) {
-            xl = `0${xl}`;
+          if (msg.toLowerCase().indexOf(":relic-") > -1) {
+            let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
+            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
+            upchat("");
           }
-          let username = msg.substring(msg.indexOf(':beast-') + 7, msg.lastIndexOf(':'));
-          let plane = '';
-          switch (randomValue(0, 3)) {
-            case 0:
-              plane = 'Hel';
-              break;
-            case 1:
-              plane = 'Dun';
-              break;
-            case 2:
-              plane = 'Sky';
-              break;
-            case 3:
-              plane = 'Hev';
-              break;
-          }
-          let yl = parseInt(randomValue(0, 299), 10);
-          if (yl < 100) {
-            yl = `0${yl}`;
-          }
-          top.OldChat[x] = `<font color='#FCFF11'>A FAKE shrill screech sounds in the distance followed by a horrendous growl...and then all is silent</font> <br>
-          <font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'> has not awoken a beast near ${xl},${plane},${yl}!!!</font>`;
-          upchat("");
         }
         if (msg.toLowerCase().indexOf(":fish-") > -1) {
           let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
@@ -667,7 +638,7 @@ var mainLoad = (function() {
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
                            <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
-                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button> 
+                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
                      </center>
                      </td>
                   </tr>

@@ -281,7 +281,7 @@ var tp = {
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {
-    for (let x = 0; x <= 4; x++) {
+    for (let x = 0; x <= 5; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
         if (msg.indexOf(">Auctioneer<") > -1) {
@@ -289,6 +289,14 @@ var chatmodder = setInterval(() => {
             top.OldChat[x] = top.OldChat[x].replace('009933', '66C19B');
             upchat("");
           }
+        }
+        if (msg.toLowerCase().indexOf("<font color=#FCFF11>") > -1) {
+          top.OldChat[x] = top.OldChat[x].replace("<font color=#FCFF11>", "<font size=5 color=#FCFF11>");
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf("size=5") > -1) {
+          top.OldChat[x] = top.OldChat[x].replace("size=5", "");
+          upchat("");
         }
         if (msg.indexOf(">Anubis<") > -1) {
           if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
@@ -434,7 +442,7 @@ var chatmodder = setInterval(() => {
       }
     }
   }
-}, 100);
+}, 50);
 
 var mainLoad = (function() {
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>

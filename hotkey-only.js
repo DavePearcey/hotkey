@@ -1526,6 +1526,16 @@ function craft() {
   }, 200);
 }
 
+document.addEventListener("keyup", (event) => {
+  IgnoreNextEnter = false;
+  if (HK) {
+    if (event.keyCode === 66) {
+      document.getElementsByName("action")[0].value = "battle";
+      updateaction("battle", document.getElementById("general"));
+    }
+  }
+});
+
 function setAction(action = 'fight', target = '0', other = '0', othera = 'none') {
   fields.general.action.value = action;
   fields.general.upaction();

@@ -290,10 +290,6 @@ var chatmodder = setInterval(() => {
             upchat("");
           }
         }
-        if (msg.indexOf("color=#FF6666>") > -1) {
-          top.OldChat[x] = top.OldChat[x].replace("color=#FF6666>", "color=#FF6666 size=5>");
-          upchat("");
-        }
         if (msg.toLowerCase().indexOf("size=5") > -1) {
           top.OldChat[x] = top.OldChat[x].replace("size=5", "");
           top.OldChat[x] = top.OldChat[x].replace("You find a ", "<font color='#C89468'>Found:</font> ");
@@ -1528,16 +1524,6 @@ function craft() {
     update_crafted_items();
   }, 200);
 }
-
-document.addEventListener("keyup", (event) => {
-  IgnoreNextEnter = false;
-  if (HK) {
-    if (event.keyCode === 66) {
-      document.getElementsByName("action")[0].value = "battle";
-      updateaction("battle", document.getElementById("general"));
-    }
-  }
-});
 
 function setAction(action = 'fight', target = '0', other = '0', othera = 'none') {
   fields.general.action.value = action;

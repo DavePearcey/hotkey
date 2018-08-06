@@ -291,11 +291,14 @@ var chatmodder = setInterval(() => {
           }
         }
         if (msg.toLowerCase().indexOf("<font color=#FCFF11>") > -1) {
-          top.OldChat[x] = top.OldChat[x].replace("<font color=#FCFF11>", "<font size=5 color=#FCFF11>");
+          top.OldChat[x] = top.OldChat[x].replace("color=#FCFF11>", "color=#FCFF11 size=5>");
           upchat("");
         }
         if (msg.toLowerCase().indexOf("size=5") > -1) {
           top.OldChat[x] = top.OldChat[x].replace("size=5", "");
+          top.OldChat[x] = top.OldChat[x].replace("You find a ", "<font color='#C89468'>Found:</font> ");
+          top.OldChat[x] = top.OldChat[x].replace(" on the enemy's corpse!", "");
+          top.OldChat[x] = top.OldChat[x].replace("Click to DESTROY", "Ash Item")
           upchat("");
         }
         if (msg.indexOf(">Anubis<") > -1) {

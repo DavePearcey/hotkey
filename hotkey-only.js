@@ -290,8 +290,8 @@ var chatmodder = setInterval(() => {
             upchat("");
           }
         }
-        if (msg.toLowerCase().indexOf("<font color=#FCFF11>") > -1) {
-          top.OldChat[x] = top.OldChat[x].replace("color=#FCFF11>", "color=#FCFF11 size=5>");
+        if (msg.indexOf("color=#FF6666>") > -1) {
+          top.OldChat[x] = top.OldChat[x].replace("color=#FF6666>", "color=#FF6666 size=5>");
           upchat("");
         }
         if (msg.toLowerCase().indexOf("size=5") > -1) {

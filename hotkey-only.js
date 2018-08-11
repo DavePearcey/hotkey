@@ -281,7 +281,7 @@ var tp = {
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {
-    for (let x = 0; x <= 5; x++) {
+    for (let x = 0; x <= 10; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
         if (msg.indexOf(">Auctioneer<") > -1) {

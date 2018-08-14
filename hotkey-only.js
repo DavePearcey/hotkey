@@ -953,6 +953,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Keybindings Loaded ' + p.version + ' Thank you for using the addon, I hope its served you well.');
+  domes('Helpsite is no longer using a domain name. please access it via http://52.23.80.116');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();

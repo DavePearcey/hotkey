@@ -953,7 +953,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Keybindings Loaded ' + p.version + ' Thank you for using the addon, I hope its served you well.');
-  domes('Helpsite is no longer using a domain name. please access it via http://52.23.80.116');
+  domes('W key will now automatically fill in /m target: to the last pm in your chat. Enjoy.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();
@@ -1556,7 +1556,7 @@ document.addEventListener("keydown", (event) => {
       for (let line of top.OldChat) {
         if (line.indexOf("<u>PM from</u>") > -1) {
           let target = line.substring(parseInt(line.indexOf(")>") + 2, 10), parseInt(line.indexOf("</a"), 10));
-          document.getElementById("chattybox").value = `/m ${target}:`;
+          document.getElementById("chattybox").value = `/m ${target}: `;
           document.getElementById("chattybox").focus();
           break;
         }

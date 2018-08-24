@@ -1550,7 +1550,7 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (HK) {
+  if (HK && !InputHasFocus()) {
     if (event.keyCode === 87) {
       event.preventDefault();
       for (let line of top.OldChat) {

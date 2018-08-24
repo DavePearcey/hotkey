@@ -1546,9 +1546,25 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
       event.preventDefault();
       document.getElementById("chattybox").value = "";
     }
-
   }
 });
+
+document.addEventListener("keydown", (event) => {
+  if (HK) {
+    if (event.keyCode === 87) {
+      event.preventDefault();
+      for (let line of top.OldChat) {
+        if (line.indexOf("<u>PM from</u>") > -1) {
+          let target = line.substring(parseInt(line.indexOf(")>") + 2, 10), parseInt(line.indexOf("</a"), 10));
+          document.getElementById("chattybox").value = `/m ${target}:`;
+          document.getElementById("chattybox").focus();
+          break;
+        }
+      }
+    }
+  }
+});
+
 
 function peaValue() {
   let kingdoms = parseInt(prompt("Number of kingdoms"), 10) || 0;

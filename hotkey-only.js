@@ -383,6 +383,10 @@ var chatmodder = setInterval(() => {
           top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
           upchat("");
         }
+        if (msg.toLowerCase().indexOf(":surrender:") > -1) {
+          top.OldChat[x] = msg.replace(/:surrender:/gi, '<img width="32px" height="32px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/148/white-flag_2690.png">');
+          upchat("");
+        }
         if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
           top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
           upchat("");

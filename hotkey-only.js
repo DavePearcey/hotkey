@@ -281,7 +281,7 @@ var tp = {
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {
-    for (let x = 0; x <= 5; x++) {
+    for (let x = 0; x <= 10; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
         if (msg.indexOf(">Auctioneer<") > -1) {
@@ -957,6 +957,7 @@ setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Keybindings Loaded ' + p.version + ' Thank you for using the addon, I hope its served you well.');
+  domes('W key will now automatically fill in /m target: to the last pm in your chat. Enjoy.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();
@@ -1549,9 +1550,25 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
       event.preventDefault();
       document.getElementById("chattybox").value = "";
     }
-
   }
 });
+
+document.addEventListener("keydown", (event) => {
+  if (HK && !InputHasFocus()) {
+    if (event.keyCode === 87) {
+      event.preventDefault();
+      for (let line of top.OldChat) {
+        if (line.indexOf("<u>PM from</u>") > -1) {
+          let target = line.substring(parseInt(line.indexOf(")>") + 2, 10), parseInt(line.indexOf("</a"), 10));
+          document.getElementById("chattybox").value = `/m ${target}: `;
+          document.getElementById("chattybox").focus();
+          break;
+        }
+      }
+    }
+  }
+});
+
 
 function peaValue() {
   let kingdoms = parseInt(prompt("Number of kingdoms"), 10) || 0;

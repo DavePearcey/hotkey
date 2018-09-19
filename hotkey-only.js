@@ -662,7 +662,7 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> 
+                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
                            <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button> <br>
                            <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
                            <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
@@ -1720,10 +1720,10 @@ function toggle_chanting() {
   let butt = document.getElementById('chanting');
   if (elem.hidden == true) {
     elem.hidden = false;
-    butt.value = "Hide Chanting"
+    butt.innerText = "Hide Chanting"
     update_chanting();
   } else {
     elem.hidden = true;
-    butt.value = "Show Chanting"
+    butt.innerText = "Show Chanting"
   }
 }

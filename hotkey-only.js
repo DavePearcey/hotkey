@@ -599,6 +599,21 @@ var mainLoad = (function() {
                      </font>
                      <center>
 
+                     <div id='chanting-helper' hidden>
+                     Enchanted Items: <select id='chant-dirty-items'>
+                     </select>
+                     <button onclick="disenchant_dirty_item()">Disenchant</button>
+                     <br>
+                     Pure Items: <select id='chant-clean-items'>
+                     </select>
+                     <button onclick="burn_pure_item()">Sell</button> <button onclick="enchant_pure_item()">Enchant</button>
+                     <br>
+                     Relics: <select id='chant-pure-relics'>
+                     </select>
+                     <button onclick="burn_pure_relic()">Destroy</button>
+                     <br>
+                     </div>
+
                      <div id='crafting-helper' hidden>
                      Crafting: Item Type: <select id="craft-item-type">
                         <option selected>Select Item Type</option>
@@ -647,7 +662,8 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> <br>
+                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button> 
+                           <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button> <br>
                            <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
                            <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
                      </center>
@@ -1606,5 +1622,108 @@ function toggle_chatmod() {
   } else {
     mod_chat = true;
     domes("Chat modder enabled");
+  }
+}
+
+function update_chanting() {
+  var pure = [];
+  var dirty = [];
+  var relic = [];
+  var inventory = [];
+
+  for (let x in top.inventory) {
+    if (top.inventory[x] != "") {
+      inventory.push(top.inventory[x]);
+    }
+  }
+
+  for (let value of inventory) {
+    if (value >= 10000 && value <= 10088) {
+      relic.push(value);
+    }
+    if (getitem(value).indexOf("*") > -1 && ((value < 10000 || value > 10999)) && (value < 11000 || value > 11999) && (value < 27000 || value > 27999)) {
+      dirty.push(value)
+    }
+    if (getitem(value).indexOf("*") == -1 && ((value < 10000 || value > 10999)) && (value < 11000 || value > 11999) && (value < 27000 || value > 27999)) {
+      pure.push(value)
+    }
+  }
+
+  let temp = "";
+
+  for (let relics of relic) {
+    let name = getitem(relics);
+    temp += `<option value='${relics}'>${name}</option>`;
+  }
+  document.getElementById('chant-pure-relics').innerHTML = temp;
+  temp = "";
+
+  for (let pures of pure) {
+    let name = getitem(pures);
+    temp += `<option value='${pures}'>${name}</option>`;
+  }
+  document.getElementById('chant-clean-items').innerHTML = temp;
+  temp = "";
+
+  for (let dirtys of dirty) {
+    let name = getitem(dirtys);
+    temp += `<option value='${dirtys}'>${name}</option>`;
+  }
+  document.getElementById('chant-dirty-items').innerHTML = temp;
+  temp = "";
+}
+
+function burn_pure_relic() {
+  fields.general.action.value = "burn";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("chant-pure-relics").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_chanting();
+  }, 200);
+}
+
+function burn_pure_item() {
+  fields.general.action.value = "sell";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("chant-clean-items").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_chanting();
+  }, 200);
+}
+
+function disenchant_dirty_item() {
+  fields.general.action.value = "ds";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("chant-dirty-items").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_chanting();
+  }, 200);
+}
+
+function enchant_pure_item() {
+  fields.general.action.value = "es";
+  fields.general.upaction();
+  fields.general.target.value = document.getElementById("chant-clean-items").value;
+  fields.general.uptarget();
+  fields.general.other.value = document.getElementById("chant-pure-relics").value;
+  fields.general.submit();
+  setTimeout(() => {
+    update_chanting();
+  }, 200);
+}
+
+function toggle_chanting() {
+  let elem = document.getElementById('chanting-helper');
+  let butt = document.getElementById('chanting');
+  if (elem.hidden == true) {
+    elem.hidden = false;
+    butt.value = "Hide Chanting"
+    update_chanting();
+  } else {
+    elem.hidden = true;
+    butt.value = "Show Chanting"
   }
 }

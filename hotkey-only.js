@@ -1691,7 +1691,7 @@ function burn_pure_item() {
   setTimeout(() => {
     update_chanting();
   }, 200);
-}
+}  
 
 function disenchant_dirty_item() {
   fields.general.action.value = "ds";

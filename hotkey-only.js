@@ -902,6 +902,7 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
+  setPercents();
 }
 
 function curInv() {
@@ -1585,7 +1586,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
 function peaValue() {
   let kingdoms = parseInt(prompt("Number of kingdoms"), 10) || 0;
   let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10) || 0;
@@ -1726,4 +1726,46 @@ function toggle_chanting() {
     elem.hidden = true;
     butt.innerText = "Show Chanting"
   }
+}
+
+function getPercents() {
+  let total = (parseInt(top.Str) + parseInt(top.Dex) + parseInt(top.Agi) + parseInt(top.Dur) + parseInt(top.Ntl) + parseInt(top.Cnc) + parseInt(top.Cnt));
+  let percents = {};
+  percents['Str'] = 100 * parseInt(top.Str) / total;
+  percents['Dex'] = 100 * parseInt(top.Dex) / total;
+  percents['Agi'] = 100 * parseInt(top.Agi) / total;
+  percents['Dur'] = 100 * parseInt(top.Dur) / total;
+  percents['Ntl'] = 100 * parseInt(top.Ntl) / total;
+  percents['Cnc'] = 100 * parseInt(top.Cnc) / total;
+  percents['Cnt'] = 100 * parseInt(top.Cnt) / total;
+  return percents;
+}
+
+function resetStats() {
+  top.frames.main.document.getElementById("s_Str").innerText = mc(top.Str);
+  top.frames.main.document.getElementById("s_Dex").innerText = mc(top.Dex);
+  top.frames.main.document.getElementById("s_Agi").innerText = mc(top.Agi);
+  top.frames.main.document.getElementById("s_Dur").innerText = mc(top.Dur);
+  top.frames.main.document.getElementById("s_Ntl").innerText = mc(top.Ntl);
+  top.frames.main.document.getElementById("s_Cnc").innerText = mc(top.Cnc);
+  top.frames.main.document.getElementById("s_Cnt").innerText = mc(top.Cnt);
+}
+
+function setPercents() {
+  let percents = getPercents();
+  let str = mc(top.Str) + ": " + percents['Str'].toString().substring(0, 4) + "%";
+  let dex = mc(top.Dex) + ": " + percents['Dex'].toString().substring(0, 4) + "%";
+  let agi = mc(top.Agi) + ": " + percents['Agi'].toString().substring(0, 4) + "%";
+  let dur = mc(top.Dur) + ": " + percents['Dur'].toString().substring(0, 4) + "%";
+  let ntl = mc(top.Ntl) + ": " + percents['Ntl'].toString().substring(0, 4) + "%";
+  let cnc = mc(top.Cnc) + ": " + percents['Cnc'].toString().substring(0, 4) + "%";
+  let cnt = mc(top.Cnt) + ": " + percents['Cnt'].toString().substring(0, 4) + "%";
+
+  top.frames.main.document.getElementById("s_Str").innerText = str;
+  top.frames.main.document.getElementById("s_Dex").innerText = dex;
+  top.frames.main.document.getElementById("s_Agi").innerText = agi;
+  top.frames.main.document.getElementById("s_Dur").innerText = dur;
+  top.frames.main.document.getElementById("s_Ntl").innerText = ntl;
+  top.frames.main.document.getElementById("s_Cnc").innerText = cnc;
+  top.frames.main.document.getElementById("s_Cnt").innerText = cnt;
 }

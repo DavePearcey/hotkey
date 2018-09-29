@@ -8,7 +8,6 @@ var p = {
   max_inventory: 50,
 };
 
-var somebody_running = false;
 var mod_chat = true;
 
 var fields = {
@@ -456,7 +455,7 @@ var mainLoad = (function() {
   </tr>
   <tr>
     <td background="../side.jpg" rowspan="5"><img border="0" src="../side.jpg" width="10" height="44"></td>
-    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span></td>
+    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span> <span id='perc_toggle' onclick='toggle_percents();'>%</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#loc">Loc</a>: <span id="s_Loc">${top.Loc}</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#gold">Gold</a>: <span id="s_Gold">${mc(top.Gold)}</span></td>
     <td width="25%" bgcolor="0">
@@ -902,7 +901,6 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
-  setPercents();
 }
 
 function curInv() {
@@ -1691,7 +1689,7 @@ function burn_pure_item() {
   setTimeout(() => {
     update_chanting();
   }, 200);
-}  
+}
 
 function disenchant_dirty_item() {
   fields.general.action.value = "ds";
@@ -1728,16 +1726,28 @@ function toggle_chanting() {
   }
 }
 
+var percs = false;
+
+function toggle_percents() {
+  if (!percs) {
+    percs = true;
+    setPercents();
+  } else {
+    percs = false;
+    resetStats();
+  }
+}
+
 function getPercents() {
   let total = (parseInt(top.Str) + parseInt(top.Dex) + parseInt(top.Agi) + parseInt(top.Dur) + parseInt(top.Ntl) + parseInt(top.Cnc) + parseInt(top.Cnt));
   let percents = {};
-  percents['Str'] = 100 * parseInt(top.Str) / total;
-  percents['Dex'] = 100 * parseInt(top.Dex) / total;
-  percents['Agi'] = 100 * parseInt(top.Agi) / total;
-  percents['Dur'] = 100 * parseInt(top.Dur) / total;
-  percents['Ntl'] = 100 * parseInt(top.Ntl) / total;
-  percents['Cnc'] = 100 * parseInt(top.Cnc) / total;
-  percents['Cnt'] = 100 * parseInt(top.Cnt) / total;
+  percents['Str'] = 100 * parseInt(top.Str, 10) / total;
+  percents['Dex'] = 100 * parseInt(top.Dex, 10) / total;
+  percents['Agi'] = 100 * parseInt(top.Agi, 10) / total;
+  percents['Dur'] = 100 * parseInt(top.Dur, 10) / total;
+  percents['Ntl'] = 100 * parseInt(top.Ntl, 10) / total;
+  percents['Cnc'] = 100 * parseInt(top.Cnc, 10) / total;
+  percents['Cnt'] = 100 * parseInt(top.Cnt, 10) / total;
   return percents;
 }
 

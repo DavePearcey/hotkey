@@ -901,6 +901,9 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
+  if(percs){
+    getPercents();
+  }
 }
 
 function curInv() {

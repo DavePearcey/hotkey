@@ -1567,6 +1567,14 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
       event.preventDefault();
       document.getElementById("chattybox").value = "";
     }
+    if (document.getElementById("chattybox").value === "/clear") {
+      for ( x = 0; x < top.ChatSize; x++){
+        top.OldChat[x] = "";
+      }
+      upchat("");
+      event.preventDefault();
+      document.getElementById("chattybox").value = "";
+    }
   }
 });
 
@@ -1691,7 +1699,7 @@ function burn_pure_item() {
   setTimeout(() => {
     update_chanting();
   }, 200);
-}  
+}
 
 function disenchant_dirty_item() {
   fields.general.action.value = "ds";

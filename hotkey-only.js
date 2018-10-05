@@ -1556,7 +1556,7 @@ function setAction(action = 'fight', target = '0', other = '0', othera = 'none')
   fields.general.othera.value = othera;
 }
 
-document.getElementById("chattybox").addEventListener("keypress", (event) => {
+document.getElementById("chattybox").addEventListener("keydown", (event) => {
   if (event.keyCode === 13) {
     if (document.getElementById("chattybox").value === "/rwk1") {
       window.open("http://rwk1.racewarkingdoms.com");
@@ -1568,7 +1568,7 @@ document.getElementById("chattybox").addEventListener("keypress", (event) => {
       document.getElementById("chattybox").value = "";
     }
     if (document.getElementById("chattybox").value === "/clear") {
-      for ( x = 0; x < top.ChatSize; x++){
+      for (let x = 0; x < top.ChatSize; x++){
         top.OldChat[x] = "";
       }
       upchat("");

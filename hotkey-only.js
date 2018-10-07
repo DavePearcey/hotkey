@@ -1782,3 +1782,38 @@ function setPercents() {
   top.frames.main.document.getElementById("s_Cnc").innerText = cnc;
   top.frames.main.document.getElementById("s_Cnt").innerText = cnt;
 }
+
+function upbars() {
+  HPerc = parseInt(top.Health / top.Dur * 100, 10);
+  health = mc(top.Health);
+
+  t = parseInt(HPerc * 14 / 100, 10) - (6 - health.length / 2);
+  if (t)
+    HLeft = health.substring(0, t);
+  else
+    HLeft = "";
+  if (t < health.length)
+    HRight = health.substring(t, health.length);
+  else
+    HRight = "";
+
+  tempstr = "<table border=0 width=100% cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "ml.jpg'></td><td width=" + HPerc + " background='" + top.y + "mf";
+  if (HPerc > 20)
+    tempstr += "g";
+  tempstr += ".jpg' align=right><a href=../info.htm#health target=_blank><font color=#FFFFFF>" + HLeft + "</font></a></td><td width=" + (100 - HPerc) + " background='" + top.y + "me.jpg'><a href=../info.htm#health target=_blank><font color=#FFFFFF>" + HRight + "</font></a></td><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "mr.jpg'></td></tr></table>";
+  top.frames.main.s_LifeMeter.innerHTML = tempstr;
+
+  HPerc = top.TargetHealth;
+	enemy_perc = '';
+	enemy_perc2 = '';
+	if(HPerc > 20){
+		enemy_perc = `${top.TargetHealth}%`;
+	} else {
+		enemy_perc2 = `${top.TargetHealth}%`;
+	}
+  tempstr = "<table border=0 width=100% cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "ml.jpg'></td><td width=" + HPerc + " background='" + top.y + "mf";
+  if (HPerc > 20)
+    tempstr += "g";
+  tempstr += ".jpg' align=right>" + `${enemy_perc}` + "</td><td width=" + (100 - HPerc) + " background='" + top.y + "me.jpg'>" + `${enemy_perc2}` + "</td><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "mr.jpg'></td></tr></table>";
+  top.frames.main.s_TargetMeter.innerHTML = tempstr;
+}

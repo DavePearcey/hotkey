@@ -1784,10 +1784,15 @@ function setPercents() {
 }
 
 function upbars() {
-  HPerc = parseInt(top.Health / top.Dur * 100, 10);
-  health = mc(top.Health);
+  let HPerc = parseInt(top.Health / top.Dur * 100, 10);
+  let health = mc(top.Health);
+  let enemy_perc = '';
+  let enemy_perc2 = '';
+  let Hleft;
+  let Hright;
+  let tempstr;
 
-  t = parseInt(HPerc * 14 / 100, 10) - (6 - health.length / 2);
+  let t = parseInt(HPerc * 14 / 100, 10) - (6 - health.length / 2);
   if (t)
     HLeft = health.substring(0, t);
   else
@@ -1804,8 +1809,7 @@ function upbars() {
   top.frames.main.s_LifeMeter.innerHTML = tempstr;
 
   HPerc = top.TargetHealth;
-	enemy_perc = '';
-	enemy_perc2 = '';
+
 	if(HPerc > 20){
 		enemy_perc = `${top.TargetHealth}%`;
 	} else {

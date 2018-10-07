@@ -8,7 +8,6 @@ var p = {
   max_inventory: 50,
 };
 
-var somebody_running = false;
 var mod_chat = true;
 
 var fields = {
@@ -456,7 +455,7 @@ var mainLoad = (function() {
   </tr>
   <tr>
     <td background="../side.jpg" rowspan="5"><img border="0" src="../side.jpg" width="10" height="44"></td>
-    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span></td>
+    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span> <span id='perc_toggle' onclick='toggle_percents();'>%</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#loc">Loc</a>: <span id="s_Loc">${top.Loc}</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#gold">Gold</a>: <span id="s_Gold">${mc(top.Gold)}</span></td>
     <td width="25%" bgcolor="0">
@@ -902,7 +901,9 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
-  setPercents();
+  if(percs){
+    getPercents();
+  }
 }
 
 function curInv() {
@@ -1736,16 +1737,28 @@ function toggle_chanting() {
   }
 }
 
+var percs = false;
+
+function toggle_percents() {
+  if (!percs) {
+    percs = true;
+    setPercents();
+  } else {
+    percs = false;
+    resetStats();
+  }
+}
+
 function getPercents() {
   let total = (parseInt(top.Str) + parseInt(top.Dex) + parseInt(top.Agi) + parseInt(top.Dur) + parseInt(top.Ntl) + parseInt(top.Cnc) + parseInt(top.Cnt));
   let percents = {};
-  percents['Str'] = 100 * parseInt(top.Str) / total;
-  percents['Dex'] = 100 * parseInt(top.Dex) / total;
-  percents['Agi'] = 100 * parseInt(top.Agi) / total;
-  percents['Dur'] = 100 * parseInt(top.Dur) / total;
-  percents['Ntl'] = 100 * parseInt(top.Ntl) / total;
-  percents['Cnc'] = 100 * parseInt(top.Cnc) / total;
-  percents['Cnt'] = 100 * parseInt(top.Cnt) / total;
+  percents['Str'] = 100 * parseInt(top.Str, 10) / total;
+  percents['Dex'] = 100 * parseInt(top.Dex, 10) / total;
+  percents['Agi'] = 100 * parseInt(top.Agi, 10) / total;
+  percents['Dur'] = 100 * parseInt(top.Dur, 10) / total;
+  percents['Ntl'] = 100 * parseInt(top.Ntl, 10) / total;
+  percents['Cnc'] = 100 * parseInt(top.Cnc, 10) / total;
+  percents['Cnt'] = 100 * parseInt(top.Cnt, 10) / total;
   return percents;
 }
 
@@ -1776,4 +1789,43 @@ function setPercents() {
   top.frames.main.document.getElementById("s_Ntl").innerText = ntl;
   top.frames.main.document.getElementById("s_Cnc").innerText = cnc;
   top.frames.main.document.getElementById("s_Cnt").innerText = cnt;
+}
+
+function upbars() {
+  let HPerc = parseInt(top.Health / top.Dur * 100, 10);
+  let health = mc(top.Health);
+  let enemy_perc = '';
+  let enemy_perc2 = '';
+  let Hleft;
+  let Hright;
+  let tempstr;
+
+  let t = parseInt(HPerc * 14 / 100, 10) - (6 - health.length / 2);
+  if (t)
+    HLeft = health.substring(0, t);
+  else
+    HLeft = "";
+  if (t < health.length)
+    HRight = health.substring(t, health.length);
+  else
+    HRight = "";
+
+  tempstr = "<table border=0 width=100% cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "ml.jpg'></td><td width=" + HPerc + " background='" + top.y + "mf";
+  if (HPerc > 20)
+    tempstr += "g";
+  tempstr += ".jpg' align=right><a href=../info.htm#health target=_blank><font color=#FFFFFF>" + HLeft + "</font></a></td><td width=" + (100 - HPerc) + " background='" + top.y + "me.jpg'><a href=../info.htm#health target=_blank><font color=#FFFFFF>" + HRight + "</font></a></td><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "mr.jpg'></td></tr></table>";
+  top.frames.main.s_LifeMeter.innerHTML = tempstr;
+
+  HPerc = top.TargetHealth;
+
+	if(HPerc > 20){
+		enemy_perc = `${top.TargetHealth}%`;
+	} else {
+		enemy_perc2 = `${top.TargetHealth}%`;
+	}
+  tempstr = "<table border=0 width=100% cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "ml.jpg'></td><td width=" + HPerc + " background='" + top.y + "mf";
+  if (HPerc > 20)
+    tempstr += "g";
+  tempstr += ".jpg' align=right>" + `${enemy_perc}` + "</td><td width=" + (100 - HPerc) + " background='" + top.y + "me.jpg'>" + `${enemy_perc2}` + "</td><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "mr.jpg'></td></tr></table>";
+  top.frames.main.s_TargetMeter.innerHTML = tempstr;
 }

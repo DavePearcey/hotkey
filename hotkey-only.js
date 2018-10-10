@@ -366,6 +366,18 @@ var chatmodder = setInterval(() => {
           top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
           upchat("");
         }
+        if (msg.toLowerCase().indexOf(":roll-") > -1) {
+          let count = msg.substring(msg.indexOf(':roll-') + 6, msg.lastIndexOf(':'));
+          let username = top.OldChat[x].substring(top.OldChat[x].indexOf("('") + 2, top.OldChat[x].indexOf("')"));
+          let roll = randomValue(1, parseInt(count, 10);
+          if (typeof roll == "number"){
+            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
+          } else {
+            roll = randomValue(1, length(count));
+            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
+          }
+          upchat("");
+        }
         if (msg.toLowerCase().indexOf(":banac:") > -1) {
           top.OldChat[x] = `<font color='#C89468'>Ash Collector</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
           upchat("");

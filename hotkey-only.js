@@ -369,11 +369,11 @@ var chatmodder = setInterval(() => {
         if (msg.toLowerCase().indexOf(":roll-") > -1) {
           let count = msg.substring(msg.indexOf(':roll-') + 6, msg.lastIndexOf(':'));
           let username = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 3, top.OldChat[x].indexOf("</a>"));
-          let roll = randomValue(1, parseInt(count, 10));
-          if (typeof roll == "number"){
+          if (typeof parseInt(count, 10) == "number"){
+            let roll = randomValue(1, parseInt(count, 10));
             top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
           } else {
-            roll = randomValue(1, length(count));
+            let roll = randomValue(1, length(count));
             top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
           }
           upchat("");

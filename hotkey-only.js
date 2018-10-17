@@ -1,8 +1,20 @@
 'use strict'
 
-var birthday_name = `>Lord Syrrist<`;
-var birthday_color = `#FFF700`;
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
+var birthday_names = [{
+  "name": ">Lord Syrrist<",
+  "color": "FFF700"
+}, ];
+var donor_names = [{
+  "name": ">Anubis<",
+  "color": "FFA500"
+}, ];
+var mod_chat = true;
+var newbar = false;
+if (top.login.toLowerCase() == "anubis") {
+  newbar = true;
+  updelay();
+}
 
 var p = {
   version: "Version: 11.5",
@@ -11,12 +23,6 @@ var p = {
   current_inventory_length: 0,
   max_inventory: 50,
 };
-var newbar = false;
-if (top.login.toLowerCase() == "anubis") {
-  newbar = true;
-  updelay();
-}
-var mod_chat = true;
 
 var fields = {
   general: {
@@ -315,21 +321,27 @@ var chatmodder = setInterval(() => {
             top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
             upchat("");
           }
-          chat_colors.forEach((chat_color) => {
-            if (msg.indexOf(chat_color) > -1) {
-              top.OldChat[x] = top.OldChat[x].replace(chat_color, 'FFA500');
-              upchat('');
-            }
-          });
         }
-        if (msg.indexOf(birthday_name) > -1) {
-          chat_colors.forEach((chat_color) => {
-            if (msg.indexOf(chat_color) > -1) {
-              top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday_color);
-              top.OldChat[x] = `<font color='#${birthday_color}'>Birthday </font> ${top.OldChat[x]}`
-              upchat("");
-            }
-          });
+        for (let donor of donor_names) {
+          if (msg.indexOf(donor['name']) > -1) {
+            chat_colors.forEach((chat_color) => {
+              if (msg.indexOf(chat_color) > -1) {
+                top.OldChat[x] = top.OldChat[x].replace(chat_color, donor['color']);
+                upchat("");
+              }
+            });
+          }
+        }
+        for (let birthday of birthday_names) {
+          if (msg.indexOf(birthday['name']) > -1) {
+            chat_colors.forEach((chat_color) => {
+              if (msg.indexOf(chat_color) > -1) {
+                top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
+                top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
+                upchat("");
+              }
+            });
+          }
         }
         if (msg.toLowerCase().indexOf(":fish-") > -1) {
           let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
@@ -578,7 +590,7 @@ var mainLoad = (function() {
                              <option value="set2">Set 2</option>
                              <option value="set3">Set 3</option>
                            </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
-                           </div><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
+                           </div>
                           </td>
                         </tr>
                      </table>
@@ -649,9 +661,10 @@ var mainLoad = (function() {
                            <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
-                           <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button> <br>
-                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
+                           </div>
+                           <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
+                           <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
+                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
                            <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();">Toggle Delay Bar</button>
                      </center>
                      </td>
@@ -673,7 +686,7 @@ var mainLoad = (function() {
          </tr>
       </tbody>
    </table>
-</td>`;
+  </td>`;
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
   chat.target.focus();
   setTimeout(() => {

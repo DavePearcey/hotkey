@@ -680,7 +680,7 @@ var mainLoad = (function() {
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
                            <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button> <br>
                            <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
-                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();>Toggle Delay Bar</button>
+                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();">Toggle Delay Bar</button>
                      </center>
                      </td>
                   </tr>
@@ -1859,7 +1859,7 @@ function updelay() {
     top.frames.main.s_subbut2NO.style.display = top.frames.main.s_subbutNO.style.display = "none";
   }
   if (newbar) {
-    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color:black;"> </progress>`;
+    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;height:10;background-color:black;"> </progress>`;
   } else {
     top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y +"mr.jpg'></td></tr></table>";
   }
@@ -1887,7 +1887,7 @@ function downdelay() {
     top.mytodown = setTimeout("downdelay()", "100");
   }
   if (newbar) {
-    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color:black;"> </progress>`;
+    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;height:10;background-color:black;"> </progress>`;
   } else {
     top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "mr.jpg'></td></tr></table>";
   }

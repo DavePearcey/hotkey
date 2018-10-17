@@ -3,9 +3,14 @@
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
 var birthday_names = [];
 var donor_names = [{
-  "name": ">Anubis<",
-  "color": "FFA500"
-}, ];
+    "name": ">Anubis<",
+    "color": "FFA500"
+  },
+  {
+    "name": ">Lord Magus<",
+    "color": "008080"
+  }
+];
 var mod_chat = true;
 var newbar = false;
 if (top.login.toLowerCase() == "anubis") {
@@ -690,7 +695,7 @@ var mainLoad = (function() {
   }, 1500);
 })();
 
-//<button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> 
+//<button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button>
 
 
 function randomValue(min, max) {

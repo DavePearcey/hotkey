@@ -1841,3 +1841,42 @@ function upbars() {
   tempstr += ".jpg' align=right>" + `${enemy_perc}` + "</td><td width=" + (100 - HPerc) + " background='" + top.y + "me.jpg'>" + `${enemy_perc2}` + "</td><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "mr.jpg'></td></tr></table>";
   top.frames.main.s_TargetMeter.innerHTML = tempstr;
 }
+
+function updelay() {
+  top.ActionDelay -= 50;
+  if (top.ActionDelay >= 0) {
+    if (top.mytoup)
+      clearTimeout(top.mytoup);
+    top.mytoup = setTimeout(function() {
+      updelay();
+    }, 50);
+  } else {
+    top.frames.main.s_subbut2.style.display = top.frames.main.s_subbut.style.display = "inline";
+    top.frames.main.s_subbut2NO.style.display = top.frames.main.s_subbutNO.style.display = "none";
+  }
+
+  top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color: black;"> </progress>`;
+}
+
+function downdelay() {
+  if (top.Update != 1) {
+    return;
+  }
+  top.dActionDelay += 1000;
+  if (!top.Visible && (top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
+    if (top.mytodown)
+      clearTimeout(top.mytodown);
+    top.mytodown = setTimeout("downdelay()", "1000");
+    return;
+  }
+  if ((top.dActionDelay * 100 / top.dActionInc) >= 100) {
+    top.frames.main.s_Response.innerHTML = "<font size=4>Request timed out...check your connection and try again.</font>"
+    top.Update = 0;
+    top.dActionDelay = 0;
+  } else if ((top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
+    if (top.mytodown)
+      clearTimeout(top.mytodown);
+    top.mytodown = setTimeout("downdelay()", "100");
+  }
+  top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color: black;"> </progress>`;
+}

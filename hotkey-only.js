@@ -14,7 +14,7 @@ if (top.login.toLowerCase() == "anubis") {
 }
 
 var p = {
-  version: "Version: 11.5",
+  version: "Version: 12",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,

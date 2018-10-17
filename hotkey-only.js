@@ -345,7 +345,6 @@ var chatmodder = setInterval(() => {
         }
         if (msg.toLowerCase().indexOf(":fish-") > -1) {
           let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
-
           top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
           upchat("");
         }

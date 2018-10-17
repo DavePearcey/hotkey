@@ -1,10 +1,7 @@
 'use strict'
 
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
-var birthday_names = [{
-  "name": ">Lord Syrrist<",
-  "color": "FFF700"
-}, ];
+var birthday_names = [];
 var donor_names = [{
   "name": ">Anubis<",
   "color": "FFA500"
@@ -974,8 +971,9 @@ function essences() {
 setTimeout(function() {
   genfull('chat', '/dis', 0);
   curInv();
-  domes('Keybindings Loaded ' + p.version + ' Thank you for using the addon, I hope its served you well.');
-  domes('W key will now automatically fill in /m target: to the last pm in your chat. Enjoy.');
+  domes('Addon Version:' + p.version + ' Loaded successfully.');
+  domes('Donations for custom chat colors are now available for addon users. $5.00/Month or 1.5T (s2 gold only). Pm me on S2 for more details.');
+  domes('Birthday Chat Coloring is now offered for Free as well. Pm me the day of, or before your birthday for Birthday chat coloring, and a message beside your name.');
   top.hotlist.unshift('Rune+Keeper');
   top.hotlist.unshift('NOBODY');
   upbuttons();

@@ -7,7 +7,11 @@ var p = {
   current_inventory_length: 0,
   max_inventory: 50,
 };
-
+var newbar = false;
+if(top.login.toLowerCase() == "anubis"){
+  newbar = true;
+  updelay();
+}
 var mod_chat = true;
 
 var fields = {
@@ -676,7 +680,7 @@ var mainLoad = (function() {
                            </div> <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
                            <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button> <br>
                            <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button> <br>
-                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
+                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();>Toggle Delay Bar</button>
                      </center>
                      </td>
                   </tr>
@@ -1483,7 +1487,7 @@ function burn_crafted_item() {
   }
   setTimeout(() => {
     update_crafted_items(item);
-  }, 150);
+  }, 200);
 }
 
 function toggle_crafting() {
@@ -1854,9 +1858,13 @@ function updelay() {
     top.frames.main.s_subbut2.style.display = top.frames.main.s_subbut.style.display = "inline";
     top.frames.main.s_subbut2NO.style.display = top.frames.main.s_subbutNO.style.display = "none";
   }
-
-  top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color: black;"> </progress>`;
+  if (newbar) {
+    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color:black;"> </progress>`;
+  } else {
+    top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y +"mr.jpg'></td></tr></table>";
+  }
 }
+
 
 function downdelay() {
   if (top.Update != 1) {
@@ -1878,5 +1886,19 @@ function downdelay() {
       clearTimeout(top.mytodown);
     top.mytodown = setTimeout("downdelay()", "100");
   }
-  top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color: black;"> </progress>`;
+  if (newbar) {
+    top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;background-color:black;"> </progress>`;
+  } else {
+    top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "mr.jpg'></td></tr></table>";
+  }
+}
+
+
+function toggle_newbar() {
+  if (newbar) {
+    newbar = false;
+  } else {
+    newbar = true;
+  }
+  updelay();
 }

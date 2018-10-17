@@ -660,7 +660,7 @@ var mainLoad = (function() {
                            </div>
                            <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
                            <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
-                           <button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> <button onclick="peaValue();">Calculate Pea</button><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
+                           <button onclick="peaValue();">Calculate Pea</button><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
                            <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();">Toggle Delay Bar</button>
                      </center>
                      </td>
@@ -689,6 +689,9 @@ var mainLoad = (function() {
     update_crafted_items();
   }, 1500);
 })();
+
+//<button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button> 
+
 
 function randomValue(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

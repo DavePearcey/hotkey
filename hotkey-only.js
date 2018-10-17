@@ -1,5 +1,9 @@
 'use strict'
 
+var birthday_name = `>Lord Syrrist<`;
+var birthday_color = `#FFF700`;
+var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
+
 var p = {
   version: "Version: 11.5",
   pwps: [0, 0, 0, 0],
@@ -8,7 +12,7 @@ var p = {
   max_inventory: 50,
 };
 var newbar = false;
-if(top.login.toLowerCase() == "anubis"){
+if (top.login.toLowerCase() == "anubis") {
   newbar = true;
   updelay();
 }
@@ -287,12 +291,6 @@ var chatmodder = setInterval(() => {
     for (let x = 0; x <= 10; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
-        if (msg.indexOf(">Auctioneer<") > -1) {
-          if (msg.indexOf('009933') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('009933', '66C19B');
-            upchat("");
-          }
-        }
         if (msg.toLowerCase().indexOf("size=5") > -1) {
           top.OldChat[x] = top.OldChat[x].replace("size=5", "");
           top.OldChat[x] = top.OldChat[x].replace("You find a ", "<font color='#C89468'>Found:</font> ");
@@ -317,47 +315,21 @@ var chatmodder = setInterval(() => {
             top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
             upchat("");
           }
-          if (msg.indexOf('6666FF') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('6666FF', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('BBBBFF') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('BBBBFF', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('C8C8C8') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('C8C8C8', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('FFBBBB') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('FFBBBB', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('FF6666') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('FF6666', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('969696') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('969696', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('CC00CC') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('CC00CC', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('4444FF') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('4444FF', 'FFA500');
-            upchat("");
-          }
-          if (msg.indexOf('FF2222') > -1) {
-            top.OldChat[x] = top.OldChat[x].replace('FF2222', 'FFA500');
-            upchat("");
-          }
-          if (msg.toLowerCase().indexOf(":relic-") > -1) {
-            let username = msg.substring(msg.indexOf(':relic-') + 7, msg.lastIndexOf(':'));
-            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has found a powerful relic in the cracked earth!</font>`;
-            upchat("");
-          }
+          chat_colors.forEach((chat_color) => {
+            if (msg.indexOf(chat_color) > -1) {
+              top.OldChat[x] = top.OldChat[x].replace(chat_color, 'FFA500');
+              upchat('');
+            }
+          });
+        }
+        if (msg.indexOf(birthday_name) > -1) {
+          chat_colors.forEach((chat_color) => {
+            if (msg.indexOf(chat_color) > -1) {
+              top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday_color);
+              top.OldChat[x] = `<font color='#${birthday_color}'>Birthday </font> ${top.OldChat[x]}`
+              upchat("");
+            }
+          });
         }
         if (msg.toLowerCase().indexOf(":fish-") > -1) {
           let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
@@ -373,7 +345,7 @@ var chatmodder = setInterval(() => {
         if (msg.toLowerCase().indexOf(":roll-") > -1) {
           let count = msg.substring(msg.indexOf(':roll-') + 6, msg.lastIndexOf(':'));
           let username = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 3, top.OldChat[x].indexOf("</a>"));
-          if (typeof parseInt(count, 10) == "number"){
+          if (typeof parseInt(count, 10) == "number") {
             let roll = randomValue(1, parseInt(count, 10));
             top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
           } else {
@@ -917,7 +889,7 @@ function upbuttons() {
   maxInv();
   curInv();
   essences();
-  if(percs){
+  if (percs) {
     getPercents();
   }
 }
@@ -1585,7 +1557,7 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
       document.getElementById("chattybox").value = "";
     }
     if (document.getElementById("chattybox").value === "/clear") {
-      for (let x = 0; x < top.ChatSize; x++){
+      for (let x = 0; x < top.ChatSize; x++) {
         top.OldChat[x] = "";
       }
       upchat("");
@@ -1834,11 +1806,11 @@ function upbars() {
 
   HPerc = top.TargetHealth;
 
-	if(HPerc > 20){
-		enemy_perc = `${top.TargetHealth}%`;
-	} else {
-		enemy_perc2 = `${top.TargetHealth}%`;
-	}
+  if (HPerc > 20) {
+    enemy_perc = `${top.TargetHealth}%`;
+  } else {
+    enemy_perc2 = `${top.TargetHealth}%`;
+  }
   tempstr = "<table border=0 width=100% cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=30 width=22 src='" + top.y + "ml.jpg'></td><td width=" + HPerc + " background='" + top.y + "mf";
   if (HPerc > 20)
     tempstr += "g";
@@ -1861,7 +1833,7 @@ function updelay() {
   if (newbar) {
     top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;height:10;background-color:black;"> </progress>`;
   } else {
-    top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y +"mr.jpg'></td></tr></table>";
+    top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "mr.jpg'></td></tr></table>";
   }
 }
 

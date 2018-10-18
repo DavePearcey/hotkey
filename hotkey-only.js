@@ -663,10 +663,14 @@ var mainLoad = (function() {
                            <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
                            <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                            </div>
+                           <button onclick="deposit_gold()">Deposit Max</button>
+                           <button onclick="embezzle_gold()">Embezzle Max</button>
                            <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
                            <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
-                           <button onclick="peaValue();">Calculate Pea</button><button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
-                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button><button onclick="toggle_newbar();">Toggle Delay Bar</button>
+                           <button onclick="peaValue();">Calculate Pea</button>
+                           <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
+                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
+                           <button onclick="toggle_newbar();">Toggle Delay Bar</button>
                      </center>
                      </td>
                   </tr>
@@ -695,7 +699,7 @@ var mainLoad = (function() {
   }, 1500);
 })();
 
-//<button onclick="deposit_gold()">Deposit Max</button> <button onclick="embezzle_gold()">Embezzle Max</button>
+
 
 
 function randomValue(min, max) {

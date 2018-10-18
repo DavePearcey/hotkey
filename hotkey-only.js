@@ -29,7 +29,7 @@ var donor_names = [{
   }
 ];
 var mod_chat = true;
-var newbar = false;
+var newbar = true;
 if (top.login.toLowerCase() == "anubis") {
   newbar = true;
   updelay();

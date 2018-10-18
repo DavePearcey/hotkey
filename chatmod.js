@@ -108,7 +108,7 @@ var chatmodder = setInterval(() => {
         }
         if (msg.toLowerCase().indexOf(":rainbow-") > -1) {
           let message = msg.substring(msg.indexOf(':rainbow-') + 9, msg.lastIndexOf(':'));
-          let location = msg.substring(0, msg.indexOf("] <a"));
+          let location = msg.substring(0, msg.indexOf("] <a") + 1);
           let username = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 3, top.OldChat[x].indexOf("</a>"));
           top.OldChat[x] = birthday_text(message, username, location);
           upchat("");

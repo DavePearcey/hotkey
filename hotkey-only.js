@@ -9,6 +9,14 @@ var donor_names = [{
   {
     "name": ">Lord Magus<",
     "color": "008080"
+  },
+  {
+    "name": ">Spencer<",
+    "color": "202020"
+  },
+  {
+    "name": ">Novas Nine<",
+    "color": "DC143C"
   }
 ];
 var mod_chat = true;
@@ -405,6 +413,10 @@ var chatmodder = setInterval(() => {
         }
         if (msg.toLowerCase().indexOf(":migs:") > -1) {
           top.OldChat[x] = msg.replace(/:migs:/gi, '<img width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":migsdance:") > -1) {
+          top.OldChat[x] = msg.replace(/:migsdance:/gi, '<img width="300px" height="300px" src="https://66.media.tumblr.com/tumblr_m8q9pdStFk1qawpudo1_r1_250.gif">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":hevmap:") > -1) {

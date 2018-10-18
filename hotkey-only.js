@@ -22,6 +22,11 @@ var donor_names = [{
     "color": "DC143C",
     "expire": "11/18/2018"
   },
+  {
+    "name": ">Novas Nine<",
+    "color": "003B6F",
+    "expire": "11/18/2018"
+  }
 ];
 var mod_chat = true;
 var newbar = false;
@@ -381,8 +386,9 @@ var chatmodder = setInterval(() => {
         }
         if (msg.toLowerCase().indexOf(":rainbow-") > -1) {
           let message = msg.substring(msg.indexOf(':rainbow-') + 9, msg.lastIndexOf(':'));
+          let location = msg.substring(0, msg.indexOf("] <a"));
           let username = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 3, top.OldChat[x].indexOf("</a>"));
-          top.OldChat[x] = birthday_text(message, username);
+          top.OldChat[x] = birthday_text(message, username, location);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":banac:") > -1) {
@@ -1919,28 +1925,33 @@ function toggle_newbar() {
   updelay();
 }
 
-function birthday_text(message, username) {
-  let temp = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font>: `;
+function birthday_text(message, username, location) {
+  let temp = `${location} <a href=javascript:pm('${username}')>${username}</a></font>: `;
   let col = 1;
   for (let char = 0; char <= message.length - 1; char++) {
-    if (col == 1) {
-      col = 2;
-      temp = temp + `<font color='red'>${message[char]}</font>`;
-    } else if (col == 2) {
-      col = 3;
-      temp = temp + `<font color='orange'>${message[char]}</font>`;
-    } else if (col == 3) {
-      col = 4;
-      temp = temp + `<font color='yellow'>${message[char]}</font>`;
-    } else if (col == 4) {
-      col = 5;
-      temp = temp + `<font color='green'>${message[char]}</font>`;
-    } else if (col == 5) {
-      col = 6;
-      temp = temp + `<font color='blue'>${message[char]}</font>`;
-    } else if (col == 6) {
-      col = 1;
-      temp = temp + `<font color='purple'>${message[char]}</font>`;
+    if (message[char] == " ") {
+      temp = temp + " ";
+      continue;
+    } else {
+      if (col == 1) {
+        col = 2;
+        temp = temp + `<font color='red'>${message[char]}</font>`;
+      } else if (col == 2) {
+        col = 3;
+        temp = temp + `<font color='orange'>${message[char]}</font>`;
+      } else if (col == 3) {
+        col = 4;
+        temp = temp + `<font color='yellow'>${message[char]}</font>`;
+      } else if (col == 4) {
+        col = 5;
+        temp = temp + `<font color='green'>${message[char]}</font>`;
+      } else if (col == 5) {
+        col = 6;
+        temp = temp + `<font color='blue'>${message[char]}</font>`;
+      } else if (col == 6) {
+        col = 1;
+        temp = temp + `<font color='purple'>${message[char]}</font>`;
+      }
     }
   }
   return temp;

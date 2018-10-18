@@ -4,20 +4,24 @@ var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', '
 var birthday_names = [];
 var donor_names = [{
     "name": ">Anubis<",
-    "color": "FFA500"
+    "color": "FFA500",
+    "expire": "never"
   },
   {
     "name": ">Lord Magus<",
-    "color": "008080"
+    "color": "008080",
+    "expire": "never"
   },
   {
     "name": ">Spencer<",
-    "color": "202020"
+    "color": "202020",
+    "expire": "12/18/2018"
   },
   {
     "name": ">Novas Nine<",
-    "color": "DC143C"
-  }
+    "color": "DC143C",
+    "expire": "11/18/2018"
+  },
 ];
 var mod_chat = true;
 var newbar = false;

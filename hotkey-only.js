@@ -23,7 +23,7 @@ var donor_names = [{
     "expire": "11/18/2018"
   },
   {
-    "name": ">Novas Nine<",
+    "name": ">Seith<",
     "color": "003B6F",
     "expire": "11/18/2018"
   }

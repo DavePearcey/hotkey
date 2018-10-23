@@ -29,6 +29,11 @@ var donor_names = [{
     "name": ">Magic Mike<",
     "color": "003B6F",
     "expire": "11/18/2018"
+  },
+  {
+    "name": ">Yoshi<",
+    "color": "609040",
+    "expire": "never"
   }
 ];
 var mod_chat = true;

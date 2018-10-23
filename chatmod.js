@@ -208,14 +208,12 @@ function upchat(thecdata) {
     for (var j = 0; j < top.ChatSize; j++)
       top.OldChat[j] = "";
   }
-	console.log(thecdata);
   NewChat = thecdata.split("|");
   stupid = 0;
   for (var j = top.ChatSize; j >= 0 && stupid < 310; j--) {
     stupid++;
     if (j < NewChat.length - 1) {
       NewChatList = NewChat[j].split("<");
-			console.log(NewChatList);
       top.OldChat[j] = "";
       if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2") {
         top.OldChat[j] += "<b><font size=4>";

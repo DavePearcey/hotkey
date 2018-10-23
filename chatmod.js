@@ -40,34 +40,9 @@ if (top.login.toLowerCase() == "anubis") {
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {
-    for (let x = 0; x <= 10; x++) {
+    for (let x = 0; x <= 5; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
-        if (msg.toLowerCase().indexOf("size=5") > -1) {
-          top.OldChat[x] = top.OldChat[x].replace("size=5", "");
-          top.OldChat[x] = top.OldChat[x].replace("You find a ", "<font color='#C89468'>Found:</font> ");
-          top.OldChat[x] = top.OldChat[x].replace(" on the enemy's corpse!", "");
-          top.OldChat[x] = top.OldChat[x].replace("Click to DESTROY", "Ash Item")
-          upchat("");
-        }
-        if (msg.indexOf(">Anubis<") > -1) {
-          if (msg.toLowerCase().indexOf(":banhammer:") > -1) {
-            let upperletter = top.login.substring(0, 1).toUpperCase();
-            let lowername = top.login.substring(1, top.login.length);
-            top.OldChat[x] = `<font color='#C89468'>${upperletter + lowername}</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-            upchat("");
-          }
-          if (msg.toLowerCase().indexOf(":ban-") > -1) {
-            let username = msg.substring(msg.indexOf(':ban-') + 5, msg.lastIndexOf(':'));
-            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font>`;
-            upchat("");
-          }
-          if (msg.toLowerCase().indexOf(":sys-") > -1) {
-            let message = msg.substring(msg.indexOf(':sys-') + 5, msg.lastIndexOf(':'));
-            top.OldChat[x] = `<font color='#FCFF11'>${message}</font>`;
-            upchat("");
-          }
-        }
         for (let donor of donor_names) {
           if (msg.indexOf(donor['name']) > -1) {
             chat_colors.forEach((chat_color) => {
@@ -97,18 +72,6 @@ var chatmodder = setInterval(() => {
         if (msg.toLowerCase().indexOf(":piss-") > -1) {
           let username = msg.substring(msg.indexOf(':piss-') + 6, msg.lastIndexOf(':'));
           top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been drenched in a golden shower... and it was fucking gross</font>`;
-          upchat("");
-        }
-        if (msg.toLowerCase().indexOf(":roll-") > -1) {
-          let count = msg.substring(msg.indexOf(':roll-') + 6, msg.lastIndexOf(':'));
-          let username = top.OldChat[x].substring(top.OldChat[x].indexOf("')>") + 3, top.OldChat[x].indexOf("</a>"));
-          if (typeof parseInt(count, 10) == "number") {
-            let roll = randomValue(1, parseInt(count, 10));
-            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
-          } else {
-            let roll = randomValue(1, length(count));
-            top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>Rolls a ${roll}</font>`;
-          }
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":rainbow-") > -1) {
@@ -237,4 +200,210 @@ function birthday_text(message, username, location) {
     }
   }
   return temp;
+}
+
+function upchat(thecdata) {
+  if (top.OldChat == null) {
+    top.OldChat = ["", ""];
+    for (var j = 0; j < top.ChatSize; j++)
+      top.OldChat[j] = "";
+  }
+	console.log(thecdata);
+  NewChat = thecdata.split("|");
+  stupid = 0;
+  for (var j = top.ChatSize; j >= 0 && stupid < 310; j--) {
+    stupid++;
+    if (j < NewChat.length - 1) {
+      NewChatList = NewChat[j].split("<");
+			console.log(NewChatList);
+      top.OldChat[j] = "";
+      if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2") {
+        top.OldChat[j] += "<b><font size=4>";
+        if (NewChatList[0] != "6" && NewChatList[0] != "5")
+          NewChatList[1] = "Admin";
+      }
+      locsplit = NewChatList[1].split(",");
+      if ((NewChatList[0] == "0" || NewChatList[0] == "10") && locsplit[0].charAt(0) != "0" && locsplit[0].charAt(0) != "1" && locsplit[0].charAt(0) != "2" && (locsplit[0].charAt(0) != "*" && locsplit[0].charAt(0) != "x"))
+        locsplit[1] = top.LocZ;
+			if (NewChatList[2] == "Anubis")
+				  top.OldChat[j] += "<font color=#FFA500>";
+      else if (locsplit[1] == "Sur")
+        top.OldChat[j] += "<font color=#C8C8C8>";
+      else if (locsplit[1] == "Dun")
+        top.OldChat[j] += "<font color=#FFBBBB>";
+      else if (locsplit[1] == "Sky")
+        top.OldChat[j] += "<font color=#BBBBFF>";
+      else if (locsplit[1] == "Hev")
+        top.OldChat[j] += "<font color=#6666FF>";
+      else if (locsplit[1] == "Hel")
+        top.OldChat[j] += "<font color=#FF6666>";
+      else if (locsplit[1] == "For")
+        top.OldChat[j] += "<font color=#969696>";
+      if (NewChatList[0] == "0" || NewChatList[0] == "10" || NewChatList[0] == "1" || NewChatList[0] == "11" || NewChatList[0] == "6" || NewChatList[0] == "8") {
+        subgee = top.ignorelist;
+        amounty = subgee.length;
+        badboy = 0;
+        for (var xxi = 0; xxi < amounty; xxi++) {
+          if (subgee[xxi] == mn(NewChatList[2]))
+            badboy = 1;
+        }
+        if (!badboy && (NewChatList[0] == "0" || NewChatList[0] == "10"))
+          top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
+        else if (!badboy && (NewChatList[0] == "1" || NewChatList[0] == "11"))
+          top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')><i><font color=#FFFFFF>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font></i>";
+        else if (!badboy && (NewChatList[0] == "1" || NewChatList[0] == "11"))
+          top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')><i><font color=#FFFFFF>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font></i>";
+        else if (!badboy && (NewChatList[0] == "6"))
+          top.OldChat[j] += "<font size=3 color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> offers you a " + getitem(NewChatList[1]) + " for " + mc(NewChatList[3]) + " gold. <a href=javascript:TAccept('" + NewChatList[2] + "'," + NewChatList[1] + "," + NewChatList[3] + ")>Accept?</a></font>";
+        else if (!badboy && (NewChatList[0] == "8"))
+          top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> gives you " + mc(NewChatList[3]) + " gold.</font>";
+        else {
+          top.OldChat[j] = "";
+          continue;
+        }
+      } else if (NewChatList[0] == "22" || NewChatList[0] == "32" || NewChatList[0] == "42")
+        top.OldChat[j] += "<font color=#FCFF11><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
+      else if (NewChatList[0] == "7")
+        top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> accepted your " + getitem(NewChatList[1]) + " for " + mc(NewChatList[3]) + " gold.</font>";
+      else if (NewChatList[0] == "9")
+        top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + ".</font>";
+      else if (NewChatList[0] == "12")
+        top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + "</font> <a href=javascript:burnit('" + NewChatList[1] + "')>Ash Item?.</a>";
+      else if (NewChatList[0] == "13")
+        top.OldChat[j] += "<font color=#EEEE44>You see a " + getitem(NewChatList[1]) + " in their inventory.</font>";
+      else if (NewChatList[0] == "5")
+        top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> gives you a " + getitem(NewChatList[1]) + ".</font>";
+      else if (NewChatList[0] == "58" || NewChatList[0] == "91" || NewChatList[0] == "92" || NewChatList[0] == "94") {
+        subgee = top.ignorelist;
+        amounty = subgee.length;
+        badboy = 0;
+        for (xxi = 0; xxi < amounty; xxi++) {
+          if (subgee[xxi] == mn(NewChatList[2]))
+            badboy = 1;
+        }
+        if (!badboy) {
+          if (NewChatList[0] == "94")
+            top.OldChat[j] += "<font color=#FF2222>";
+          else if (NewChatList[0] == "92")
+            top.OldChat[j] += "<font color=#CC00CC>";
+          else if (NewChatList[0] == "91")
+            top.OldChat[j] += "<font color=#4444FF>";
+          else
+            top.OldChat[j] += "<font color=#C0C0C0>";
+          top.OldChat[j] += "<u>PM from</u> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
+        } else {
+          top.OldChat[j] = "";
+          continue;
+        }
+      } else if (NewChatList[0] == "3")
+        top.OldChat[j] += "<font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
+      else if (NewChatList[0] == "80")
+        top.OldChat[j] += "<font color=#C8686A>Message sent to </font><font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
+      else if (NewChatList[0] == "56")
+        top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
+      else if (NewChatList[0] == "53")
+        top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
+      else if (NewChatList[0] == "54") {
+        top.OldChat[j] += "<font size=3 color=#00FF00>Your skill in " + top.skillz[top.Skill] + " has increased to " + ms(NewChatList[3]) + "!</font>";
+      } else if (NewChatList[0] == "57" || NewChatList[0] == "59") {
+        tempypoo = NewChatList[3].split("!");
+        for (var asi = 0; asi < 12; asi++)
+          tempypoo[asi] *= tempypoo[12];
+        if (NewChatList[0] == "57")
+          top.OldChat[j] += "<font color=#CC00CC><b>Stats as Affected Only By Relics</b>";
+        else
+          top.OldChat[j] += "<font color=#CC00CC><b>Stats as Affected By All Modifiers</b>";
+        top.OldChat[j] += "(Accurate to nearest " + mc(tempypoo[12]) + ")<br>&nbsp;Str: " + mc(tempypoo[0]) + "<br>&nbsp;Dex: " + mc(tempypoo[1]) + "<br>&nbsp;Agi: " + mc(tempypoo[2]) + "<br>&nbsp;Ntl: " + mc(tempypoo[3]) + "<br>&nbsp;Cnc: " + mc(tempypoo[4]) + "<br>&nbsp;Cnt: " + mc(tempypoo[5]) + "<br>&nbsp;Dur: " + mc(tempypoo[6]) + "<br>&nbsp;First Attack: " + mc(tempypoo[7]) + "<br>&nbsp;Second Attack: " + mc(tempypoo[8]) + "<br>&nbsp;First Cast: " + mc(tempypoo[9]) + "<br>&nbsp;Second Cast: " + mc(tempypoo[10]) + "<br>&nbsp;Armor Defense: " + mc(tempypoo[11]) + "</font>";
+      } else if (NewChatList[0] == "60") {
+        tempypoo = NewChatList[3].split("!");
+        top.OldChat[j] += "<font color=#CC00CC><b>Skills</b><br>&nbsp;" + top.skillz[0] + ": " + mc(tempypoo[0]) + "<br>&nbsp;" + top.skillz[1] + ": " + mc(tempypoo[1]) + "<br>&nbsp;" + top.skillz[2] + ": " + mc(tempypoo[2]) + "<br>&nbsp;" + top.skillz[3] + ": " + mc(tempypoo[3]) + "<br>&nbsp;" + top.skillz[4] + ": " + mc(tempypoo[4]) + "<br>&nbsp;" + top.skillz[5] + ": " + mc(tempypoo[5]) + "<br>&nbsp;" + top.skillz[6] + ": " + mc(tempypoo[6]) + "<br>&nbsp;" + top.skillz[7] + ": " + mc(tempypoo[7]) + "<br>&nbsp;" + top.skillz[8] + ": " + mc(tempypoo[8]) + "<br>&nbsp;" + top.skillz[9] + ": " + mc(tempypoo[9]) + "<br>&nbsp;" + top.skillz[10] + ": " + mc(tempypoo[10]) + "<br>&nbsp;" + top.skillz[11] + ": " + mc(tempypoo[11]) + "<br>&nbsp;" + top.skillz[12] + ": " + mc(tempypoo[12]) + "</font>";
+      } else if (NewChatList[0] == "61") {
+        tempypoo = NewChatList[3].split("!");
+        maxit = 0;
+        for (var sji = 0; sji < 12; sji++) {
+          tempypoo[sji] = parseInt(tempypoo[sji], 10);
+          if (tempypoo[sji] > maxit) maxit = tempypoo[sji];
+        }
+        maxit = parseInt((maxit / 60), 10);
+        top.OldChat[j] += "<font color=#CC00CC><b>Trade Skills Rank: " + top.titlez[maxit] + "</b><br>";
+        for (sji = 0; sji < 6; sji++)
+          top.OldChat[j] += "&nbsp;" + top.tradez[sji] + "crafting: " + mc(tempypoo[sji]) + "<br>";
+        for (sji = 0; sji < 6; sji++) {
+          top.OldChat[j] += "&nbsp;" + top.subz[sji] + "working: " + mc(tempypoo[sji + 6]);
+          if (sji != 5)
+            top.OldChat[j] += "<br>";
+        }
+        top.OldChat[j] += "</font>";
+      } else if (NewChatList[0] == "62") {
+        tempypoo = NewChatList[3].split("!");
+        top.OldChat[j] += "<font color=#00FF00>Your skill in " + top.tradez[tempypoo[0]] + "crafting has improved to " + mc(tempypoo[1]) + "!</font>";
+      } else if (NewChatList[0] == "63") {
+        tempypoo = NewChatList[3].split("!");
+        top.OldChat[j] += "<font color=#00FF00>Your skill in " + top.subz[tempypoo[0]] + "working has improved to " + mc(tempypoo[1]) + "!</font>";
+      } else if (NewChatList[0] == "64") {
+        top.OldChat[j] += "<font color=#00FF00>While you have $15 trial access you can get a $5 discount on all Paypal purchases. Click <a target=_blank href=../order/pay2.htm>here</a> to access the discounted item page. $45 orders still crack rocks.</font>";
+      } else if (NewChatList[0] == "65") {
+        open(NewChatList[3], "RWK", "height=640,width=480,scrollbars=1");
+        top.OldChat[j] += "<font color=#556633>Opening Picture. Click <a target=_blank href='" + NewChatList[3] + "'>here</a> if it fails to open due to your pop up blockers.</font>";
+      } else if (NewChatList[0] == "4") {
+        subgee = top.ignorelist;
+        amounty = subgee.length;
+        badboy = 0;
+        for (var xxxi = 0; xxxi < amounty; xxxi++) {
+          if (subgee[xxxi] == mn(NewChatList[2]))
+            badboy = 1;
+        }
+        if (!badboy)
+          top.OldChat[j] += "<font color=#009933>[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
+        else {
+          top.OldChat[j] = "";
+          continue;
+        }
+      } else if (NewChatList[0] == "33" || NewChatList[0] == "34") {
+        if (NewChatList[0] == "34")
+          top.OldChat[j] += "<i>";
+        for (var y = 1; y < NewChatList.length; y++) {
+          top.OldChat[j] += NewChatList[y];
+          if (y + 1 < NewChatList.length)
+            top.OldChat[j] += "<";
+        }
+        if (NewChatList[0] == "34")
+          top.OldChat[j] += "</i>";
+      } else if (NewChatList[0] == "79") {
+        top.OldChat[j] += "<font color=#CC00CC>";
+        for (var y = 1; y < NewChatList.length; y++) {
+          top.OldChat[j] += NewChatList[y];
+          if (y + 1 < NewChatList.length)
+            top.OldChat[j] += "<";
+        }
+        top.OldChat[j] += "</font>";
+      }
+      //else
+      //	domes("ERROR: "+NewChatList[0]);
+      if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2")
+        top.OldChat[j] += "</font></b>";
+      if (locsplit[1] == "Sur")
+        top.OldChat[j] += "</font>";
+      else if (locsplit[1] == "Dun")
+        top.OldChat[j] += "</font>";
+      else if (locsplit[1] == "Sky")
+        top.OldChat[j] += "</font>";
+      else if (locsplit[1] == "Hev")
+        top.OldChat[j] += "</font>";
+      else if (locsplit[1] == "Hel")
+        top.OldChat[j] += "</font>";
+      else if (locsplit[1] == "For")
+        top.OldChat[j] += "</font>";
+    } else {
+      top.OldChat[j] = top.OldChat[j - (NewChat.length - 1)];
+      if (top.OldChat[j] == null)
+        top.OldChat[j] = "";
+    }
+  }
+  NewChat = "";
+  for (var j = 0; j < top.ChatSize; j++) {
+    if (top.OldChat[j] != "")
+      NewChat += "&nbsp;" + top.OldChat[j] + "<br>";
+  }
+  top.frames.main.s_Chat.innerHTML = NewChat;
 }

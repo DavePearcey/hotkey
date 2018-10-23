@@ -268,7 +268,7 @@ function upchat(thecdata) {
       else if (NewChatList[0] == "9")
         top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + ".</font>";
       else if (NewChatList[0] == "12")
-        top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + "</font> <a href=javascript:burnit('" + NewChatList[1] + "')>Ash Item?.</a>";
+        top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + "</font> <a href=javascript:burnit('" + NewChatList[1] + "')>Ash Item?</a>";
       else if (NewChatList[0] == "13")
         top.OldChat[j] += "<font color=#EEEE44>You see a " + getitem(NewChatList[1]) + " in their inventory.</font>";
       else if (NewChatList[0] == "5")

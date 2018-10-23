@@ -32,7 +32,7 @@ var donor_names = [{
   },
   {
     "name": ">Yoshi<",
-    "color": "609040",
+    "color": "00FA9A",
     "expire": "never"
   }
 ];

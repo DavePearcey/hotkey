@@ -1,4 +1,5 @@
 'use strict'
+var newbar = true;
 
 var p = {
   version: "12",

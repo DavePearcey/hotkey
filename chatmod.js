@@ -42,11 +42,7 @@ var donor_names = [{
   },
 ];
 var mod_chat = true;
-var newbar = true;
-if (top.login.toLowerCase() == "anubis") {
-  newbar = true;
-  updelay();
-}
+
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {

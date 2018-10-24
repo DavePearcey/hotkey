@@ -1546,8 +1546,10 @@ function disenchant_dirty_item() {
   fields.general.action.value = "ds";
   fields.general.upaction();
   fields.general.target.value = document.getElementById("chant-dirty-items").value;
+  let indexer = document.getElementById("chant-dirty-items").selectedIndex;
   fields.general.submit();
   setTimeout(() => {
+    document.getElementById("chant-dirty-items").selectedIndex = indexer;
     update_chanting();
   }, 200);
 }

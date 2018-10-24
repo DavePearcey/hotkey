@@ -34,7 +34,12 @@ var donor_names = [{
     "name": ">Yoshi<",
     "color": "00FA9A",
     "expire": "never"
-  }
+  },
+  {
+    "name": ">Yoshi<",
+    "color": "4D0505",
+    "expire": "never"
+  },
 ];
 var mod_chat = true;
 var newbar = true;

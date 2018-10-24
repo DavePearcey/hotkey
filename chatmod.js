@@ -36,7 +36,7 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Yoshi<",
+    "name": ">Empyron<",
     "color": "4D0505",
     "expire": "never"
   },

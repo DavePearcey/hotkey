@@ -37,7 +37,7 @@ var donor_names = [{
   },
   {
     "name": ">Empyron<",
-    "color": "4D0505",
+    "color": "C5B358",
     "expire": "never"
   },
 ];

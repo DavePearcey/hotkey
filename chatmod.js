@@ -22,12 +22,12 @@ var donor_names = [{
   },
   {
     "name": ">Seith<",
-    "color": "A15531",
+    "color": "C31821",
     "expire": "11/18/2018"
   },
   {
     "name": ">Magic Mike<",
-    "color": "A15531",
+    "color": "C31821",
     "expire": "11/18/2018"
   },
   {
@@ -38,6 +38,11 @@ var donor_names = [{
   {
     "name": ">Empyron<",
     "color": "C5B358",
+    "expire": "never"
+  },
+  {
+    "name": ">Niizandar<",
+    "color": "FF69B4",
     "expire": "never"
   },
 ];

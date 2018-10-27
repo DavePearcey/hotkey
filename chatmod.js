@@ -299,7 +299,7 @@ function upchat(thecdata) {
             top.OldChat[j] += "<font color=#4444FF>";
           else
             top.OldChat[j] += "<font color=#C0C0C0>";
-          top.OldChat[j] += "<u><font color='white'>Private: </font></u><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
+          top.OldChat[j] += "<u><font color='white'>Private:</font></u> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
         } else {
           top.OldChat[j] = "";
           continue;

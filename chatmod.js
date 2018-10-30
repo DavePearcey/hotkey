@@ -45,6 +45,11 @@ var donor_names = [{
     "color": "FF69B4",
     "expire": "never"
   },
+  {
+    "name": ">Coal Chamber<",
+    "color": "00ff0f",
+    "expire": "never"
+  },
 ];
 var mod_chat = true;
 
@@ -57,7 +62,7 @@ var chatmodder = setInterval(() => {
         for (let donor of donor_names) {
           if (msg.indexOf(donor['name']) > -1) {
             chat_colors.forEach((chat_color) => {
-              if (msg.indexOf(chat_color) > -1) {
+              if (msg.indexOf(`#${chat_color}`) > -1) {
                 top.OldChat[x] = top.OldChat[x].replace(chat_color, donor['color']);
                 upchat("");
               }

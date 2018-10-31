@@ -50,6 +50,11 @@ var donor_names = [{
     "color": "00ff0f",
     "expire": "never"
   },
+  {
+    "name": ">Wafer<",
+    "color": "1E90FF",
+    "expire": "never"
+  },
 ];
 var mod_chat = true;
 

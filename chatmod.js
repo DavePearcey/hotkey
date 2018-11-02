@@ -95,14 +95,9 @@ var chatmodder = setInterval(() => {
           if (msg.indexOf(birthday['name']) > -1) {
             chat_colors.forEach((chat_color) => {
               if (msg.indexOf(chat_color) > -1) {
-              //  top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
-              //  top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
-
-                let message = msg.substring(msg.lastIndexOf('</a>:') + 5, msg.lastIndexOf('</font>'))
-                let location = msg.substring(0, msg.indexOf("] <a") + 1);
-                let username = birthday['name'];
-                top.OldChat[x] = birthday_text(message, username, location);
-                upchat("");
+              top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
+              top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
+              upchat("");
               }
             });
           }

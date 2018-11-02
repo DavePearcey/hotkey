@@ -1,5 +1,22 @@
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
-var birthday_names = [];
+var birthday_names = [ "coal chamber",
+ "Fails Like Carrots",
+ "Moonlight",
+ "Verysmallchurches0",
+ "Jjjason",
+ "Rainbow Six",
+ "Hate Machine",
+ "Aeryn Sun",
+ "Mojo Jojo",
+ "Jiggery",
+ "Race War Kingdoms",
+ "Laughing At Noobs",
+ "Scipio",
+ "Team Mexico",
+ "Captain America",
+ "Team Nafta",
+ "Korruptionkitten",
+ "Spencer"];
 var donor_names = [{
     "name": ">Anubis<",
     "color": "FFA500",
@@ -11,7 +28,7 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Spencer<",
+    "name": ">Spen|cer<",
     "color": "202020",
     "expire": "12/18/2018"
   },
@@ -46,7 +63,7 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Coal Chamber<",
+    "name": ">Coa|l Chamber<",
     "color": "00ff0f",
     "expire": "never"
   },
@@ -75,7 +92,7 @@ var chatmodder = setInterval(() => {
           }
         }
         for (let birthday of birthday_names) {
-          if (msg.indexOf(birthday['name']) > -1) {
+          if (msg.indexOf(`>${birthday['name']}<`) > -1) {
             chat_colors.forEach((chat_color) => {
               if (msg.indexOf(chat_color) > -1) {
                 top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);

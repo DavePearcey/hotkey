@@ -1,22 +1,22 @@
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
-var birthday_names = [ "coal chamber",
- "Fails Like Carrots",
- "Moonlight",
- "Verysmallchurches0",
- "Jjjason",
- "Rainbow Six",
- "Hate Machine",
- "Aeryn Sun",
- "Mojo Jojo",
- "Jiggery",
- "Race War Kingdoms",
- "Laughing At Noobs",
- "Scipio",
- "Team Mexico",
- "Captain America",
- "Team Nafta",
- "Korruptionkitten",
- "Spencer"];
+var birthday_names = [ {"name": "Coal Chamber", "color": "00ff0f"},
+{"name": "Fails Like Carrots", "color": "00ff0f"},
+{"name": "Moonlight", "color": "00ff0f"},
+{"name": "Verysmallchurches0", "color": "00ff0f"},
+{"name": "Jjjason", "color": "00ff0f"},
+{"name": "Rainbow Six", "color": "00ff0f"},
+{"name": "Hate Machine", "color": "00ff0f"},
+{"name": "Aeryn Sun", "color": "00ff0f"},
+{"name": "Mojo Jojo", "color": "00ff0f"},
+{"name": "Jiggery", "color": "00ff0f"},
+{"name": "Race War Kingdoms", "color": "00ff0f"},
+{"name": ">Laughing At Noobs<", "color": "00ff0f"},
+{"name": "Scipio", "color": "00ff0f"},
+{"name": "Team Mexico", "color": "00ff0f"},
+{"name": "Captain America", "color": "00ff0f"},
+{"name": "Team Nafta", "color": "00ff0f"},
+{"name": "Korruptionkitten", "color": "00ff0f"},
+{"name": "Spencer", "color": "00ff0f"}];
 var donor_names = [{
     "name": ">Anubis<",
     "color": "FFA500",
@@ -92,11 +92,16 @@ var chatmodder = setInterval(() => {
           }
         }
         for (let birthday of birthday_names) {
-          if (msg.indexOf(`>${birthday['name']}<`) > -1) {
+          if (msg.indexOf(birthday['name']) > -1) {
             chat_colors.forEach((chat_color) => {
               if (msg.indexOf(chat_color) > -1) {
-                top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
-                top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
+              //  top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
+              //  top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
+
+                let message = msg.substring(msg.lastIndexOf('</a>:') + 5, msg.lastIndexOf('</font>'))
+                let location = msg.substring(0, msg.indexOf("] <a") + 1);
+                let username = birthday['name'];
+                top.OldChat[x] = birthday_text(message, username, location);
                 upchat("");
               }
             });

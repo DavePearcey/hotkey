@@ -11,7 +11,7 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Spen|cer<",
+    "name": ">Spencer<",
     "color": "202020",
     "expire": "12/18/2018"
   },
@@ -46,7 +46,7 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Coa|l Chamber<",
+    "name": ">Coal Chamber<",
     "color": "00ff0f",
     "expire": "never"
   },

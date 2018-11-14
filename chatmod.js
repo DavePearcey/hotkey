@@ -32,7 +32,7 @@ var donor_names = [{
   },
   {
     "name": ">Yoshi<",
-    "color": "00FA9A",
+    "color": "499EDD",
     "expire": "never"
   },
   {
@@ -48,7 +48,7 @@ var donor_names = [{
   {
     "name": ">Coal Chamber<",
     "color": "00ff0f",
-    "expire": "never"
+    "expire": "11/20/2018"
   },
   {
     "name": ">Wafer<",

@@ -11,26 +11,6 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": ">Spencer<",
-    "color": "202020",
-    "expire": "12/18/2018"
-  },
-  {
-    "name": ">Novas Nine<",
-    "color": "DC143C",
-    "expire": "11/18/2018"
-  },
-  {
-    "name": ">Seith<",
-    "color": "C31821",
-    "expire": "11/18/2018"
-  },
-  {
-    "name": ">Magic Mike<",
-    "color": "C31821",
-    "expire": "11/18/2018"
-  },
-  {
     "name": ">Yoshi<",
     "color": "00FA9A",
     "expire": "never"
@@ -43,11 +23,6 @@ var donor_names = [{
   {
     "name": ">Niizandar<",
     "color": "FF69B4",
-    "expire": "never"
-  },
-  {
-    "name": ">Coal Chamber<",
-    "color": "00ff0f",
     "expire": "never"
   },
   {

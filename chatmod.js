@@ -29,7 +29,7 @@ var donor_names = [{
     "name": ">Wafer<",
     "color": "1E90FF",
     "expire": "never"
-  },
+  }
 ];
 var mod_chat = true;
 

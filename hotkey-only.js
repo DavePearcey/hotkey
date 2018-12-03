@@ -582,7 +582,7 @@ function craft() {
 
 function update_crafted_items(itemval) {
   let relics = [
-    36, 37, 38, 39, 51, 52, 56, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
+    36, 37, 38, 39, 51, 52, 58, 59, 64, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79,
     81, 82, 83, 84, 85, 86, 87, 88
   ];
   if (document.getElementById('hide-dotb').checked == true) {

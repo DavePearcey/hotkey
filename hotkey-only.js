@@ -896,7 +896,7 @@ function enchant_pure_item() {
   setTimeout(() => {
     update_chanting();
     document.getElementById("chant-pure-relics").selectedIndex = indexer2;
-    document.getElementById("chant-clean-items").selectedIndex = indexer1;
+    document.getElementById("chant-clean-items").selectedIndex = indexer;
   }, 200);
 }
 

@@ -53,9 +53,9 @@ var chatmodder = setInterval(() => {
           if (msg.indexOf(birthday['name']) > -1) {
             chat_colors.forEach((chat_color) => {
               if (msg.indexOf(chat_color) > -1) {
-              top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
-              top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
-              upchat("");
+                top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
+                top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
+                upchat("");
               }
             });
           }
@@ -219,8 +219,8 @@ function upchat(thecdata) {
       locsplit = NewChatList[1].split(",");
       if ((NewChatList[0] == "0" || NewChatList[0] == "10") && locsplit[0].charAt(0) != "0" && locsplit[0].charAt(0) != "1" && locsplit[0].charAt(0) != "2" && (locsplit[0].charAt(0) != "*" && locsplit[0].charAt(0) != "x"))
         locsplit[1] = top.LocZ;
-			if (NewChatList[2] == "Anubis")
-				  top.OldChat[j] += "<font color=#FFA500>";
+      if (NewChatList[2] == "Anubis")
+        top.OldChat[j] += "<font color=#FFA500>";
       else if (locsplit[1] == "Sur")
         top.OldChat[j] += "<font color=#C8C8C8>";
       else if (locsplit[1] == "Dun")

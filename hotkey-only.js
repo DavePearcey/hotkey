@@ -488,6 +488,10 @@ function upbuttons() {
   if (percs) {
     getPercents();
   }
+  if (top.LastAction == "ts") {
+    update_crafted_items();
+    update_chanting();
+  }
 }
 
 function curInv() {
@@ -555,7 +559,7 @@ function essences() {
   document.getElementById('s_Emerald').innerHTML = emerald;
 }
 
-setTimeout(function() {
+setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
@@ -999,7 +1003,7 @@ function updelay() {
   if (top.ActionDelay >= 0) {
     if (top.mytoup)
       clearTimeout(top.mytoup);
-    top.mytoup = setTimeout(function() {
+    top.mytoup = setTimeout(function () {
       updelay();
     }, 50);
   } else {
@@ -1051,7 +1055,7 @@ function toggle_newbar() {
   updelay();
 }
 
-var mainLoad = (function() {
+var mainLoad = (function () {
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
   <tr>
     <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>

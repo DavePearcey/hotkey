@@ -12,7 +12,7 @@ var donor_names = [{
   },
   {
     "name": ">Yoshi<",
-    "color": "00FA9A",
+    "color": "3777D6",
     "expire": "never"
   },
   {
@@ -28,6 +28,21 @@ var donor_names = [{
   {
     "name": ">Wafer<",
     "color": "1E90FF",
+    "expire": "never"
+  },
+  {
+    "name": ">Jigfig2<",
+    "color": "31e9bc",
+    "expire": "never"
+  },
+  {
+    "name": ">Necrophilia<",
+    "color": "bb974b",
+    "expire": "never"
+  },
+  {
+    "name": ">Nemo The Necro<",
+    "color": "f90144",
     "expire": "never"
   }
 ];

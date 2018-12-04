@@ -852,9 +852,11 @@ function burn_pure_relic() {
   fields.general.action.value = "burn";
   fields.general.upaction();
   fields.general.target.value = document.getElementById("chant-pure-relics").value;
+  let indexer = document.getElementById("chant-dirty-items").selectedIndex;
   fields.general.submit();
   setTimeout(() => {
     update_chanting();
+    document.getElementById("chant-pure-relics").selectedIndex = indexer;
   }, 200);
 }
 
@@ -862,9 +864,11 @@ function burn_pure_item() {
   fields.general.action.value = "sell";
   fields.general.upaction();
   fields.general.target.value = document.getElementById("chant-clean-items").value;
+  let indexer = document.getElementById("chant-clean-items").selectedIndex;
   fields.general.submit();
   setTimeout(() => {
     update_chanting();
+    document.getElementById("chant-clean-items").selectedIndex = indexer;
   }, 200);
 }
 
@@ -875,8 +879,8 @@ function disenchant_dirty_item() {
   let indexer = document.getElementById("chant-dirty-items").selectedIndex;
   fields.general.submit();
   setTimeout(() => {
-    document.getElementById("chant-dirty-items").selectedIndex = indexer;
     update_chanting();
+    document.getElementById("chant-dirty-items").selectedIndex = indexer;
   }, 200);
 }
 
@@ -884,11 +888,15 @@ function enchant_pure_item() {
   fields.general.action.value = "es";
   fields.general.upaction();
   fields.general.target.value = document.getElementById("chant-clean-items").value;
+  let indexer = document.getElementById("chant-clean-items").selectedIndex;
   fields.general.uptarget();
   fields.general.other.value = document.getElementById("chant-pure-relics").value;
+  let indexer2 = document.getElementById("chant-pure-relics").selectedIndex;
   fields.general.submit();
   setTimeout(() => {
     update_chanting();
+    document.getElementById("chant-pure-relics").selectedIndex = indexer2;
+    document.getElementById("chant-clean-items").selectedIndex = indexer1;
   }, 200);
 }
 

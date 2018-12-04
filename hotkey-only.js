@@ -1226,11 +1226,10 @@ var mainLoad = (function () {
                      <br>
                      Pure Items: <select id='chant-clean-items'>
                      </select>
-                     <button onclick="burn_pure_item()">Sell</button> <button onclick="enchant_pure_item()">Enchant</button>
-                     <br>
                      Relics: <select id='chant-pure-relics'>
                      </select>
-                     <button onclick="burn_pure_relic()">Destroy</button>
+                     <br>
+                     <button onclick="burn_pure_item()">Sell Pure Item</button> <button onclick="burn_pure_relic()">Sell Pure Relic</button> <button onclick="enchant_pure_item()">Enchant Item With Relic</button>
                      <br>
                      </div>
 

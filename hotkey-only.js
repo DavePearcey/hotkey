@@ -488,7 +488,7 @@ function upbuttons() {
   if (percs) {
     getPercents();
   }
-  if (top.LastAction == "ts") {
+  if (top.LastAction == "ts" || top.LastAction == "es" || top.LastAction == "ds") {
     update_crafted_items();
     update_chanting();
   }

@@ -766,28 +766,32 @@ function peaValue() {
   let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10) || 0;
   let hours = parseInt(prompt("Number of hours"), 10) || 24;
   let collectia = confirm("Do you have collectia") || false;
-  let corruption = 0;
-  let interest = 0.0;
-  let embezzle = 0;
+  if (kingdoms != 0 && kings != 0 && hours != 0) {
+    let corruption = 0;
+    let interest = 0.0;
+    let embezzle = 0;
 
-  if (kingdoms >= 1000 && kingdoms < 2499) {
-    corruption = ((500 / kingdoms) + .5);
-  } else if (kingdoms >= 2500) {
-    corruption = (1750 / kingdoms);
+    if (kingdoms >= 1000 && kingdoms < 2499) {
+      corruption = ((500 / kingdoms) + .5);
+    } else if (kingdoms >= 2500) {
+      corruption = (1750 / kingdoms);
+    } else {
+      corruption = 1;
+    }
+
+    if (collectia) {
+      interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1.1);
+    } else {
+      interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1);
+    }
+
+    embezzle = Math.floor(2000000000 - (2000000000 / Math.pow((1 + (interest * corruption)), hours))) - 10000;
+    //document.getElementById("chattybox").value = `/pe ${embezzle}`;
+    genfull("chat", `/pea ${embezzle}`, 0);
+    domes("<font color='red'>Total Bezz: " + parseInt(embezzle * kingdoms, 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</font>");
   } else {
-    corruption = 1;
+    domes("Cancled.");
   }
-
-  if (collectia) {
-    interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1.1);
-  } else {
-    interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1);
-  }
-
-  embezzle = Math.floor(2000000000 - (2000000000 / Math.pow((1 + (interest * corruption)), hours))) - 10000;
-  //document.getElementById("chattybox").value = `/pe ${embezzle}`;
-  genfull("chat", `/pea ${embezzle}`, 0);
-  domes("<font color='red'>Total Bezz: " + parseInt(embezzle * kingdoms, 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</font>");
 }
 
 function toggle_chatmod() {
@@ -1057,8 +1061,10 @@ function downdelay() {
 function toggle_newbar() {
   if (newbar) {
     newbar = false;
+    document.getElementById('delay-button').innerText = "New Delay Bar";
   } else {
     newbar = true;
+    document.getElementById('delay-button').innerText = "Old Delay Bar";
   }
   updelay();
 }
@@ -1289,7 +1295,7 @@ var mainLoad = (function () {
                            <button onclick="peaValue();">Calculate Pea</button>
                            <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
                            <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
-                           <button onclick="toggle_newbar();">Toggle Delay Bar</button>
+                           <button onclick="toggle_newbar();" id="delay-button">Old Delay Bar</button>
                      </center>
                      </td>
                   </tr>
@@ -1318,8 +1324,6 @@ var mainLoad = (function () {
   }, 1500);
   updelay();
 })();
-
-
 
 setTimeout(() => {
   document.getElementById("craft-item-type").addEventListener("change", () => {

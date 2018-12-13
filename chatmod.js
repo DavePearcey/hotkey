@@ -37,12 +37,22 @@ var donor_names = [{
   },
   {
     "name": ">Necrophilia<",
-    "color": "bb974b",
+    "color": "4ed1e6",
     "expire": "never"
   },
   {
     "name": ">Nemo The Necro<",
     "color": "f90144",
+    "expire": "never"
+  },
+  {
+    "name": ">Lord Ramza<",
+    "color": "c8df03",
+    "expire": "never"
+  },
+  {
+    "name": ">Ramza<",
+    "color": "7cec0f",
     "expire": "never"
   }
 ];

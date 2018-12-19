@@ -233,7 +233,7 @@ function upchat(thecdata) {
     ts_hour = ts_hour - 12;
   }
   let ts_min = dateTime.getMinutes();
-  let timestamp = `<font color='#278ec8' size='2'>${pad(ts_hour)}:${pad(ts_min)}</font> `;
+  let timestamp = `<font color='#278ec8' size='2'>${pad(ts_hour)}:${pad(ts_min)}</font> <font size='3'>`;
   if (top.OldChat == null) {
     top.OldChat = ["", ""];
     for (var j = 0; j < top.ChatSize; j++)

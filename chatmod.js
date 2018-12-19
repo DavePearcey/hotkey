@@ -226,7 +226,7 @@ function upchat(thecdata) {
   let dateTime = new Date();
   let ts_hour = dateTime.getHours();
   let ts_min = dateTime.getMinutes();
-  let timestamp = `${ts_hour}:${ts_min} `;
+  let timestamp = `<font color='#278ec8' size='2'>${ts_hour}:${ts_min}</font> `;
   if (top.OldChat == null) {
     top.OldChat = ["", ""];
     for (var j = 0; j < top.ChatSize; j++)

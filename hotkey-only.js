@@ -1276,7 +1276,7 @@ var mainLoad = (function () {
                      </select>
 
                      <button onclick="craft()">Craft</button>
-
+                     
                      <br>
 
                      Destroy Items: <select id='crafted-item-burn'> </select>

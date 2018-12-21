@@ -608,11 +608,10 @@ setTimeout(function () {
   domes('Donations for custom chat colors are now available for addon users. $5.00/Month or 1.5T (s2 gold only). Pm me on S2 for more details.');
   domes('Birthday Chat Coloring is now offered for Free as well. Pm me the day of, or before your birthday for Birthday chat coloring, and a message beside your name.');
   top.hotlist.unshift('Rune+Keeper');
-  top.hotlist.unshift('NOBODY');
+  top.hotlist.unshift('Nobody');
   upbuttons();
   maxInv();
 }, 500);
-
 
 function craft() {
   fields.general.action.value = "ts";

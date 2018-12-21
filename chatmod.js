@@ -393,7 +393,6 @@ function upchat(thecdata) {
         subgee = top.ignorelist;
         amounty = subgee.length;
         badboy = 0;
-        top.OldChat[j] += timestamp;
         for (var xxxi = 0; xxxi < amounty; xxxi++) {
           if (subgee[xxxi] == mn(NewChatList[2]))
             badboy = 1;
@@ -407,7 +406,6 @@ function upchat(thecdata) {
         }
       } else if (NewChatList[0] == "33" || NewChatList[0] == "34") {
         if (NewChatList[0] == "34")
-        top.OldChat[j] += timestamp;
         top.OldChat[j] += "<i>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];

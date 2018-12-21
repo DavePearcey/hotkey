@@ -254,7 +254,7 @@ function upchat(thecdata) {
       else if (locsplit[1] == "For")
         top.OldChat[j] += "<font color=#969696>";
       for (let n in donor_names) {
-        if (donor_names[n].name == `>${NewChatList[2]}<`) {
+        if (donor_names[n].name == `>${NewChatList[2].replace(/\+/gi, ' ')}<`) {
           top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
         }
       }

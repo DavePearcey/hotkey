@@ -60,30 +60,9 @@ var mod_chat = true;
 
 var chatmodder = setInterval(() => {
   if (mod_chat) {
-    for (let x = 0; x <= 5; x++) {
+    for (let x = 0; x != 1; x++) {
       if (top.OldChat[x] != "") {
         let msg = top.OldChat[x];
-        for (let donor of donor_names) {
-          if (msg.indexOf(donor['name']) > -1) {
-            chat_colors.forEach((chat_color) => {
-              if (msg.indexOf(`#${chat_color}`) > -1) {
-                top.OldChat[x] = top.OldChat[x].replace(chat_color, donor['color']);
-                upchat("");
-              }
-            });
-          }
-        }
-        for (let birthday of birthday_names) {
-          if (msg.indexOf(birthday['name']) > -1) {
-            chat_colors.forEach((chat_color) => {
-              if (msg.indexOf(chat_color) > -1) {
-                top.OldChat[x] = top.OldChat[x].replace(chat_color, birthday['color']);
-                top.OldChat[x] = `<font color='#${birthday['color']}'>Birthday </font> ${top.OldChat[x]}`
-                upchat("");
-              }
-            });
-          }
-        }
         if (msg.toLowerCase().indexOf(":fish-") > -1) {
           let username = msg.substring(msg.indexOf(':fish-') + 6, msg.lastIndexOf(':'));
           top.OldChat[x] = `<font color='#C89468'><a href=javascript:pm('${username}')>${username}</a></font> <font color='#FCFF11'>has been smacked upside the head with a giant tuna fish... and there was much laughing</font>`;
@@ -112,6 +91,14 @@ var chatmodder = setInterval(() => {
         }
         if (msg.toLowerCase().indexOf(":banjeff:") > -1) {
           top.OldChat[x] = `<b><font color='#C89468'>Glitchless</font> <font color='#FCFF11'>has been smitten! ... and there was much rejoicing</font></b>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":tracker:") > -1) {
+          top.OldChat[x] = `<a href="http://rwkhelp.com/tracker.html" target="_blank">Surface Tracker</a>`;
+          upchat("");
+        }
+        if (msg.toLowerCase().indexOf(":mapper:") > -1) {
+          top.OldChat[x] = `<a href="http://rwkhelp.com/mapper.html" target="_blank">Kingdom Mapper</a>`;
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":banpk:") > -1) {
@@ -188,7 +175,7 @@ var chatmodder = setInterval(() => {
       }
     }
   }
-}, 50);
+}, 250);
 
 function birthday_text(message, username, location) {
   let temp = `${location} <a href=javascript:pm('${username}')>${username}</a></font>: `;
@@ -222,14 +209,14 @@ function birthday_text(message, username, location) {
   return temp;
 }
 
-function pad(x){
+function pad(x) {
   return (x < 10 ? x = `0${x}` : x);
 }
 
 function upchat(thecdata) {
   let dateTime = new Date();
   let ts_hour = dateTime.getHours();
-  if (ts_hour > 12){
+  if (ts_hour > 12) {
     ts_hour = ts_hour - 12;
   }
   let ts_min = dateTime.getMinutes();
@@ -254,9 +241,7 @@ function upchat(thecdata) {
       locsplit = NewChatList[1].split(",");
       if ((NewChatList[0] == "0" || NewChatList[0] == "10") && locsplit[0].charAt(0) != "0" && locsplit[0].charAt(0) != "1" && locsplit[0].charAt(0) != "2" && (locsplit[0].charAt(0) != "*" && locsplit[0].charAt(0) != "x"))
         locsplit[1] = top.LocZ;
-      if (NewChatList[2] == "Anubis")
-        top.OldChat[j] += "<font color=#FFA500>";
-      else if (locsplit[1] == "Sur")
+      if (locsplit[1] == "Sur")
         top.OldChat[j] += "<font color=#C8C8C8>";
       else if (locsplit[1] == "Dun")
         top.OldChat[j] += "<font color=#FFBBBB>";
@@ -268,6 +253,11 @@ function upchat(thecdata) {
         top.OldChat[j] += "<font color=#FF6666>";
       else if (locsplit[1] == "For")
         top.OldChat[j] += "<font color=#969696>";
+      for (let n in donor_names) {
+        if (donor_names[n].name == `>${NewChatList[2]}<`) {
+          top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
+        }
+      }
       if (NewChatList[0] == "0" || NewChatList[0] == "10" || NewChatList[0] == "1" || NewChatList[0] == "11" || NewChatList[0] == "6" || NewChatList[0] == "8") {
         subgee = top.ignorelist;
         amounty = subgee.length;
@@ -291,22 +281,22 @@ function upchat(thecdata) {
           top.OldChat[j] = "";
           continue;
         }
-      } else if (NewChatList[0] == "22" || NewChatList[0] == "32" || NewChatList[0] == "42"){
+      } else if (NewChatList[0] == "22" || NewChatList[0] == "32" || NewChatList[0] == "42") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#FCFF11><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
-      } else if (NewChatList[0] == "7"){
+      } else if (NewChatList[0] == "7") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> accepted your " + getitem(NewChatList[1]) + " for " + mc(NewChatList[3]) + " gold.</font>";
-      } else if (NewChatList[0] == "9"){
+      } else if (NewChatList[0] == "9") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + ".</font>";
-      } else if (NewChatList[0] == "12"){
+      } else if (NewChatList[0] == "12") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color='#C89468'>Found:</font><font color=#CCCC22> " + getitem(NewChatList[1]) + "</font> <a href=javascript:burnit('" + NewChatList[1] + "')>Ash Item?</a>";
-      } else if (NewChatList[0] == "13"){
+      } else if (NewChatList[0] == "13") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#EEEE44>You see a " + getitem(NewChatList[1]) + " in their inventory.</font>";
-      } else if (NewChatList[0] == "5"){
+      } else if (NewChatList[0] == "5") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> gives you a " + getitem(NewChatList[1]) + ".</font>";
       } else if (NewChatList[0] == "58" || NewChatList[0] == "91" || NewChatList[0] == "92" || NewChatList[0] == "94") {
@@ -332,16 +322,16 @@ function upchat(thecdata) {
           top.OldChat[j] = "";
           continue;
         }
-      } else if (NewChatList[0] == "3"){
+      } else if (NewChatList[0] == "3") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
-      } else if (NewChatList[0] == "80"){
+      } else if (NewChatList[0] == "80") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#C8686A>Message sent to </font><font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
-      } else if (NewChatList[0] == "56"){
+      } else if (NewChatList[0] == "56") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
-      } else if (NewChatList[0] == "53"){
+      } else if (NewChatList[0] == "53") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
       } else if (NewChatList[0] == "54") {
@@ -400,7 +390,7 @@ function upchat(thecdata) {
           if (subgee[xxxi] == mn(NewChatList[2]))
             badboy = 1;
         }
-        if (!badboy){
+        if (!badboy) {
           top.OldChat[j] += timestamp;
           top.OldChat[j] += "<font color=#009933>[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
         } else {
@@ -410,7 +400,7 @@ function upchat(thecdata) {
       } else if (NewChatList[0] == "33" || NewChatList[0] == "34") {
         if (NewChatList[0] == "34")
           top.OldChat[j] += timestamp;
-          top.OldChat[j] += "<i>";
+        top.OldChat[j] += "<i>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];
           if (y + 1 < NewChatList.length)

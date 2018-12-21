@@ -253,9 +253,11 @@ function upchat(thecdata) {
         top.OldChat[j] += "<font color=#FF6666>";
       else if (locsplit[1] == "For")
         top.OldChat[j] += "<font color=#969696>";
-      for (let n in donor_names) {
-        if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}`) {
-          top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
+      if (NewChatList[2] != undefined) {
+        for (let n in donor_names) {
+          if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}`) {
+            top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
+          }
         }
       }
       if (NewChatList[0] == "0" || NewChatList[0] == "10" || NewChatList[0] == "1" || NewChatList[0] == "11" || NewChatList[0] == "6" || NewChatList[0] == "8") {

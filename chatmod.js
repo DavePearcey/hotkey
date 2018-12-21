@@ -319,7 +319,7 @@ function upchat(thecdata) {
             top.OldChat[j] += "<font color=#4444FF>";
           else
             top.OldChat[j] += "<font color=#C0C0C0>";
-          top.OldChat[j] += "<font color=#C1B95F>Message from</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
+          top.OldChat[j] += "<font color=#C1B95F>Message from</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + ":</a> " + ms(NewChatList[3]) + "</font>";
         } else {
           top.OldChat[j] = "";
           continue;
@@ -329,7 +329,7 @@ function upchat(thecdata) {
         top.OldChat[j] += "<font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
       } else if (NewChatList[0] == "80") {
         top.OldChat[j] += timestamp;
-        top.OldChat[j] += "<font color=#C8686A>Message sent to <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</font></a> " + ms(NewChatList[3]) + "</font>";
+        top.OldChat[j] += "<font color=#C1B95F>Message sent to</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + ":</a> " + ms(NewChatList[3]) + "</font>";
       } else if (NewChatList[0] == "56") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
@@ -423,8 +423,6 @@ function upchat(thecdata) {
         }
         top.OldChat[j] += "</font>";
       }
-      //else
-      //	domes("ERROR: "+NewChatList[0]);
       if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2")
         top.OldChat[j] += "</font></b>";
       if (locsplit[1] == "Sur")

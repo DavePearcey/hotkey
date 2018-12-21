@@ -311,7 +311,6 @@ function upchat(thecdata) {
             badboy = 1;
         }
         if (!badboy) {
-          top.OldChat[j] += timestamp;
           if (NewChatList[0] == "94")
             top.OldChat[j] += "<font color=#FF2222>";
           else if (NewChatList[0] == "92")
@@ -320,7 +319,7 @@ function upchat(thecdata) {
             top.OldChat[j] += "<font color=#4444FF>";
           else
             top.OldChat[j] += "<font color=#C0C0C0>";
-          top.OldChat[j] += "<u><font color='white'>Private:</font></u> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
+          top.OldChat[j] += "<font color=#C1B95F>Message from</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]) + "</font>";
         } else {
           top.OldChat[j] = "";
           continue;
@@ -443,7 +442,7 @@ function upchat(thecdata) {
     } else {
       top.OldChat[j] = top.OldChat[j - (NewChat.length - 1)];
       if (top.OldChat[j] == null)
-        top.OldChat[j] = "";
+        top.OldChat[j] = "</font>";
     }
   }
   NewChat = "";

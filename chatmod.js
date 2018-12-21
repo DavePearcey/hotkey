@@ -311,6 +311,7 @@ function upchat(thecdata) {
             badboy = 1;
         }
         if (!badboy) {
+          top.OldChat[j] += timestamp;
           if (NewChatList[0] == "94")
             top.OldChat[j] += "<font color=#FF2222>";
           else if (NewChatList[0] == "92")
@@ -353,6 +354,7 @@ function upchat(thecdata) {
         tempypoo = NewChatList[3].split("!");
         top.OldChat[j] += "<font color=#CC00CC><b>Skills</b><br>&nbsp;" + top.skillz[0] + ": " + mc(tempypoo[0]) + "<br>&nbsp;" + top.skillz[1] + ": " + mc(tempypoo[1]) + "<br>&nbsp;" + top.skillz[2] + ": " + mc(tempypoo[2]) + "<br>&nbsp;" + top.skillz[3] + ": " + mc(tempypoo[3]) + "<br>&nbsp;" + top.skillz[4] + ": " + mc(tempypoo[4]) + "<br>&nbsp;" + top.skillz[5] + ": " + mc(tempypoo[5]) + "<br>&nbsp;" + top.skillz[6] + ": " + mc(tempypoo[6]) + "<br>&nbsp;" + top.skillz[7] + ": " + mc(tempypoo[7]) + "<br>&nbsp;" + top.skillz[8] + ": " + mc(tempypoo[8]) + "<br>&nbsp;" + top.skillz[9] + ": " + mc(tempypoo[9]) + "<br>&nbsp;" + top.skillz[10] + ": " + mc(tempypoo[10]) + "<br>&nbsp;" + top.skillz[11] + ": " + mc(tempypoo[11]) + "<br>&nbsp;" + top.skillz[12] + ": " + mc(tempypoo[12]) + "</font>";
       } else if (NewChatList[0] == "61") {
+        top.OldChat[j] += timestamp;
         tempypoo = NewChatList[3].split("!");
         maxit = 0;
         for (var sji = 0; sji < 12; sji++) {
@@ -370,10 +372,12 @@ function upchat(thecdata) {
         }
         top.OldChat[j] += "</font>";
       } else if (NewChatList[0] == "62") {
+        top.OldChat[j] += timestamp;
         tempypoo = NewChatList[3].split("!");
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#00FF00>Your skill in " + top.tradez[tempypoo[0]] + "crafting has improved to " + mc(tempypoo[1]) + "!</font>";
       } else if (NewChatList[0] == "63") {
+        top.OldChat[j] += timestamp;
         tempypoo = NewChatList[3].split("!");
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#00FF00>Your skill in " + top.subz[tempypoo[0]] + "working has improved to " + mc(tempypoo[1]) + "!</font>";
@@ -388,6 +392,7 @@ function upchat(thecdata) {
         subgee = top.ignorelist;
         amounty = subgee.length;
         badboy = 0;
+        top.OldChat[j] += timestamp;
         for (var xxxi = 0; xxxi < amounty; xxxi++) {
           if (subgee[xxxi] == mn(NewChatList[2]))
             badboy = 1;
@@ -401,7 +406,7 @@ function upchat(thecdata) {
         }
       } else if (NewChatList[0] == "33" || NewChatList[0] == "34") {
         if (NewChatList[0] == "34")
-          top.OldChat[j] += timestamp;
+        top.OldChat[j] += timestamp;
         top.OldChat[j] += "<i>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];
@@ -411,6 +416,7 @@ function upchat(thecdata) {
         if (NewChatList[0] == "34")
           top.OldChat[j] += "</i>";
       } else if (NewChatList[0] == "79") {
+        top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];

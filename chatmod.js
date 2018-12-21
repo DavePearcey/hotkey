@@ -1,57 +1,57 @@
 var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', 'CC00CC', '4444FF', 'FF2222'];
 var birthday_names = [];
 var donor_names = [{
-    "name": ">Anubis<",
+    "name": "Anubis",
     "color": "FFA500",
     "expire": "never"
   },
   {
-    "name": ">Lord Magus<",
+    "name": "Lord Magus",
     "color": "008080",
     "expire": "never"
   },
   {
-    "name": ">Yoshi<",
+    "name": "Yoshi",
     "color": "3777D6",
     "expire": "never"
   },
   {
-    "name": ">Empyron<",
+    "name": "Empyro",
     "color": "C5B358",
     "expire": "never"
   },
   {
-    "name": ">Niizandar<",
+    "name": "Niizandar",
     "color": "FF69B4",
     "expire": "never"
   },
   {
-    "name": ">Wafer<",
+    "name": "Wafer",
     "color": "1E90FF",
     "expire": "never"
   },
   {
-    "name": ">Jigfig2<",
+    "name": "Jigfig2",
     "color": "31e9bc",
     "expire": "never"
   },
   {
-    "name": ">Necrophilia<",
+    "name": "Necrophilia",
     "color": "4ed1e6",
     "expire": "never"
   },
   {
-    "name": ">Nemo The Necro<",
+    "name": "Nemo The Necro",
     "color": "f90144",
     "expire": "never"
   },
   {
-    "name": ">Lord Ramza<",
+    "name": "Lord Ramza",
     "color": "c8df03",
     "expire": "never"
   },
   {
-    "name": ">Ramza<",
+    "name": "Ramza",
     "color": "7cec0f",
     "expire": "never"
   }
@@ -254,7 +254,7 @@ function upchat(thecdata) {
       else if (locsplit[1] == "For")
         top.OldChat[j] += "<font color=#969696>";
       for (let n in donor_names) {
-        if (donor_names[n].name == `>${NewChatList[2].replace(/\+/gi, ' ')}<`) {
+        if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}`) {
           top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
         }
       }

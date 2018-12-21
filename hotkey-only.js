@@ -1,5 +1,6 @@
 'use strict'
 var newbar = true;
+var max_level = 3170;
 
 var p = {
   version: "12",
@@ -1078,7 +1079,7 @@ var mainLoad = (function () {
   </tr>
   <tr>
     <td background="../side.jpg" rowspan="5"><img border="0" src="../side.jpg" width="10" height="44"></td>
-    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}</span> <span id='perc_toggle' onclick='toggle_percents();'>%</span></td>
+    <td width="25%" bgcolor="0"> <span id="s_name">${top.login}</span> <a target="_blank" href="../info.htm#lev">Lev</a>: <span id="s_login">${top.Level}/${max_level}</span> <span id='perc_toggle' onclick='toggle_percents();'>%</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#loc">Loc</a>: <span id="s_Loc">${top.Loc}</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#gold">Gold</a>: <span id="s_Gold">${mc(top.Gold)}</span></td>
     <td width="25%" bgcolor="0">

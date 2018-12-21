@@ -446,3 +446,5 @@ function upchat(thecdata) {
   }
   top.frames.main.s_Chat.innerHTML = NewChat;
 }
+domes("You can now type :mapper: and :tracker: to get direct links to the rwkhelp tools.");
+domes("Chat modder has been updated to include new Features.");

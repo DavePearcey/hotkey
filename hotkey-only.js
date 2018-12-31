@@ -1,47 +1,6 @@
 'use strict'
 var newbar = true;
-let max_level = (() => {
-  let today = new Date();
-  if (`${today.getYear()}|${today.getMonth()}` == `118|11`) {
-    return 3170;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|0`) {
-    return 3180;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|1`) {
-    return 3190;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|2`) {
-    return 3200;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|3`) {
-    return 3210;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|4`) {
-    return 3220;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|5`) {
-    return 3230;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|6`) {
-    return 3240;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|7`) {
-    return 3250;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|8`) {
-    return 3260;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|9`) {
-    return 3270;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|10`) {
-    return 3280;
-  }
-  if (`${today.getYear()}|${today.getMonth()}` == `119|11`) {
-    return 3290;
-  }
-})();
+let max_level = 3180;
 
 var p = {
   version: "12",

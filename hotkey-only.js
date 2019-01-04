@@ -1143,6 +1143,18 @@ var mainLoad = (function () {
   let xxz = document.getElementsByTagName('table')[0].childNodes[0].childNodes[2];
   abc.insertBefore(document.createElement("tr"), xxz);
   abc.id = 'addon-tr';
+  var styler = document.createElement('style');
+  styler.innerHTML = `select {
+  color: #fafaf8;
+  background-color: #181817;
+  }
+
+  optgroup {
+    background-color: #343330;
+    color: #bda14c;
+  }
+  `;
+  document.getElementsByTagName('head')[0].appendChild(styler);
   var cm = document.createElement('script');
   cm.type = 'text/javascript';
   cm.src = 'https://s3.amazonaws.com/rwk-assets/chatmod.js';

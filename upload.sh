@@ -1,6 +1,9 @@
 #!/bin/bash
 
 set -e
+git add *
+git commit -m "Updating and pushing to s3"
+git push
 
 if [[ "$OS" != "Windows_NT" ]]; then
   aws s3 cp hotkey-only.js s3://rwk-assets/hotkey-only.js --cache-control "max-age=0" --acl public-read --profile personal

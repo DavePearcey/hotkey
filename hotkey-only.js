@@ -1185,31 +1185,31 @@ var mainLoad = (function () {
                                             <td>
                                                 <div id="waypoint-menu" hidden>
                                                     Waypoints: <select id="waypoints">
-                                                        <optgroup label="-----HEAVEN----">
+                                                        <optgroup label="HEAVEN">
                                                             <option value="palace">Forbidden Palace</option>
                                                             <option value="vkeep">Heaven Keep</option>
                                                             <option value="vcitizen">A Citizen</option>
                                                         </optgroup>
-                                                        <optgroup label="-----SKY-----</">
-                                                            ption value="shrine">Skill Shrine</option>
+                                                        <optgroup label="SKY">
+                                                            <option value="shrine">Skill Shrine</option>
                                                             <option value="scitizen">A Citizen</option>
                                                         </optgroup>
-                                                        <optgroup label="-----SURFACE---">
+                                                        <optgroup label="SURFACE">
                                                             <option value="mines">Forbidden Mines</option>
                                                             <option value="keeper">Ash Keeper</option>
                                                             <option value="pub">Stallions Pub</option>
                                                             <option value="puddle">Le Puddle Deep</option>
                                                             <option value="brawl">Inquest Brawl</option>
                                                         </optgroup>
-                                                        <optgroup label="-----DUNGEON---">
+                                                        <optgroup label="DUNGEON">
                                                             <option value="id">Insane Dungeon</option>
                                                         </optgroup>
-                                                        <optgroup label="-----HELL-----<">
-                                                            option value="lkeep">Hell Keep</option>
+                                                        <optgroup label="HELL">
+                                                            <option value="lkeep">Hell Keep</option>
                                                             <option value="collector">Ash Collector</option>
                                                             <option value="forge">Forge Entrance</option>
                                                         </optgroup>
-                                                        <optgroup label="-----QUEST-----">
+                                                        <optgroup label="QUEST">
                                                             <option value="shore">Hell Shore</option>
                                                             <option value="mountians">Dungeon Mountians</option>
                                                             <option value="lava">Dungeon Lava</option>

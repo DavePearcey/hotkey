@@ -372,7 +372,6 @@ function upchat(thecdata) {
         }
         top.OldChat[j] += "</font>";
       } else if (NewChatList[0] == "62") {
-        top.OldChat[j] += timestamp;
         tempypoo = NewChatList[3].split("!");
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#00FF00>Your skill in " + top.tradez[tempypoo[0]] + "crafting has improved to " + mc(tempypoo[1]) + "!</font>";
@@ -405,7 +404,7 @@ function upchat(thecdata) {
         }
       } else if (NewChatList[0] == "33" || NewChatList[0] == "34") {
         if (NewChatList[0] == "34")
-        top.OldChat[j] += "<i>";
+          top.OldChat[j] += "<i>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];
           if (y + 1 < NewChatList.length)
@@ -414,7 +413,6 @@ function upchat(thecdata) {
         if (NewChatList[0] == "34")
           top.OldChat[j] += "</i>";
       } else if (NewChatList[0] == "79") {
-        top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC>";
         for (var y = 1; y < NewChatList.length; y++) {
           top.OldChat[j] += NewChatList[y];

@@ -1149,172 +1149,170 @@ var mainLoad = (function () {
   document.getElementsByTagName('head')[0].appendChild(cm);
   let xlr = `
   <td width="100%" colspan="2" id="addon">
-   <table id="addon-table" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#808080" text-align='center'>
-      <tbody>
-         <tr>
-            <td background="../top.jpg" align="center" colspan="5">
-               <img border="0" src="../top.jpg" width="44" height="10">
-            </td>
-         </tr>
-         <tr>
-            <td rowspan="5" background="../side.jpg">
-               <img border="0" src="../side.jpg" width="10" height="44">
-            </td>
-            <td bgcolor="0" width="0">
-               <img border="0" src="../dragon.jpg">
-            </td>
-            <td width="100%" bgcolor="0">
-               <table width="100%" style='text-align:center;'>
-                  <tr id='tb_1'>
-                     <td>
-                     <center>
-                     <table style='text-align:center;'>
-                        <tr>
-                           <td>
-                           <div id="waypoint-menu" hidden>
-                           Waypoints: <select id="waypoints">
-                           <option value=false>-----HEAVEN-----</option>
-                             <option value="palace">Forbidden Palace</option>
-                             <option value="vkeep">Heaven Keep</option>
-                             <option value="vcitizen">A Citizen</option>
+    <table id="addon-table" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#808080" text-align='center'>
+        <tbody>
+            <tr>
+                <td background="../top.jpg" align="center" colspan="5">
+                    <img border="0" src="../top.jpg" width="44" height="10">
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5" background="../side.jpg">
+                    <img border="0" src="../side.jpg" width="10" height="44">
+                </td>
+                <td bgcolor="0" width="0">
+                    <img border="0" src="../dragon.jpg">
+                </td>
+                <td width="100%" bgcolor="0">
+                    <table width="100%" style='text-align:center;'>
+                        <tr id='tb_1'>
+                            <td>
+                                <center>
+                                    <table style='text-align:center;'>
+                                        <tr>
+                                            <td>
+                                                <div id="waypoint-menu" hidden>
+                                                    Waypoints: <select id="waypoints">
+                                                        <optgroup label="-----HEAVEN----">
+                                                            <option value="palace">Forbidden Palace</option>
+                                                            <option value="vkeep">Heaven Keep</option>
+                                                            <option value="vcitizen">A Citizen</option>
+                                                        </optgroup>
+                                                        <optgroup label="-----SKY-----</">
+                                                            ption value="shrine">Skill Shrine</option>
+                                                            <option value="scitizen">A Citizen</option>
+                                                        </optgroup>
+                                                        <optgroup label="-----SURFACE---">
+                                                            <option value="mines">Forbidden Mines</option>
+                                                            <option value="keeper">Ash Keeper</option>
+                                                            <option value="pub">Stallions Pub</option>
+                                                            <option value="puddle">Le Puddle Deep</option>
+                                                            <option value="brawl">Inquest Brawl</option>
+                                                        </optgroup>
+                                                        <optgroup label="-----DUNGEON---">
+                                                            <option value="id">Insane Dungeon</option>
+                                                        </optgroup>
+                                                        <optgroup label="-----HELL-----<">
+                                                            option value="lkeep">Hell Keep</option>
+                                                            <option value="collector">Ash Collector</option>
+                                                            <option value="forge">Forge Entrance</option>
+                                                        </optgroup>
+                                                        <optgroup label="-----QUEST-----">
+                                                            <option value="shore">Hell Shore</option>
+                                                            <option value="mountians">Dungeon Mountians</option>
+                                                            <option value="lava">Dungeon Lava</option>
+                                                            <option value="sky">Sky Entrance</option>
+                                                            <option value="dungeon">Dungeon Entrance</option>
+                                                            <option value="lake">Heaven Lake</option>
+                                                            <option value="temple">The Temple</option>
+                                                        </optgroup>
+                                                    </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </center>
+                                </font>
+                                <center>
 
-                           <option value=false>-----SKY-----</option>
-                             <option value="shrine">Skill Shrine</option>
-                             <option value="scitizen">A Citizen</option>
+                                    <div id='chanting-helper' hidden>
+                                        Enchanted Items: <select id='chant-dirty-items'>
+                                        </select>
+                                        <button onclick="disenchant_dirty_item()">Disenchant</button>
+                                        <br>
+                                        Pure Items: <select id='chant-clean-items'>
+                                        </select>
+                                        Relics: <select id='chant-pure-relics'>
+                                        </select>
+                                        <br>
+                                        <button onclick="burn_pure_item()">Sell Pure Item</button> <button onclick="burn_pure_relic()">Sell
+                                            Pure Relic</button> <button onclick="enchant_pure_item()">Enchant Item With
+                                            Relic</button>
+                                        <br>
+                                    </div>
 
-                           <option value=false>-----SURFACE-----</option>
-                             <option value="mines">Forbidden Mines</option>
-                             <option value="keeper">Ash Keeper</option>
-                             <option value="pub">Stallions Pub</option>
-                             <option value="puddle">Le Puddle Deep</option>
-                             <option value="brawl">Inquest Brawl</option>
+                                    <div id='crafting-helper' hidden>
+                                        Item Type: <select id="craft-item-type">
+                                            <option selected>Select Item Type</option>
+                                            <option value="0">Weapon</option>
+                                            <option value="1">Helmet</option>
+                                            <option value="2">Shield</option>
+                                            <option value="3">Gauntlets</option>
+                                            <option value="4">Mantle</option>
+                                            <option value="5">Sleeves</option>
+                                            <option value="6">Damage Spell</option>
+                                            <option value="7">Leggings</option>
+                                            <option value="8">Boots</option>
+                                            <option value="9">Heal Spell</option>
+                                            <option value="10">Relic</option>
+                                            <option value="12">Bow</option>
+                                            <option value="13">Arrow</option>
+                                            <option value="14">Light Weapons</option>
+                                            <option value="15">Heavy Weapons</option>
+                                            <option value="16">Precise Weapons</option>
+                                            <option value="17">Rapid Damage Spells</option>
+                                            <option value="18">Major Damage Spells</option>
+                                            <option value="19">Accurate Damage Spells</option>
+                                            <option value="20">Durability Helmets</option>
+                                            <option value="21">Durability Shields</option>
+                                            <option value="22">Durability Gauntlets</option>
+                                            <option value="23">Durability Mantles</option>
+                                            <option value="24">Durability Sleeves</option>
+                                            <option value="25">Durability Leggings</option>
+                                            <option value="26">Durability Boots</option>
+                                            <option value="27">Essence Elements</option>
+                                        </select>
 
-                           <option value=false>-----DUNGEON-----</option>
-                             <option value="id">Insane Dungeon</option>
+                                        Item: <select id="craft-item-value">
+                                            <option selected>Please Select Type</option>
+                                        </select>
 
-                           <option value=false>-----HELL-----</option>
-                             <option value="lkeep">Hell Keep</option>
-                             <option value="collector">Ash Collector</option>
-                             <option value="forge">Forge Entrance</option>
+                                        <button onclick="craft()">Craft</button>
 
-                           <option value=false>-----QUEST-----</option>
-                             <option value="shore">Hell Shore</option>
-                             <option value="mountians">Dungeon Mountians</option>
-                             <option value="lava">Dungeon Lava</option>
-                             <option value="sky">Sky Entrance</option>
-                             <option value="dungeon">Dungeon Entrance</option>
-                             <option value="lake">Heaven Lake</option>
-                             <option value="temple">The Temple</option>
+                                        <br>
 
-                           <option value=false>-----PERSONAL-----</option>
-                             <option value="jump1">Personal 1</option>
-                             <option value="jump2">Personal 2</option>
-                             <option value="jump3">Personal 3</option>
-                             <option value="jump4">Return</option>
-                             <option value="set1">Set 1</option>
-                             <option value="set2">Set 2</option>
-                             <option value="set3">Set 3</option>
-                           </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
-                           </div>
-                          </td>
+                                        Destroy Items: <select id='crafted-item-burn'> </select>
+
+                                        <button onclick="burn_crafted_item()">Destroy</button> <br>
+                                        Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();"
+                                                checked></label>
+                                        <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();"
+                                                checked></label>
+                                        <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();"
+                                                checked></label>
+                                        <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();"
+                                                checked></label>
+                                        <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
+                                    </div>
+                                    <button onclick="deposit_gold()">Deposit Max</button>
+                                    <button onclick="embezzle_gold()">Embezzle Max</button>
+                                    <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
+                                    <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
+                                    <button onclick="peaValue();">Calculate Pea</button>
+                                    <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
+                                    <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
+                                    <button onclick="toggle_newbar();" id="delay-button">Old Delay Bar</button>
+                                </center>
+                            </td>
                         </tr>
-                     </table>
-                     </center>
-                     </font>
-                     <center>
-
-                     <div id='chanting-helper' hidden>
-                     Enchanted Items: <select id='chant-dirty-items'>
-                     </select>
-                     <button onclick="disenchant_dirty_item()">Disenchant</button>
-                     <br>
-                     Pure Items: <select id='chant-clean-items'>
-                     </select>
-                     Relics: <select id='chant-pure-relics'>
-                     </select>
-                     <br>
-                     <button onclick="burn_pure_item()">Sell Pure Item</button> <button onclick="burn_pure_relic()">Sell Pure Relic</button> <button onclick="enchant_pure_item()">Enchant Item With Relic</button>
-                     <br>
-                     </div>
-
-                     <div id='crafting-helper' hidden>
-                     Item Type: <select id="craft-item-type">
-                        <option selected>Select Item Type</option>
-                        <option value="0">Weapon</option>
-                        <option value="1">Helmet</option>
-                        <option value="2">Shield</option>
-                        <option value="3">Gauntlets</option>
-                        <option value="4">Mantle</option>
-                        <option value="5">Sleeves</option>
-                        <option value="6">Damage Spell</option>
-                        <option value="7">Leggings</option>
-                        <option value="8">Boots</option>
-                        <option value="9">Heal Spell</option>
-                        <option value="10">Relic</option>
-                        <option value="12">Bow</option>
-                        <option value="13">Arrow</option>
-                        <option value="14">Light Weapons</option>
-                        <option value="15">Heavy Weapons</option>
-                        <option value="16">Precise Weapons</option>
-                        <option value="17">Rapid Damage Spells</option>
-                        <option value="18">Major Damage Spells</option>
-                        <option value="19">Accurate Damage Spells</option>
-                        <option value="20">Durability Helmets</option>
-                        <option value="21">Durability Shields</option>
-                        <option value="22">Durability Gauntlets</option>
-                        <option value="23">Durability Mantles</option>
-                        <option value="24">Durability Sleeves</option>
-                        <option value="25">Durability Leggings</option>
-                        <option value="26">Durability Boots</option>
-                        <option value="27">Essence Elements</option>
-                     </select>
-
-                     Item: <select id="craft-item-value">
-                     <option selected>Please Select Type</option>
-                     </select>
-
-                     <button onclick="craft()">Craft</button>
-                     
-                     <br>
-
-                     Destroy Items: <select id='crafted-item-burn'> </select>
-
-                     <button onclick="burn_crafted_item()">Destroy</button> <br>
-                     Hide: <label>DOTB<input type='checkbox' id="hide-dotb" onclick="update_crafted_items();" checked></label>
-                           <label>BP<input type='checkbox' id="hide-bp" onclick="update_crafted_items();" checked></label>
-                           <label>LoD<input type='checkbox' id="hide-lod" onclick="update_crafted_items();" checked></label>
-                           <label>Apex<input type='checkbox' id="hide-apex" onclick="update_crafted_items();" checked></label>
-                           <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
-                           </div>
-                           <button onclick="deposit_gold()">Deposit Max</button>
-                           <button onclick="embezzle_gold()">Embezzle Max</button>
-                           <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
-                           <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
-                           <button onclick="peaValue();">Calculate Pea</button>
-                           <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
-                           <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
-                           <button onclick="toggle_newbar();" id="delay-button">Old Delay Bar</button>
-                     </center>
-                     </td>
-                  </tr>
-                  </table>
-               </center>
-            </td>
-            <td bgcolor="#000000" width="0" align="right">
-               <img border="0" src="../minotaur.jpg">
-            </td>
-            <td rowspan="4" background="../side.jpg">
-               <img border="0" src="../side.jpg" width="10" height="44">
-            </td>
-         </tr>
-         <tr>
-            <td background="../top.jpg" align="center" colspan="5">
-               <img border="0" src="../top.jpg" width="44" height="10">
-            </td>
-         </tr>
-      </tbody>
-   </table>
-  </td>`;
+                    </table>
+                    </center>
+                </td>
+                <td bgcolor="#000000" width="0" align="right">
+                    <img border="0" src="../minotaur.jpg">
+                </td>
+                <td rowspan="4" background="../side.jpg">
+                    <img border="0" src="../side.jpg" width="10" height="44">
+                </td>
+            </tr>
+            <tr>
+                <td background="../top.jpg" align="center" colspan="5">
+                    <img border="0" src="../top.jpg" width="44" height="10">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</td>`;
   document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
   chat.target.focus();
   setTimeout(() => {

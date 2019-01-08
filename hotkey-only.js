@@ -727,8 +727,19 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
       window.open("http://rwk1.racewarkingdoms.com");
       event.preventDefault();
       document.getElementById("chattybox").value = "";
-    } else if (document.getElementById("chattybox").value === "/rwk2") {
+    } 
+    if (document.getElementById("chattybox").value === "/rwk2") {
       window.open("http://rwk2.racewarkingdoms.com");
+      event.preventDefault();
+      document.getElementById("chattybox").value = "";
+    }
+    if (document.getElementById("chattybox").value === "/jimcav") {
+      window.open("http://jimcav.com");
+      event.preventDefault();
+      document.getElementById("chattybox").value = "";
+    }
+    if (document.getElementById("chattybox").value === "/rwkhelp") {
+      window.open("http://rwkhelp.com");
       event.preventDefault();
       document.getElementById("chattybox").value = "";
     }

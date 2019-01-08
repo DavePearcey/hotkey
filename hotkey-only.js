@@ -564,8 +564,7 @@ setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
-  domes('Donations for custom chat colors are now available for addon users. $5.00/Month or 1.5T (s2 gold only). Pm me on S2 for more details.');
-  domes('Birthday Chat Coloring is now offered for Free as well. Pm me the day of, or before your birthday for Birthday chat coloring, and a message beside your name.');
+  domes("You can now use /rwk1 /rwk2 /jimcav & /rwkhelp chat commands to be taken to the pages in a new tab.");
   upbuttons();
   maxInv();
 }, 500);

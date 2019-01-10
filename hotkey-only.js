@@ -720,39 +720,6 @@ function setAction(action = 'fight', target = '0', other = '0', othera = 'none')
   fields.general.othera.value = othera;
 }
 
-document.getElementById("chattybox").addEventListener("keydown", (event) => {
-  if (event.keyCode === 13) {
-    if (document.getElementById("chattybox").value === "/rwk1") {
-      window.open("http://rwk1.racewarkingdoms.com");
-      event.preventDefault();
-      document.getElementById("chattybox").value = "";
-    } 
-    if (document.getElementById("chattybox").value === "/rwk2") {
-      window.open("http://rwk2.racewarkingdoms.com");
-      event.preventDefault();
-      document.getElementById("chattybox").value = "";
-    }
-    if (document.getElementById("chattybox").value === "/jimcav") {
-      window.open("http://jimcav.com");
-      event.preventDefault();
-      document.getElementById("chattybox").value = "";
-    }
-    if (document.getElementById("chattybox").value === "/rwkhelp") {
-      window.open("http://rwkhelp.com");
-      event.preventDefault();
-      document.getElementById("chattybox").value = "";
-    }
-    if (document.getElementById("chattybox").value === "/clear") {
-      for (let x = 0; x < top.ChatSize; x++) {
-        top.OldChat[x] = "";
-      }
-      upchat("");
-      event.preventDefault();
-      document.getElementById("chattybox").value = "";
-    }
-  }
-});
-
 document.addEventListener("keydown", (event) => {
   if (HK && !InputHasFocus()) {
     if (event.keyCode === 87) {

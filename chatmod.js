@@ -448,8 +448,8 @@ function upchat(thecdata) {
   }
   top.frames.main.s_Chat.innerHTML = NewChat;
 }
-domes("You can now type :mapper: and :tracker: to get direct links to the rwkhelp tools.");
-domes("Chat modder has been updated to include new Features.");
+
+domes("Reminder: /rwk1 /rwk2 /jimcav /rwkhelp /clear chat commands are all now valid.");
 
 document.getElementById("chattybox").addEventListener("keydown", (event) => {
   if (event.keyCode === 13) {

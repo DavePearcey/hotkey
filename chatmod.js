@@ -272,9 +272,9 @@ function upchat(thecdata) {
         if (!badboy && (NewChatList[0] == "0" || NewChatList[0] == "10"))
           top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
         else if (!badboy && (NewChatList[0] == "1" || NewChatList[0] == "11"))
-          top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')><i><font color=#FFFFFF>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font></i>";
+          top.OldChat[j] += "[Emote] <a href=javascript:pm('" + NewChatList[2] + "')><font color='#C89468'>" + ms(NewChatList[2]) + ":</a></font><font color='#708090'> *" + ms(NewChatList[3]) + "*</font> ";
         else if (!badboy && (NewChatList[0] == "1" || NewChatList[0] == "11"))
-          top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')><i><font color=#FFFFFF>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font></i>";
+          top.OldChat[j] += "[Emote] <a href=javascript:pm('" + NewChatList[2] + "')><font color='#C89468'>" + ms(NewChatList[2]) + ":</a></font><font color='#708090'> *" + ms(NewChatList[3]) + "*</font> ";
         else if (!badboy && (NewChatList[0] == "6"))
           top.OldChat[j] += "<font size=3 color=#CCCC22><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> offers you a " + getitem(NewChatList[1]) + " for " + mc(NewChatList[3]) + " gold. <a href=javascript:TAccept('" + NewChatList[2] + "'," + NewChatList[1] + "," + NewChatList[3] + ")>Accept?</a></font>";
         else if (!badboy && (NewChatList[0] == "8"))

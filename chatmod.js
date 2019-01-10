@@ -457,7 +457,7 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
       window.open("http://rwk1.racewarkingdoms.com/index.html");
       event.preventDefault();
       document.getElementById("chattybox").value = "";
-    } 
+    }  
     if (document.getElementById("chattybox").value === "/rwk2") {
       window.open("http://rwk2.racewarkingdoms.com");
       event.preventDefault();

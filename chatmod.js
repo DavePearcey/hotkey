@@ -474,7 +474,9 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
       document.getElementById("chattybox").value = "";
     }
     if (document.getElementById("chattybox").value === "/clear") {
-      top.OldChat = ["", ""];
+      for (let x = 0; x < top.ChatSize; x++) {
+        top.OldChat[x] = "";
+      }
       upchat("");
       event.preventDefault();
       document.getElementById("chattybox").value = "";

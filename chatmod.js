@@ -233,6 +233,10 @@ function upchat(thecdata) {
     }
   }
 
+  if (!mod_chat) {
+    timestamp = "";
+  }
+
   NewChat = thecdata.split("|");
   stupid = 0;
   for (var j = top.ChatSize; j >= 0 && stupid < 310; j--) {

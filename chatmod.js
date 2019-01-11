@@ -226,6 +226,13 @@ function upchat(thecdata) {
     for (var j = 0; j < top.ChatSize; j++)
       top.OldChat[j] = "";
   }
+
+  for (let i = 0; i < 5; i++) {
+    if (top.OldChat[i].indexOf('278ec8') == -1) {
+      top.OldChat[i] = timestamp + top.OldChat[i];
+    }
+  }
+
   NewChat = thecdata.split("|");
   stupid = 0;
   for (var j = top.ChatSize; j >= 0 && stupid < 310; j--) {
@@ -256,7 +263,7 @@ function upchat(thecdata) {
       if (NewChatList[2] != undefined) {
         for (let n in donor_names) {
           if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}`) {
-            top.OldChat[j] += `<font color=#${donor_names[n].color}>`;
+            top.OldChat[j] += `<span id="donor" hidden> </span><font color=#${donor_names[n].color}>`;
           }
         }
       }
@@ -328,8 +335,7 @@ function upchat(thecdata) {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC><a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a> " + ms(NewChatList[3]) + "</font>";
       } else if (NewChatList[0] == "80") {
-        top.OldChat[j] += timestamp;
-        top.OldChat[j] += "<font color=#C1B95F>Message sent to</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + ":</a> " + ms(NewChatList[3]) + "</font>";
+        top.OldChat[j] += `${timestamp} <font color=#C1B95F>Message sent to</font> <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + ":</a> " + ms(NewChatList[3]) + "</font>`;
       } else if (NewChatList[0] == "56") {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "[" + ms(NewChatList[1]) + "] <a href=javascript:pm('" + NewChatList[2] + "')>" + ms(NewChatList[2]) + "</a>: " + ms(NewChatList[3]);
@@ -436,8 +442,13 @@ function upchat(thecdata) {
         top.OldChat[j] += "</font>";
     } else {
       top.OldChat[j] = top.OldChat[j - (NewChat.length - 1)];
-      if (top.OldChat[j] == null)
+      if (top.OldChat[j] == null) {
         top.OldChat[j] = "</font>";
+      }
+
+    }
+    if (top.OldChat[j].indexOf('id="donor"') > -1 && top.OldChat[j].indexOf('id="donor-end"') == -1) {
+      top.OldChat[j] = top.OldChat[j] + `<span id="donor-end" hidden> </span> </font>`;
     }
   }
   NewChat = "";

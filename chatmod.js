@@ -354,6 +354,7 @@ function upchat(thecdata) {
         top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC><b>Skills</b><br>&nbsp;" + top.skillz[0] + ": " + mc(tempypoo[0]) + "<br>&nbsp;" + top.skillz[1] + ": " + mc(tempypoo[1]) + "<br>&nbsp;" + top.skillz[2] + ": " + mc(tempypoo[2]) + "<br>&nbsp;" + top.skillz[3] + ": " + mc(tempypoo[3]) + "<br>&nbsp;" + top.skillz[4] + ": " + mc(tempypoo[4]) + "<br>&nbsp;" + top.skillz[5] + ": " + mc(tempypoo[5]) + "<br>&nbsp;" + top.skillz[6] + ": " + mc(tempypoo[6]) + "<br>&nbsp;" + top.skillz[7] + ": " + mc(tempypoo[7]) + "<br>&nbsp;" + top.skillz[8] + ": " + mc(tempypoo[8]) + "<br>&nbsp;" + top.skillz[9] + ": " + mc(tempypoo[9]) + "<br>&nbsp;" + top.skillz[10] + ": " + mc(tempypoo[10]) + "<br>&nbsp;" + top.skillz[11] + ": " + mc(tempypoo[11]) + "<br>&nbsp;" + top.skillz[12] + ": " + mc(tempypoo[12]) + "</font>";
       } else if (NewChatList[0] == "61") {
+        top.OldChat[j] += timestamp;
         tempypoo = NewChatList[3].split("!");
         maxit = 0;
         for (var sji = 0; sji < 12; sji++) {
@@ -361,13 +362,10 @@ function upchat(thecdata) {
           if (tempypoo[sji] > maxit) maxit = tempypoo[sji];
         }
         maxit = parseInt((maxit / 60), 10);
-        top.OldChat[j] += timestamp;
         top.OldChat[j] += "<font color=#CC00CC><b>Trade Skills Rank: " + top.titlez[maxit] + "</b><br>";
         for (sji = 0; sji < 6; sji++)
-          top.OldChat[j] += timestamp;
-        top.OldChat[j] += "&nbsp;" + top.tradez[sji] + "crafting: " + mc(tempypoo[sji]) + "<br>";
+          top.OldChat[j] += "&nbsp;" + top.tradez[sji] + "crafting: " + mc(tempypoo[sji]) + "<br>";
         for (sji = 0; sji < 6; sji++) {
-          top.OldChat[j] += timestamp;
           top.OldChat[j] += "&nbsp;" + top.subz[sji] + "working: " + mc(tempypoo[sji + 6]);
           if (sji != 5)
             top.OldChat[j] += "<br>";

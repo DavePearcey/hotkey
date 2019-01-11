@@ -58,6 +58,16 @@ var donor_names = [{
 ];
 var mod_chat = true;
 
+function toggle_chatmod() {
+  if (mod_chat) {
+    mod_chat = false;
+    domes("No longer modding chat.");
+  } else {
+    mod_chat = true;
+    domes("Chat modder enabled");
+  }
+}
+
 var chatmodder = setInterval(() => {
   if (mod_chat) {
     for (let x = 0; x != 1; x++) {

@@ -227,14 +227,14 @@ function upchat(thecdata) {
       top.OldChat[j] = "";
   }
 
+  if (!mod_chat) {
+    timestamp = "";
+  }
+
   for (let i = 0; i < 5; i++) {
     if (top.OldChat[i].indexOf('278ec8') == -1 && top.OldChat != "") {
       top.OldChat[i] = timestamp + top.OldChat[i];
     }
-  }
-
-  if (!mod_chat) {
-    timestamp = "";
   }
 
   NewChat = thecdata.split("|");

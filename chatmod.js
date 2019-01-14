@@ -54,6 +54,26 @@ var donor_names = [{
     "name": "Ramza",
     "color": "7cec0f",
     "expire": "never"
+  },
+  {
+    "name": "Grelgor",
+    "color": "000000",
+    "expire": "2/14/19"
+  },
+  {
+    "name": "Mert",
+    "color": "c55f32",
+    "expire": "2/14/19"
+  },
+  {
+    "name": "Sweet Zombie Jesus",
+    "color": "a55ba4",
+    "expire": "2/14/19"
+  },
+  {
+    "name": "Risk",
+    "color": "e000c1",
+    "expire": "2/14/19"
   }
 ];
 var mod_chat = true;

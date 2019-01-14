@@ -1,12 +1,14 @@
 #!/bin/bash
 
 set -e
-git add *
-git commit -m "Updating and pushing to s3"
-git push
+if [[ "$1" == "push" ]]; then
+  git add *
+  git commit -m "Updating and pushing to s3"
+  git push
+fi
 
-if [[ -z $1 ]]; then
-  $1="Addon Updated"
+if [[ -z $2 ]]; then
+  $2="Addon Updated"
 fi
 
 if [[ "$OS" != "Windows_NT" ]]; then
@@ -18,5 +20,5 @@ else
   aws s3 cp chatmod.js s3://rwk-assets/chatmod.js --cache-control "max-age=0" --acl public-read
   aws s3 cp chatmod.js s3://rwk-assets/enhancements.js --cache-control "max-age=0" --acl public-read 
 fi   
-curl 'http://rwk2.racewarkingdoms.com/cgi-bin/rwk.cgi' --compressed -H 'Referer: http://rwk2.racewarkingdoms.com/cgi-bin/rwk.cgi' -H 'Content-type: application/x-www-form-urlencoded' -H 'Cookie: login=Auctioneer; password=; timing=1262813443.789997' -H 'Connection: keep-alive' --data "login=Auctioneer&timing=undef1262813443.789997&password=testing&action=chat&otherb=none&target=\"$1\"&other=0&"
-curl 'http://rwk1.racewarkingdoms.com/cgi-bin/rwk.cgi' --compressed -H 'Referer: http://rwk1.racewarkingdoms.com/cgi-bin/rwk.cgi' -H 'Content-type: application/x-www-form-urlencoded' -H 'Cookie: login=Auctioneer; password=; timing=1262813443.789997' -H 'Connection: keep-alive' --data "login=Auctioneer&timing=undef1262813443.789997&password=testing&action=chat&otherb=none&target=\"$1\"&other=0&"
+curl 'http://rwk2.racewarkingdoms.com/cgi-bin/rwk.cgi' --compressed -H 'Referer: http://rwk2.racewarkingdoms.com/cgi-bin/rwk.cgi' -H 'Content-type: application/x-www-form-urlencoded' -H 'Cookie: login=Auctioneer; password=; timing=1262813443.789997' -H 'Connection: keep-alive' --data "login=Auctioneer&timing=undef1262813443.789997&password=testing&action=chat&otherb=none&target=$1&other=0&"
+curl 'http://rwk1.racewarkingdoms.com/cgi-bin/rwk.cgi' --compressed -H 'Referer: http://rwk1.racewarkingdoms.com/cgi-bin/rwk.cgi' -H 'Content-type: application/x-www-form-urlencoded' -H 'Cookie: login=Auctioneer; password=; timing=1262813443.789997' -H 'Connection: keep-alive' --data "login=Auctioneer&timing=undef1262813443.789997&password=testing&action=chat&otherb=none&target=$1&other=0&"

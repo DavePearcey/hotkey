@@ -57,7 +57,7 @@ var donor_names = [{
   },
   {
     "name": "Grelgor",
-    "color": "000000",
+    "color": "303030",
     "expire": "2/14/19"
   },
   {

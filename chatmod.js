@@ -257,7 +257,7 @@ function upchat(thecdata) {
     stupid++;
     if (j < NewChat.length - 1) {
       NewChatList = NewChat[j].split("<");
-      top.OldChat[j] = "";
+      top.OldChat[j] = timestamp + "";
       if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2") {
         top.OldChat[j] += "<b><font size=4>";
         if (NewChatList[0] != "6" && NewChatList[0] != "5")
@@ -453,7 +453,7 @@ function upchat(thecdata) {
   NewChat = "";
   for (var j = 0; j < top.ChatSize; j++) {
     if (top.OldChat[j] != "")
-      NewChat += timestamp + "&nbsp;" + top.OldChat[j] + "<br>";
+      NewChat += "&nbsp;" + top.OldChat[j] + "<br>";
   }
   top.frames.main.s_Chat.innerHTML = NewChat;
 }

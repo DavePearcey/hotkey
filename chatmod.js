@@ -257,7 +257,7 @@ function upchat(thecdata) {
     stupid++;
     if (j < NewChat.length - 1) {
       NewChatList = NewChat[j].split("<");
-      top.OldChat[j] = timestamp + "";
+      top.OldChat[j] = `${timestamp} ` + "";
       if (NewChatList[2] == "Glitchless" || NewChatList[2] == "Glitchless2") {
         top.OldChat[j] += "<b><font size=4>";
         if (NewChatList[0] != "6" && NewChatList[0] != "5")

@@ -251,14 +251,6 @@ function upchat(thecdata) {
     timestamp = "";
   }
 
-  if (mod_chat) {
-    for (let i = 0; i < 5; i++) {
-      if (top.OldChat[i].indexOf('278ec8') == -1 && top.OldChat[i] != "" && top.OldChat[i].indexOf("Message sent to") > -1) {
-        top.OldChat[i] = timestamp + top.OldChat[i];
-      }
-    }
-  }
-
   NewChat = thecdata.split("|");
   stupid = 0;
   for (var j = top.ChatSize; j >= 0 && stupid < 310; j--) {

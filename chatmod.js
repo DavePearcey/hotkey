@@ -72,7 +72,7 @@ var donor_names = [{
   },
   {
     "name": "Risk",
-    "color": "e000c1",
+    "color": "FCD71E",
     "expire": "2/14/19"
   }
 ];

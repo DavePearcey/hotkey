@@ -580,7 +580,7 @@ setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
-  domes("You can now use /rwk1 /rwk2 /jimcav & /rwkhelp chat commands to be taken to the pages in a new tab.");
+  domes("Personal Waypoints should now save/load correctly if I coded it right. Slow connections might have an issue with this feature. Let me know if you find an issue.");
   upbuttons();
   maxInv();
 }, 500);

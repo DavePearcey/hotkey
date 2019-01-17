@@ -1791,7 +1791,7 @@ function savePersonalWaypoints(){
 
 function loadPersonalWaypoints(){
   let server;
-  if (location.host.indexOf("rwk1") == -1){
+  if (location.host.indexOf("rwk2") >= 0){
     server = "rwk2"
   } else {
     server = "rwk1"

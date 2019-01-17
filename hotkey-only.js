@@ -749,7 +749,12 @@ document.addEventListener("keydown", (event) => {
         }
       }
     }
+    if (event.keyCode === 109){
+      event.preventDefault();
+      tp.wp.jump1();
+    }
   }
+
 });
 
 function peaValue() {

@@ -1785,10 +1785,10 @@ function loadPersonalWaypoints(){
   xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
           let waypoints = this.responseText.split(";");
-          tp.wp.loc_1 = waypoints[0];
-          tp.wp.loc_2 = waypoints[1];
-          tp.wp.loc_3 = waypoints[2];
-          tp.wp.loc_4 = waypoints[3];
+          tp.wp.loc_1 = waypoints[0].split(",");
+          tp.wp.loc_2 = waypoints[1].split(",");;
+          tp.wp.loc_3 = waypoints[2].split(",");;
+          tp.wp.loc_4 = waypoints[3].split(",");;
           domes("Player waypoints have been loaded");
       }
   }

@@ -279,6 +279,12 @@ var tp = {
       domes("Waypoint has been set to " + tp.wp.loc_4[0] + "," + tp.wp.loc_4[1]);
       savePersonalWaypoints();
     },
+    load: () => {
+      loadPersonalWaypoints();
+    },
+    save: () => {
+      savePersonalWaypoints();
+    },
   }
 }
 
@@ -372,6 +378,12 @@ function porter(location) {
     case "set3":
       tp.wp.set3();
       break;
+    case "load":
+      tp.wp.load();
+    break;
+    case "save":
+      tp.wp.save();
+    break;
 
     default:
       //No matching case found. Where did you try to go?
@@ -1208,6 +1220,8 @@ var mainLoad = (function () {
                                                             <option value="set1">Set 1</option>
                                                             <option value="set2">Set 2</option>
                                                             <option value="set3">Set 3</option>
+                                                            <option value="load">Load Waypoints</option>
+                                                            <option value="save">Save Waypoints</option>
                                                         </optgroup>
                                                     </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
                                                 </div>

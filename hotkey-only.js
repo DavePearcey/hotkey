@@ -1179,6 +1179,17 @@ var mainLoad = (function () {
                                             <td>
                                                 <div id="waypoint-menu" hidden>
                                                     Waypoints: <select id="waypoints">
+                                                        <optgroup label="PERSONAL">
+                                                            <option value="jump1">Personal 1</option>
+                                                            <option value="jump2">Personal 2</option>
+                                                            <option value="jump3">Personal 3</option>
+                                                            <option value="jump4">Return</option>
+                                                            <option value="set1">Set 1</option>
+                                                            <option value="set2">Set 2</option>
+                                                            <option value="set3">Set 3</option>
+                                                            <option value="load">Load Waypoints</option>
+                                                            <option value="save">Save Waypoints</option>
+                                                        </optgroup>
                                                         <optgroup label="HEAVEN">
                                                             <option value="palace">Forbidden Palace</option>
                                                             <option value="vkeep">Heaven Keep</option>
@@ -1211,17 +1222,6 @@ var mainLoad = (function () {
                                                             <option value="dungeon">Dungeon Entrance</option>
                                                             <option value="lake">Heaven Lake</option>
                                                             <option value="temple">The Temple</option>
-                                                        </optgroup>
-                                                        <optgroup label="PERSONAL">
-                                                            <option value="jump1">Personal 1</option>
-                                                            <option value="jump2">Personal 2</option>
-                                                            <option value="jump3">Personal 3</option>
-                                                            <option value="jump4">Return</option>
-                                                            <option value="set1">Set 1</option>
-                                                            <option value="set2">Set 2</option>
-                                                            <option value="set3">Set 3</option>
-                                                            <option value="load">Load Waypoints</option>
-                                                            <option value="save">Save Waypoints</option>
                                                         </optgroup>
                                                     </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
                                                 </div>

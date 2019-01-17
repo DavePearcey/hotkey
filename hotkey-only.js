@@ -262,18 +262,22 @@ var tp = {
     set1: () => {
       tp.wp.loc_1 = [parseInt(top.LocX), parseInt(top.LocY)];
       domes("Waypoint has been set to " + tp.wp.loc_1[0] + "," + tp.wp.loc_1[1]);
+      savePersonalWaypoints();
     },
     set2: () => {
       tp.wp.loc_2 = [parseInt(top.LocX), parseInt(top.LocY)];
       domes("Waypoint has been set to " + tp.wp.loc_2[0] + "," + tp.wp.loc_2[1]);
+      savePersonalWaypoints();
     },
     set3: () => {
       tp.wp.loc_3 = [parseInt(top.LocX), parseInt(top.LocY)];
       domes("Waypoint has been set to " + tp.wp.loc_3[0] + "," + tp.wp.loc_3[1]);
+      savePersonalWaypoints();
     },
     set4: () => {
       tp.wp.loc_4 = [parseInt(top.LocX), parseInt(top.LocY)];
       domes("Waypoint has been set to " + tp.wp.loc_4[0] + "," + tp.wp.loc_4[1]);
+      savePersonalWaypoints();
     },
   }
 }
@@ -1045,6 +1049,7 @@ function toggle_newbar() {
 }
 
 var mainLoad = (function () {
+  loadPersonalWaypoints();
   document.getElementsByTagName('tbody')[1].innerHTML = `<tbody>
   <tr>
     <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
@@ -1194,6 +1199,15 @@ var mainLoad = (function () {
                                                             <option value="dungeon">Dungeon Entrance</option>
                                                             <option value="lake">Heaven Lake</option>
                                                             <option value="temple">The Temple</option>
+                                                        </optgroup>
+                                                        <optgroup label="PERSONAL">
+                                                            <option value="jump1">Personal 1</option>
+                                                            <option value="jump2">Personal 2</option>
+                                                            <option value="jump3">Personal 3</option>
+                                                            <option value="jump4">Return</option>
+                                                            <option value="set1">Set 1</option>
+                                                            <option value="set2">Set 2</option>
+                                                            <option value="set3">Set 3</option>
                                                         </optgroup>
                                                     </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
                                                 </div>
@@ -1734,4 +1748,36 @@ setTimeout(() => {
 }, 1000);
 
 top.hotlist.unshift('Rune+Keeper');
-top.hotlist.unshift('Nobody');
+top.hotlist.unshift('Nobody');v
+
+function savePersonalWaypoints(){
+  let url = `http://rwkpd.s3.amazonaws.com/${top.login.toLowerCase()}.json`;
+        let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].toString();
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = (request) => {
+            if (request.readyState == 4 && request.status == 200) {
+                domes("Player waypoints saved.");
+            }
+        }
+        xhttp.open('PUT', url, true);
+        xhttp.setRequestHeader('content-type', 'text/plain');
+        xhttp.send(waypoints);
+}
+
+function loadPersonalWaypoints(){
+  let url = `http://rwkpd.s3.amazonaws.com/${top.login.toLowerCase()}.json`;
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          let waypoints = this.responseText.split(",");
+          tp.wp.loc_1 = waypoints[0];
+          tp.wp.loc_2 = waypoints[1];
+          tp.wp.loc_3 = waypoints[2];
+          tp.wp.loc_4 = waypoints[3];
+          domes("Player waypoints have been loaded").
+      }
+  }
+  xhttp.open('GET', url, true);
+  xhttp.send(null);
+}

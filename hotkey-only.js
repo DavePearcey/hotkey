@@ -1765,7 +1765,13 @@ top.hotlist.unshift('Rune+Keeper');
 top.hotlist.unshift('Nobody');v
 
 function savePersonalWaypoints(){
-  let url = `http://rwkpd.s3.amazonaws.com/${top.login.toLowerCase()}.json`;
+  let server;
+  if (location.host.indexOf("rwk1") == -1){
+    server = "rwk2"
+  } else {
+    server = "rwk1"
+  }
+  let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
         let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = (request) => {
@@ -1779,7 +1785,13 @@ function savePersonalWaypoints(){
 }
 
 function loadPersonalWaypoints(){
-  let url = `http://rwkpd.s3.amazonaws.com/${top.login.toLowerCase()}.json`;
+  let server;
+  if (location.host.indexOf("rwk1") == -1){
+    server = "rwk2"
+  } else {
+    server = "rwk1"
+  }
+  let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
 
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {

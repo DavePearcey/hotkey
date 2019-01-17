@@ -1775,7 +1775,7 @@ function loadPersonalWaypoints(){
           tp.wp.loc_2 = waypoints[1];
           tp.wp.loc_3 = waypoints[2];
           tp.wp.loc_4 = waypoints[3];
-          domes("Player waypoints have been loaded").
+          domes("Player waypoints have been loaded");
       }
   }
   xhttp.open('GET', url, true);

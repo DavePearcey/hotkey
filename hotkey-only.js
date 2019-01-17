@@ -1762,7 +1762,7 @@ setTimeout(() => {
 }, 1000);
 
 top.hotlist.unshift('Rune+Keeper');
-top.hotlist.unshift('Nobody');v
+top.hotlist.unshift('Nobody');
 
 function savePersonalWaypoints(){
   let server;

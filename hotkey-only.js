@@ -1752,7 +1752,7 @@ top.hotlist.unshift('Nobody');v
 
 function savePersonalWaypoints(){
   let url = `http://rwkpd.s3.amazonaws.com/${top.login.toLowerCase()}.json`;
-        let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].toString();
+        let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = (request) => {
             if (request.readyState == 4 && request.status == 200) {
@@ -1770,7 +1770,7 @@ function loadPersonalWaypoints(){
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-          let waypoints = this.responseText.split(",");
+          let waypoints = this.responseText.split(";");
           tp.wp.loc_1 = waypoints[0];
           tp.wp.loc_2 = waypoints[1];
           tp.wp.loc_3 = waypoints[2];

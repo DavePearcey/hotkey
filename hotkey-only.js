@@ -1774,8 +1774,8 @@ function savePersonalWaypoints(){
   let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
         let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = (request) => {
-            if (request.readyState == 4 && request.status == 200) {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
                 domes("Player waypoints saved.");
             }
         }

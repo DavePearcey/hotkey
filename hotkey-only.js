@@ -65,15 +65,10 @@ var tp = {
     },
   },
   to: (x, y) => {
-    let action = document.getElementsByName("action")[0].value;
-    let target = document.getElementsByName("target")[0].value;
-    let other = document.getElementsByName("other")[0].value;
-    let othera = document.getElementsByName("othera")[0].value;
     tp.form.act();
     tp.form.x.value = x;
     tp.form.y.value = y;
     tp.form.sub();
-    setAction(action, target, other, othera);
   },
   heaven: {
     palace: () => {

@@ -1802,7 +1802,7 @@ function loadPersonalWaypoints() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let waypoints = this.responseText.split(";");
-      tp.wp.loc_1 = waypoints[0].split(",").toString();
+      tp.wp.loc_1 = waypoints[0].split(",");
       tp.wp.loc_2 = waypoints[1].split(",");
       tp.wp.loc_3 = waypoints[2].split(",");
       tp.wp.loc_4 = waypoints[3].split(",");
@@ -1841,4 +1841,12 @@ function autoFill(info) {
   }
   xhttp.open('PUT', save, true);
   xhttp.send(info[2]);
+}
+
+
+function debugWP(){
+  domes(tp.wp.loc_1)
+  domes(tp.wp.loc_2)
+  domes(tp.wp.loc_3)
+  domes(tp.wp.loc_4)
 }

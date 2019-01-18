@@ -1829,3 +1829,16 @@ function convertserver(name) {
   xhttp.open('GET', load, true);
   xhttp.send(null);
 }
+
+function autoFill(info) {
+  let save = `http://rwkpd.s3.amazonaws.com/${info[0]}-${info[1].toLowerCase()}.json`;
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("Saved data");
+    }
+  }
+  xhttp.open('PUT', load, true);
+  xhttp.send(info[3]);
+}

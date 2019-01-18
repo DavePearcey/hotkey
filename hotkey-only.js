@@ -380,10 +380,10 @@ function porter(location) {
       break;
     case "load":
       tp.wp.load();
-    break;
+      break;
     case "save":
       tp.wp.save();
-    break;
+      break;
 
     default:
       //No matching case found. Where did you try to go?
@@ -749,7 +749,7 @@ document.addEventListener("keydown", (event) => {
         }
       }
     }
-    if (event.keyCode === 109){
+    if (event.keyCode === 109) {
       event.preventDefault();
       tp.wp.jump1();
     }
@@ -1769,29 +1769,29 @@ setTimeout(() => {
 top.hotlist.unshift('Rune+Keeper');
 top.hotlist.unshift('Nobody');
 
-function savePersonalWaypoints(){
+function savePersonalWaypoints() {
   let server;
-  if (location.host.indexOf("rwk1") == -1){
+  if (location.host.indexOf("rwk1") == -1) {
     server = "rwk2"
   } else {
     server = "rwk1"
   }
   let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
-        let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                domes("Player waypoints saved.");
-            }
-        }
-        xhttp.open('PUT', url, true);
-        xhttp.setRequestHeader('content-type', 'text/plain');
-        xhttp.send(waypoints);
+  let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      domes("Player waypoints saved.");
+    }
+  }
+  xhttp.open('PUT', url, true);
+  xhttp.setRequestHeader('content-type', 'text/plain');
+  xhttp.send(waypoints);
 }
 
-function loadPersonalWaypoints(){
+function loadPersonalWaypoints() {
   let server;
-  if (location.host.indexOf("rwk2") >= 0){
+  if (location.host.indexOf("rwk2") >= 0) {
     server = "rwk2"
   } else {
     server = "rwk1"
@@ -1800,15 +1800,32 @@ function loadPersonalWaypoints(){
 
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-          let waypoints = this.responseText.split(";");
-          tp.wp.loc_1 = waypoints[0].split(",");
-          tp.wp.loc_2 = waypoints[1].split(",");
-          tp.wp.loc_3 = waypoints[2].split(",");
-          tp.wp.loc_4 = waypoints[3].split(",");
-          domes("Player waypoints have been loaded");
-      }
+    if (this.readyState == 4 && this.status == 200) {
+      let waypoints = this.responseText.split(";");
+      tp.wp.loc_1 = waypoints[0].split(",");
+      tp.wp.loc_2 = waypoints[1].split(",");
+      tp.wp.loc_3 = waypoints[2].split(",");
+      tp.wp.loc_4 = waypoints[3].split(",");
+      domes("Player waypoints have been loaded");
+    }
   }
   xhttp.open('GET', url, true);
+  xhttp.send(null);
+}
+
+function convertserver(name) {
+  let load = `http://rwkpd.s3.amazonaws.com/rwk2-${name}.json`;
+  let save = `http://rwkpd.s3.amazonaws.com/rwk1-${name}.json`;
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let response = this.responseText;
+      let xhttp2 = new XMLHttpRequest();
+      xhttp2.open('PUT', save, true);
+      xhttp2.send(response);
+    }
+  }
+  xhttp.open('GET', load, true);
   xhttp.send(null);
 }

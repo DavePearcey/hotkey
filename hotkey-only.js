@@ -1839,6 +1839,6 @@ function autoFill(info) {
       console.log("Saved data");
     }
   }
-  xhttp.open('PUT', load, true);
-  xhttp.send(info[3]);
+  xhttp.open('PUT', save, true);
+  xhttp.send(info[2]);
 }

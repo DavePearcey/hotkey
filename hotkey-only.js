@@ -248,16 +248,16 @@ var tp = {
     loc_3: [0, 0],
     loc_4: [0, 0],
     jump1: () => {
-      tp.to(tp.wp.loc_1[0], tp.wp.loc_1[1]);
+      tp.to(parseInt(tp.wp.loc_1[0], 10), parseInt(tp.wp.loc_1[1], 10));
     },
     jump2: () => {
-      tp.to(tp.wp.loc_2[0], tp.wp.loc_2[1]);
+      tp.to(parseInt(tp.wp.loc_2[0], 10), parseInt(tp.wp.loc_2[1], 10));
     },
     jump3: () => {
-      tp.to(tp.wp.loc_3[0], tp.wp.loc_3[1]);
+      tp.to(parseInt(tp.wp.loc_3[0], 10), parseInt(tp.wp.loc_3[1], 10));
     },
     jump4: () => {
-      tp.to(tp.wp.loc_4[0], tp.wp.loc_4[1]);
+      tp.to(parseInt(tp.wp.loc_4[0], 10), parseInt(tp.wp.loc_4[1], 10));
     },
     set1: () => {
       tp.wp.loc_1 = [top.LocX, top.LocY];

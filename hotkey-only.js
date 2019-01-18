@@ -260,22 +260,22 @@ var tp = {
       tp.to(tp.wp.loc_4[0], tp.wp.loc_4[1]);
     },
     set1: () => {
-      tp.wp.loc_1 = [parseInt(top.LocX), parseInt(top.LocY)];
+      tp.wp.loc_1 = [top.LocX, top.LocY];
       domes("Waypoint has been set to " + tp.wp.loc_1[0] + "," + tp.wp.loc_1[1]);
       savePersonalWaypoints();
     },
     set2: () => {
-      tp.wp.loc_2 = [parseInt(top.LocX), parseInt(top.LocY)];
+      tp.wp.loc_2 = [top.LocX, top.LocY];
       domes("Waypoint has been set to " + tp.wp.loc_2[0] + "," + tp.wp.loc_2[1]);
       savePersonalWaypoints();
     },
     set3: () => {
-      tp.wp.loc_3 = [parseInt(top.LocX), parseInt(top.LocY)];
+      tp.wp.loc_3 = [top.LocX, top.LocY];
       domes("Waypoint has been set to " + tp.wp.loc_3[0] + "," + tp.wp.loc_3[1]);
       savePersonalWaypoints();
     },
     set4: () => {
-      tp.wp.loc_4 = [parseInt(top.LocX), parseInt(top.LocY)];
+      tp.wp.loc_4 = [top.LocX, top.LocY];
       domes("Waypoint has been set to " + tp.wp.loc_4[0] + "," + tp.wp.loc_4[1]);
       savePersonalWaypoints();
     },
@@ -1802,7 +1802,7 @@ function loadPersonalWaypoints() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let waypoints = this.responseText.split(";");
-      tp.wp.loc_1 = waypoints[0].split(",");
+      tp.wp.loc_1 = waypoints[0].split(",").toString();
       tp.wp.loc_2 = waypoints[1].split(",");
       tp.wp.loc_3 = waypoints[2].split(",");
       tp.wp.loc_4 = waypoints[3].split(",");

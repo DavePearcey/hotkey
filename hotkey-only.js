@@ -1,4 +1,9 @@
-'use strict'
+/*jshint esversion: 6 */
+
+(function () {
+  'use strict';
+}());
+
 var newbar = true;
 let max_level = 3180;
 
@@ -41,7 +46,7 @@ var fields = {
     other: document.getElementsByName("other")[1],
     othera: document.getElementsByName("othera")[1],
     submit: () => {
-      document.getElementById("s_subbut2").childNodes[0].click()
+      document.getElementById("s_subbut2").childNodes[0].click();
     },
     upaction: () => {
       updateaction(fields.kingdom.action.value, fields.kingdom.form);
@@ -121,6 +126,11 @@ var tp = {
     forge: () => {
       tp.to(141, 146);
     },
+  },
+  forge: {
+    fhermit: () => {
+      tp.tp(24, 32);
+    }
   },
   quest: {
     shore: () => {
@@ -281,7 +291,7 @@ var tp = {
       savePersonalWaypoints();
     },
   }
-}
+};
 
 function randomValue(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -378,6 +388,9 @@ function porter(location) {
       break;
     case "save":
       tp.wp.save();
+      break;
+    case "fhermit":
+      tp.forge.fhermit();
       break;
 
     default:
@@ -510,7 +523,7 @@ function curInv() {
   p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
   p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
   document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory}`;
-};
+}
 
 function maxInv() {
   if (p.current_inventory.includes("11042") || p.current_inventory.includes("11050")) {
@@ -763,7 +776,7 @@ function peaValue() {
     let embezzle = 0;
 
     if (kingdoms >= 1000 && kingdoms < 2499) {
-      corruption = ((500 / kingdoms) + .5);
+      corruption = ((500 / kingdoms) + 0.5);
     } else if (kingdoms >= 2500) {
       corruption = (1750 / kingdoms);
     } else {
@@ -771,9 +784,9 @@ function peaValue() {
     }
 
     if (collectia) {
-      interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1.1);
+      interest = parseFloat(0.0057 * (1 + Math.round((kings - 0.5) / 2) / 100) * 1.1);
     } else {
-      interest = parseFloat(.0057 * (1 + Math.round((kings - .5) / 2) / 100) * 1);
+      interest = parseFloat(0.0057 * (1 + Math.round((kings - 0.5) / 2) / 100) * 1);
     }
 
     embezzle = Math.floor(2000000000 - (2000000000 / Math.pow((1 + (interest * corruption)), hours))) - 10000;
@@ -812,10 +825,10 @@ function update_chanting() {
       relic.push(value);
     }
     if (getitem(value).indexOf("*") > -1 && ((value < 10000 || value > 10999)) && (value < 11000 || value > 11999) && (value < 27000 || value > 27999)) {
-      dirty.push(value)
+      dirty.push(value);
     }
     if (getitem(value).indexOf("*") == -1 && ((value < 10000 || value > 10999)) && (value < 11000 || value > 11999) && (value < 27000 || value > 27999)) {
-      pure.push(value)
+      pure.push(value);
     }
   }
 
@@ -900,11 +913,11 @@ function toggle_chanting() {
   let butt = document.getElementById('chanting');
   if (elem.hidden == true) {
     elem.hidden = false;
-    butt.innerText = "Hide Chanting"
+    butt.innerText = "Hide Chanting";
     update_chanting();
   } else {
     elem.hidden = true;
-    butt.innerText = "Show Chanting"
+    butt.innerText = "Show Chanting";
   }
 }
 
@@ -923,13 +936,13 @@ function toggle_percents() {
 function getPercents() {
   let total = (parseInt(top.Str) + parseInt(top.Dex) + parseInt(top.Agi) + parseInt(top.Dur) + parseInt(top.Ntl) + parseInt(top.Cnc) + parseInt(top.Cnt));
   let percents = {};
-  percents['Str'] = 100 * parseInt(top.Str, 10) / total;
-  percents['Dex'] = 100 * parseInt(top.Dex, 10) / total;
-  percents['Agi'] = 100 * parseInt(top.Agi, 10) / total;
-  percents['Dur'] = 100 * parseInt(top.Dur, 10) / total;
-  percents['Ntl'] = 100 * parseInt(top.Ntl, 10) / total;
-  percents['Cnc'] = 100 * parseInt(top.Cnc, 10) / total;
-  percents['Cnt'] = 100 * parseInt(top.Cnt, 10) / total;
+  percents.Str = 100 * parseInt(top.Str, 10) / total;
+  percents.Dex = 100 * parseInt(top.Dex, 10) / total;
+  percents.Agi = 100 * parseInt(top.Agi, 10) / total;
+  percents.Dur = 100 * parseInt(top.Dur, 10) / total;
+  percents.Ntl = 100 * parseInt(top.Ntl, 10) / total;
+  percents.Cnc = 100 * parseInt(top.Cnc, 10) / total;
+  percents.Cnt = 100 * parseInt(top.Cnt, 10) / total;
   return percents;
 }
 
@@ -945,13 +958,13 @@ function resetStats() {
 
 function setPercents() {
   let percents = getPercents();
-  let str = mc(top.Str) + ": " + percents['Str'].toString().substring(0, 4) + "%";
-  let dex = mc(top.Dex) + ": " + percents['Dex'].toString().substring(0, 4) + "%";
-  let agi = mc(top.Agi) + ": " + percents['Agi'].toString().substring(0, 4) + "%";
-  let dur = mc(top.Dur) + ": " + percents['Dur'].toString().substring(0, 4) + "%";
-  let ntl = mc(top.Ntl) + ": " + percents['Ntl'].toString().substring(0, 4) + "%";
-  let cnc = mc(top.Cnc) + ": " + percents['Cnc'].toString().substring(0, 4) + "%";
-  let cnt = mc(top.Cnt) + ": " + percents['Cnt'].toString().substring(0, 4) + "%";
+  let str = mc(top.Str) + ": " + percents.Str.toString().substring(0, 4) + "%";
+  let dex = mc(top.Dex) + ": " + percents.Dex.toString().substring(0, 4) + "%";
+  let agi = mc(top.Agi) + ": " + percents.Agi.toString().substring(0, 4) + "%";
+  let dur = mc(top.Dur) + ": " + percents.Dur.toString().substring(0, 4) + "%";
+  let ntl = mc(top.Ntl) + ": " + percents.Ntl.toString().substring(0, 4) + "%";
+  let cnc = mc(top.Cnc) + ": " + percents.Cnc.toString().substring(0, 4) + "%";
+  let cnt = mc(top.Cnt) + ": " + percents.Cnt.toString().substring(0, 4) + "%";
 
   top.frames.main.document.getElementById("s_Str").innerText = str;
   top.frames.main.document.getElementById("s_Dex").innerText = dex;
@@ -1030,17 +1043,17 @@ function downdelay() {
   if (!top.Visible && (top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
     if (top.mytodown)
       clearTimeout(top.mytodown);
-    top.mytodown = setTimeout("downdelay()", "1000");
+    top.mytodown = setTimeout(downdelay(), 1000);
     return;
   }
   if ((top.dActionDelay * 100 / top.dActionInc) >= 100) {
-    top.frames.main.s_Response.innerHTML = "<font size=4>Request timed out...check your connection and try again.</font>"
+    top.frames.main.s_Response.innerHTML = "<font size=4>Request timed out...check your connection and try again.</font>";
     top.Update = 0;
     top.dActionDelay = 0;
   } else if ((top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
     if (top.mytodown)
       clearTimeout(top.mytodown);
-    top.mytodown = setTimeout("downdelay()", "100");
+    top.mytodown = setTimeout(downdelay(), 100);
   }
   if (newbar) {
     top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;height:10;background-color:black;"> </progress>`;
@@ -1132,7 +1145,7 @@ var mainLoad = (function () {
     <td background="../top.jpg" align="center" colspan="4"><img border="0" src="../top.jpg" width="44" height="10"></td>
     <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
   </tr>
-  </tbody>`
+  </tbody>`;
   let abc = document.getElementsByTagName('table')[0].childNodes[0];
   let xxz = document.getElementsByTagName('table')[0].childNodes[0].childNodes[2];
   abc.insertBefore(document.createElement("tr"), xxz);
@@ -1213,6 +1226,9 @@ var mainLoad = (function () {
                                                             <option value="lkeep">Hell Keep</option>
                                                             <option value="collector">Ash Collector</option>
                                                             <option value="forge">Forge Entrance</option>
+                                                        </optgroup>
+                                                        <optgroup label="FORGE">
+                                                            <option value="fhermit">Hermit</option>
                                                         </optgroup>
                                                         <optgroup label="QUEST">
                                                             <option value="shore">Hell Shore</option>
@@ -1767,9 +1783,9 @@ top.hotlist.unshift('Nobody');
 function savePersonalWaypoints() {
   let server;
   if (location.host.indexOf("rwk1") == -1) {
-    server = "rwk2"
+    server = "rwk2";
   } else {
-    server = "rwk1"
+    server = "rwk1";
   }
   let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
   let waypoints = [tp.wp.loc_1, tp.wp.loc_2, tp.wp.loc_3, tp.wp.loc_4].join(";");
@@ -1778,7 +1794,7 @@ function savePersonalWaypoints() {
     if (this.readyState == 4 && this.status == 200) {
       domes("Player waypoints saved.");
     }
-  }
+  };
   xhttp.open('PUT', url, true);
   xhttp.setRequestHeader('content-type', 'text/plain');
   xhttp.send(waypoints);
@@ -1787,9 +1803,9 @@ function savePersonalWaypoints() {
 function loadPersonalWaypoints() {
   let server;
   if (location.host.indexOf("rwk2") >= 0) {
-    server = "rwk2"
+    server = "rwk2";
   } else {
-    server = "rwk1"
+    server = "rwk1";
   }
   let url = `http://rwkpd.s3.amazonaws.com/${server}-${top.login.toLowerCase()}.json`;
 
@@ -1803,7 +1819,7 @@ function loadPersonalWaypoints() {
       tp.wp.loc_4 = waypoints[3].split(",");
       domes("Player waypoints have been loaded");
     }
-  }
+  };
   xhttp.open('GET', url, true);
   xhttp.send(null);
 }
@@ -1820,7 +1836,7 @@ function convertserver(name) {
       xhttp2.open('PUT', save, true);
       xhttp2.send(response);
     }
-  }
+  };
   xhttp.open('GET', load, true);
   xhttp.send(null);
 }
@@ -1833,15 +1849,7 @@ function autoFill(info) {
     if (this.readyState == 4 && this.status == 200) {
       console.log("Saved data");
     }
-  }
+  };
   xhttp.open('PUT', save, true);
   xhttp.send(info[2]);
-}
-
-
-function debugWP(){
-  domes(tp.wp.loc_1)
-  domes(tp.wp.loc_2)
-  domes(tp.wp.loc_3)
-  domes(tp.wp.loc_4)
 }

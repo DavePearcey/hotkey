@@ -1065,10 +1065,10 @@ function downdelay() {
 function toggle_newbar() {
   if (newbar) {
     newbar = false;
-    document.getElementById('delay-button').innerText = "New Delay Bar";
+    document.getElementById('delay-button').innerText = "[ New Delay Bar ]";
   } else {
     newbar = true;
-    document.getElementById('delay-button').innerText = "Old Delay Bar";
+    document.getElementById('delay-button').innerText = "[ Old Delay Bar ]";
   }
   updelay();
 }
@@ -1187,66 +1187,57 @@ var mainLoad = (function () {
                         <tr id='tb_1'>
                             <td>
                                 <center>
-                                    <table style='text-align:center;'>
-                                        <tr>
-                                            <td>
-                                                <div id="waypoint-menu" hidden>
-                                                    Waypoints: <select id="waypoints">
-                                                        <optgroup label="PERSONAL">
-                                                            <option value="jump1">Personal 1</option>
-                                                            <option value="jump2">Personal 2</option>
-                                                            <option value="jump3">Personal 3</option>
-                                                            <option value="jump4">Return</option>
-                                                            <option value="set1">Set 1</option>
-                                                            <option value="set2">Set 2</option>
-                                                            <option value="set3">Set 3</option>
-                                                            <option value="load">Load Waypoints</option>
-                                                            <option value="save">Save Waypoints</option>
-                                                        </optgroup>
-                                                        <optgroup label="HEAVEN">
-                                                            <option value="palace">Forbidden Palace</option>
-                                                            <option value="vkeep">Heaven Keep</option>
-                                                            <option value="vcitizen">A Citizen</option>
-                                                        </optgroup>
-                                                        <optgroup label="SKY">
-                                                            <option value="shrine">Skill Shrine</option>
-                                                            <option value="scitizen">A Citizen</option>
-                                                        </optgroup>
-                                                        <optgroup label="SURFACE">
-                                                            <option value="mines">Forbidden Mines</option>
-                                                            <option value="keeper">Ash Keeper</option>
-                                                            <option value="pub">Stallions Pub</option>
-                                                            <option value="puddle">Le Puddle Deep</option>
-                                                            <option value="brawl">Inquest Brawl</option>
-                                                        </optgroup>
-                                                        <optgroup label="DUNGEON">
-                                                            <option value="id">Insane Dungeon</option>
-                                                        </optgroup>
-                                                        <optgroup label="HELL">
-                                                            <option value="lkeep">Hell Keep</option>
-                                                            <option value="collector">Ash Collector</option>
-                                                            <option value="forge">Forge Entrance</option>
-                                                        </optgroup>
-                                                        <optgroup label="FORGE">
-                                                            <option value="fhermit">Hermit</option>
-                                                        </optgroup>
-                                                        <optgroup label="QUEST">
-                                                            <option value="shore">Hell Shore</option>
-                                                            <option value="mountians">Dungeon Mountians</option>
-                                                            <option value="lava">Dungeon Lava</option>
-                                                            <option value="sky">Sky Entrance</option>
-                                                            <option value="dungeon">Dungeon Entrance</option>
-                                                            <option value="lake">Heaven Lake</option>
-                                                            <option value="temple">The Temple</option>
-                                                        </optgroup>
-                                                    </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </center>
-                                </font>
-                                <center>
+                                    <div id="waypoint-menu" hidden>
+                                        Waypoints: <select id="waypoints">
+                                            <optgroup label="PERSONAL">
+                                                <option value="jump1">Personal 1</option>
+                                                <option value="jump2">Personal 2</option>
+                                                <option value="jump3">Personal 3</option>
+                                                <option value="jump4">Return</option>
+                                                <option value="set1">Set 1</option>
+                                                <option value="set2">Set 2</option>
+                                                <option value="set3">Set 3</option>
+                                                <option value="load">Load Waypoints</option>
+                                                <option value="save">Save Waypoints</option>
+                                            </optgroup>
+                                            <optgroup label="HEAVEN">
+                                                <option value="palace">Forbidden Palace</option>
+                                                <option value="vkeep">Heaven Keep</option>
+                                                <option value="vcitizen">A Citizen</option>
+                                            </optgroup>
+                                            <optgroup label="SKY">
+                                                <option value="shrine">Skill Shrine</option>
+                                                <option value="scitizen">A Citizen</option>
+                                            </optgroup>
+                                            <optgroup label="SURFACE">
+                                                <option value="mines">Forbidden Mines</option>
+                                                <option value="keeper">Ash Keeper</option>
+                                                <option value="pub">Stallions Pub</option>
+                                                <option value="puddle">Le Puddle Deep</option>
+                                                <option value="brawl">Inquest Brawl</option>
+                                            </optgroup>
+                                            <optgroup label="DUNGEON">
+                                                <option value="id">Insane Dungeon</option>
+                                            </optgroup>
+                                            <optgroup label="HELL">
+                                                <option value="lkeep">Hell Keep</option>
+                                                <option value="collector">Ash Collector</option>
+                                                <option value="forge">Forge Entrance</option>
+                                            </optgroup>
+                                            <optgroup label="FORGE">
+                                                <option value="fhermit">Hermit</option>
+                                            </optgroup>
+                                            <optgroup label="QUEST">
+                                                <option value="shore">Hell Shore</option>
+                                                <option value="mountians">Dungeon Mountians</option>
+                                                <option value="lava">Dungeon Lava</option>
+                                                <option value="sky">Sky Entrance</option>
+                                                <option value="dungeon">Dungeon Entrance</option>
+                                                <option value="lake">Heaven Lake</option>
+                                                <option value="temple">The Temple</option>
+                                            </optgroup>
+                                        </select><button onclick="porter(document.getElementById('waypoints').value)">Teleport</button>
+                                    </div>
 
                                     <div id='chanting-helper' hidden>
                                         Enchanted Items: <select id='chant-dirty-items'>
@@ -1317,14 +1308,17 @@ var mainLoad = (function () {
                                                 checked></label>
                                         <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                                     </div>
-                                    <button onclick="deposit_gold()">Deposit Max</button>
-                                    <button onclick="embezzle_gold()">Embezzle Max</button>
-                                    <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
-                                    <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
-                                    <button onclick="peaValue();">Calculate Pea</button>
-                                    <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
-                                    <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
-                                    <button onclick="toggle_newbar();" id="delay-button">Old Delay Bar</button>
+                                    <font color="slate">
+                                    <span onclick="deposit_gold()">[ Deposit Max ] </span>
+                                    <span onclick="embezzle_gold()">[ Embezzle Max ] </span>
+                                    <span onclick='toggle_crafting();' id='chb'>[ Show Crafting ] </span>
+                                    <span onclick='toggle_chanting();' id='chanting'>[ Show Chanting ] </span>
+                                    <span onclick="peaValue();">[ Calculate Pea ] </span>
+                                    <span onclick="toggle_waypoints();" id="wpb">[ Show Waypoints ] </span>
+                                    <span onclick="toggle_chatmod();">[ Toggle Chat Mods ] </span>
+                                    <span onclick="toggle_newbar();" id="delay-button">[ Old Delay Bar ] </span>
+                                    <span onclick="ashJunk();" >[ Ash Junk ] </span>
+                                    </font>
                                 </center>
                             </td>
                         </tr>

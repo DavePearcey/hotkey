@@ -1043,7 +1043,9 @@ function downdelay() {
   if (!top.Visible && (top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
     if (top.mytodown)
       clearTimeout(top.mytodown);
-    top.mytodown = setTimeout("downdelay()", 1000);
+    top.mytodown = setTimeout(function () {
+      downdelay();
+    }, 1000);
     return;
   }
   if ((top.dActionDelay * 100 / top.dActionInc) >= 100) {
@@ -1053,7 +1055,9 @@ function downdelay() {
   } else if ((top.dActionDelay * 100 / top.dActionInc) < 100 && top.Update == 1) {
     if (top.mytodown)
       clearTimeout(top.mytodown);
-    top.mytodown = setTimeout("downdelay()", 100);
+    top.mytodown = setTimeout(function () {
+      downdelay();
+    }, 100);
   }
   if (newbar) {
     top.frames.main.s_ActionDelay.innerHTML = `<progress max="${Math.floor(top.ActionInc / 10)}" value="${Math.floor(top.ActionDelay / 10)}" style="width:100%;height:10;background-color:black;"> </progress>`;

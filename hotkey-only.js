@@ -588,7 +588,7 @@ setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
-  domes("You can now ash items by clicking on the Ash Junk items in the addon bar. Use this at your own risk, and at your items risk.");
+  domes("You can now ash items by clicking on the Ash Junk items in the addon bar, or Using 'Q' while hotkeys are active. Use this at your own risk, and at your items risk.");
   upbuttons();
   maxInv();
 }, 500);
@@ -760,6 +760,10 @@ document.addEventListener("keydown", (event) => {
     if (event.keyCode === 109) {
       event.preventDefault();
       tp.wp.jump1();
+    }
+    if (event.keyCode === 81) {
+      event.preventDefault();
+      ashJunk();
     }
   }
 

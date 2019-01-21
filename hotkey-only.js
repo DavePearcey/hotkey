@@ -588,7 +588,7 @@ setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
-  domes("You can now ash items by clicking on the Ash: ## Located beside the inventory counts on player stats. Use this at your own risk, and at your items risk.");
+  domes("You can now ash items by clicking on the Ash Junk items in the addon bar. Use this at your own risk, and at your items risk.");
   upbuttons();
   maxInv();
 }, 500);

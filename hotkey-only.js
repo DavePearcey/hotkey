@@ -746,17 +746,6 @@ function setAction(action = 'fight', target = '0', other = '0', othera = 'none')
 
 document.addEventListener("keydown", (event) => {
   if (HK && !InputHasFocus()) {
-    if (event.keyCode === 87) {
-      event.preventDefault();
-      for (let line of top.OldChat) {
-        if (line.indexOf("<u>PM from</u>") > -1) {
-          let target = line.substring(parseInt(line.indexOf(")>") + 2, 10), parseInt(line.indexOf("</a"), 10));
-          document.getElementById("chattybox").value = `/m ${target}: `;
-          document.getElementById("chattybox").focus();
-          break;
-        }
-      }
-    }
     if (event.keyCode === 109) {
       event.preventDefault();
       tp.wp.jump1();

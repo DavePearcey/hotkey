@@ -435,94 +435,94 @@ function log(message, log_level) {
   upchat('');
 }
 
-function upbuttons() {
-  let tempstr = "";
-
-  if (top.RJ)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rjack\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card24.gif'> ";
-  if (top.BJ)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bjack\") title='Ultra Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card50.gif'> ";
-  if (top.RQ)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rqueen\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card25.gif'> ";
-  if (top.BQ)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bqueen\") title='Negate Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card51.gif'> ";
-  if (top.RK)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rking\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card26.gif'> ";
-  if (top.BK)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bking\") title='Ultra Revive Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card52.gif'> ";
-  if (top.RA)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"race\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card14.gif'> ";
-  if (top.BA)
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bace\") title='Ultra Crit Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card40.gif'> ";
-
-  if (tempstr != "")
-    tempstr = "<img border=0 src='" + top.y + "c.gif' height=8 width=8><img border=0 src='" + top.y + "ButDash.gif'><img border=0 src='" + top.y + "c.gif' height=8 width=8>" + tempstr;
 
 
-  top.frames.main.s_HotCards.innerHTML = tempstr;
-  tempstr = "";
-
-  let yes = 0;
-
-  if (top.Exp >= 100) {
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(0) " + top.hio;
-    if (top.HotLevel == 1) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButStr.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(1) " + top.hio;
-    if (top.HotLevel == 2) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButDex.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(2) " + top.hio;
-    if (top.HotLevel == 3) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButAgi.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(3) " + top.hio;
-    if (top.HotLevel == 4) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButDur.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(4) " + top.hio;
-    if (top.HotLevel == 5) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButNtl.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(5) " + top.hio;
-    if (top.HotLevel == 6) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButCnc.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(6) " + top.hio;
-    if (top.HotLevel == 7) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButCnt.jpg'> ";
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(7) " + top.hio;
-    if (top.HotLevel == 8) tempstr += "width=102 height=54 ";
-    tempstr += "border=0 src='" + top.y + "ButAll.jpg'>";
-    yes = 1;
+function ashJunk() {
+  findJunk();
+  if (junkItems.length > 0) {
+    burnit(junkItems[0]);
+    domes(`Burnt ${getitem(junkItems[0])}`);
+    junkItems = junkItems.splice(1, junkItems.length);
+  } else {
+    domes("No ashable items.");
   }
-  if (top.Health <= 0) {
-    if (yes) tempstr += "<br>";
-    yes = 1;
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=revive() " + top.hio + "border=0 src='" + top.y + "ButRevive.jpg'>";
+}
+
+function findJunk(ret) {
+  junkItems = [];
+  let relics = [
+    35,
+    36,
+    37,
+    38,
+    39,
+    46,
+    47,
+    51,
+    52,
+    53,
+    54,
+    55,
+    58,
+    59,
+    60,
+    64,
+    66,
+    67,
+    68,
+    69,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88
+  ];
+  let equipped_items = [
+    top.Weapon,
+    top.Shield,
+    top.Cast,
+    top.Heal,
+    top.Helmet,
+    top.Mantle,
+    top.Sleeves,
+    top.Leggings,
+    top.Boots,
+    top.Gauntlets
+  ];
+  let inventory = top.Inventory.split("-").filter(e => String(e).trim());
+  for (let i in inventory) {
+    let item = inventory[i];
+    let item_name = getitem(item);
+    if (item_name.indexOf("*") > -1 && (parseInt(item, 10) % 1000 < 70)) {
+      if (relics.indexOf(parseInt(item / 100000, 10) % 100 - 1) < 0) {
+        if (equipped_items.indexOf(item) < 0) {
+          junkItems.push(item);
+        }
+      }
+    }
   }
-
-  if (top.Target != -1) {
-    if (yes) tempstr += "<br>";
-    yes = 1;
-    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"attack\") border=0" + top.hio + "src='" + top.y + "ButAttack.jpg' title='Attack With Both Weapons'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"cast\") border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"defend\") border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-
-    tempstr += " <img border=0 src='" + top.y + "ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
-  }
-
-  top.frames.main.s_FightWin.innerHTML = tempstr;
-  maxInv();
-  curInv();
-  essences();
-  if (percs) {
-    getPercents();
-  }
-  if (top.LastAction == "ts" || top.LastAction == "es" || top.LastAction == "ds") {
-    update_crafted_items();
-    update_chanting();
+  if (ret) {
+    return junkItems.length;
   }
 }
 
 function curInv() {
   p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
   p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
-  document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory}`;
+  document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory} (<span onclick="ashJunk();">Ash: ${findJunk(true)} </span>)`;
 }
 
 function maxInv() {
@@ -588,7 +588,7 @@ setTimeout(function () {
   genfull('chat', '/dis', 0);
   curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
-  domes("Personal Waypoints should now save/load correctly if I coded it right. Slow connections might have an issue with this feature. Let me know if you find an issue.");
+  domes("You can now ash items by clicking on the Ash: ## Located beside the inventory counts on player stats. Use this at your own risk, and at your items risk.");
   upbuttons();
   maxInv();
 }, 500);
@@ -1853,3 +1853,91 @@ function autoFill(info) {
   xhttp.open('PUT', save, true);
   xhttp.send(info[2]);
 }
+
+function upbuttons() {
+  let tempstr = "";
+
+  if (top.RJ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rjack\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card24.gif'> ";
+  if (top.BJ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bjack\") title='Ultra Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card50.gif'> ";
+  if (top.RQ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rqueen\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card25.gif'> ";
+  if (top.BQ)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bqueen\") title='Negate Resist Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card51.gif'> ";
+  if (top.RK)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"rking\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card26.gif'> ";
+  if (top.BK)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bking\") title='Ultra Revive Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card52.gif'> ";
+  if (top.RA)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"race\") title='Ambush Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card14.gif'> ";
+  if (top.BA)
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"bace\") title='Ultra Crit Mode' border=0" + top.hio + "height=24 width=18 src='" + top.y + "card40.gif'> ";
+
+  if (tempstr != "")
+    tempstr = "<img border=0 src='" + top.y + "c.gif' height=8 width=8><img border=0 src='" + top.y + "ButDash.gif'><img border=0 src='" + top.y + "c.gif' height=8 width=8>" + tempstr;
+
+
+  top.frames.main.s_HotCards.innerHTML = tempstr;
+  tempstr = "";
+
+  let yes = 0;
+
+  if (top.Exp >= 100) {
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(0) " + top.hio;
+    if (top.HotLevel == 1) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButStr.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(1) " + top.hio;
+    if (top.HotLevel == 2) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDex.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(2) " + top.hio;
+    if (top.HotLevel == 3) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAgi.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(3) " + top.hio;
+    if (top.HotLevel == 4) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButDur.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(4) " + top.hio;
+    if (top.HotLevel == 5) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButNtl.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(5) " + top.hio;
+    if (top.HotLevel == 6) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnc.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(6) " + top.hio;
+    if (top.HotLevel == 7) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButCnt.jpg'> ";
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=level(7) " + top.hio;
+    if (top.HotLevel == 8) tempstr += "width=102 height=54 ";
+    tempstr += "border=0 src='" + top.y + "ButAll.jpg'>";
+    yes = 1;
+  }
+  if (top.Health <= 0) {
+    if (yes) tempstr += "<br>";
+    yes = 1;
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=revive() " + top.hio + "border=0 src='" + top.y + "ButRevive.jpg'>";
+  }
+
+  if (top.Target != -1) {
+    if (yes) tempstr += "<br>";
+    yes = 1;
+    tempstr += "<img style=\"cursor: pointer;\" onmousedown=gattack(\"attack\") border=0" + top.hio + "src='" + top.y + "ButAttack.jpg' title='Attack With Both Weapons'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"cast\") border=0" + top.hio + "src='" + top.y + "ButCast.jpg' title='Cast With Both Spells'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"lattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid1.jpg' title='Left Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"rattack\") border=0" + top.hio + "src='" + top.y + "ButHybrid2.jpg' title='Right Weapon and Spell'> <img style=\"cursor: pointer;\" onmousedown=gattack(\"defend\") border=0" + top.hio + "src='" + top.y + "ButDefend.jpg' title='Defend'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+
+    tempstr += " <img border=0 src='" + top.y + "ButVs.jpg'> <a href=javascript:pm('" + mp(top.Target) + "')>" + getcreature(top.Target) + "</a>";
+  }
+
+  top.frames.main.s_FightWin.innerHTML = tempstr;
+  maxInv();
+  curInv();
+  essences();
+  if (percs) {
+    getPercents();
+  }
+  if (top.LastAction == "ts" || top.LastAction == "es" || top.LastAction == "ds") {
+    update_crafted_items();
+    update_chanting();
+  }
+}
+
+upchat("");
+up("");
+upbuttons();

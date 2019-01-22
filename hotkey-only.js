@@ -1169,7 +1169,7 @@ var mainLoad = (function () {
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
-    background-color: slate;
+    background-color: #778899;
   }
 
   optgroup {

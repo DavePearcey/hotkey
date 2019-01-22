@@ -1165,6 +1165,12 @@ var mainLoad = (function () {
   background-color: #181817;
   }
 
+  button {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+  }
+
   optgroup {
     background-color: #343330;
     color: #bda14c;

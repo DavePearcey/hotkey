@@ -1074,10 +1074,10 @@ function downdelay() {
 function toggle_newbar() {
   if (newbar) {
     newbar = false;
-    document.getElementById('delay-button').innerText = "[ New Delay Bar ]";
+    document.getElementById('delay-button').innerText = "New Delay Bar";
   } else {
     newbar = true;
-    document.getElementById('delay-button').innerText = "[ Old Delay Bar ]";
+    document.getElementById('delay-button').innerText = "Old Delay Bar";
   }
   updelay();
 }
@@ -1318,15 +1318,15 @@ var mainLoad = (function () {
                                         <label>SoC<input type='checkbox' id="hide-soc" onclick="update_crafted_items();"></label>
                                     </div>
                                     <font color="slate">
-                                    <span onclick="deposit_gold()">[ Deposit Max ] </span>
-                                    <span onclick="embezzle_gold()">[ Embezzle Max ] </span>
-                                    <span onclick='toggle_crafting();' id='chb'>[ Show Crafting ] </span>
-                                    <span onclick='toggle_chanting();' id='chanting'>[ Show Chanting ] </span>
-                                    <span onclick="peaValue();">[ Calculate Pea ] </span>
-                                    <span onclick="toggle_waypoints();" id="wpb">[ Show Waypoints ] </span>
-                                    <span onclick="toggle_chatmod();">[ Toggle Chat Mods ] </span>
-                                    <span onclick="toggle_newbar();" id="delay-button">[ Old Delay Bar ] </span>
-                                    <span onclick="ashJunk();" >[ Ash Junk ] </span>
+                                    <button onclick="deposit_gold()">Deposit Max</button>
+                                    <button onclick="embezzle_gold()">Embezzle Max</button>
+                                    <button onclick='toggle_crafting();' id='chb'>Show Crafting</button>
+                                    <button onclick='toggle_chanting();' id='chanting'>Show Chanting</button>
+                                    <button onclick="peaValue();">Calculate Pea</button>
+                                    <button onclick="toggle_waypoints();" id="wpb">Show Waypoints</button>
+                                    <button onclick="toggle_chatmod();">Toggle Chat Mods</button>
+                                    <button onclick="toggle_newbar();" id="delay-button">Old Delay Bar</button>
+                                    <button onclick="ashJunk();" >Ash Junk</button>
                                     </font>
                                 </center>
                             </td>

@@ -519,6 +519,18 @@ function findJunk(ret) {
   }
 }
 
+function getEnch(itemnumber) {
+  return parseInt(itemnumber / 100000, 10) % 100 - 1;
+}
+
+function getType(itemnumber) {
+  return parseInt(itemnumber / 1000, 10) % 100;
+}
+
+function getValue(itemnumber) {
+  return parseInt(itemnumber, 10) % 1000;
+}
+
 function curInv() {
   p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
   p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
@@ -1932,3 +1944,29 @@ function upbuttons() {
 upchat("");
 up("");
 upbuttons();
+
+/*
+function testItem(itemnumber) {
+  let equipped_items = [
+    top.Weapon,
+    top.Shield,
+    top.Cast,
+    top.Heal,
+    top.Helmet,
+    top.Mantle,
+    top.Sleeves,
+    top.Leggings,
+    top.Boots,
+    top.Gauntlets
+  ];
+  if (getType(itemnumber) != 11 || getType(itemnumber) != 27) {
+    if (getEnch(itemnumber) != -1) {
+      if (getValue(itemnumber) < 70) {
+        if (!equipped_items.includes(itemnumber)) {
+          domes(getitem(itemnumber));
+        }
+      }
+    }
+  }
+}
+*/

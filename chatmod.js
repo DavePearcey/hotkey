@@ -76,7 +76,7 @@ var donor_names = [{
     "expire": "2/14/19"
   },
   {
-    "name": "Hazonoko",
+    "name": "Hazonko",
     "color": "8E7FF1",
     "expire": "2/24/19"
   }

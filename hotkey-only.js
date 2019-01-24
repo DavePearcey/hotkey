@@ -1161,8 +1161,8 @@ var mainLoad = (function () {
   abc.id = 'addon-tr';
   var styler = document.createElement('style');
   styler.innerHTML = `select {
-  color: #fafaf8;
-  background-color: #181817;
+    background-color: #343330;
+    color: #bda14c;
   }
 
   button {

@@ -1045,8 +1045,6 @@ function updelay() {
     top.frames.main.s_ActionDelay.innerHTML = "<table border=0 width='100%' cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "ml.jpg'></td><td width=" + (top.ActionDelay * 100 / top.ActionInc) + "% background='" + top.y + "mfa.jpg' align=right></td><td width=" + (100 - (top.ActionDelay * 100 / top.ActionInc)) + "% background='" + top.y + "mee.jpg'></td><td width=0 bgcolor=0><img border=0 height=15 width=11 src='" + top.y + "mr.jpg'></td></tr></table>";
   }
 }
-updelay();
-
 
 function downdelay() {
   if (top.Update != 1) {
@@ -1089,7 +1087,6 @@ function toggle_newbar() {
   }
   updelay();
 }
-
 
 var mainLoad = (function () {
   loadPersonalWaypoints();
@@ -1956,5 +1953,6 @@ function upbuttons() {
 upchat("");
 up("");
 upbuttons();
+updelay();
 top.hotlist.unshift('Rune+Keeper');
 top.hotlist.unshift('Nobody');

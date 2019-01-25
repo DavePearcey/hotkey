@@ -534,14 +534,6 @@ function getValue(itemnumber) {
 function curInv() {
   p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
   p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
-  let quest_items = 0;
-  top.inventory.forEach(item => {
-    if (getType(item) == 11) {
-      quest_items++;
-    }
-  });
-
-  p.max_inventory = p.max_inventory - quest_items;
   document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory} (<span onclick="ashJunk();">Ash: ${findJunk(true)} </span>)`;
 }
 
@@ -555,6 +547,15 @@ function maxInv() {
   if (p.current_inventory.includes("11110")) {
     p.max_inventory = 165;
   }
+
+  let quest_items = 0;
+  top.inventory.forEach(item => {
+    if (getType(item) == 11) {
+      quest_items++;
+    }
+  });
+
+  p.max_inventory = p.max_inventory - quest_items;
 }
 
 function essences() {
@@ -1943,7 +1944,6 @@ function upbuttons() {
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
-  maxInv();
   curInv();
   essences();
   if (percs) {

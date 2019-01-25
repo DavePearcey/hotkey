@@ -531,33 +531,6 @@ function getValue(itemnumber) {
   return parseInt(itemnumber, 10) % 1000;
 }
 
-function curInv() {
-  p.current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
-  p.current_inventory_length = top.Inventory.split("-").filter(e => String(e).trim()).length;
-  document.getElementById("inv_Space").innerHTML = `${p.current_inventory_length}/${p.max_inventory} (<span onclick="ashJunk();">Ash: ${findJunk(true)} </span>)`;
-}
-
-function maxInv() {
-  if (p.current_inventory.includes("11042") || p.current_inventory.includes("11050")) {
-    p.max_inventory = 75;
-  }
-  if (p.current_inventory.includes("11082") || p.current_inventory.includes("11087")) {
-    p.max_inventory = 90;
-  }
-  if (p.current_inventory.includes("11110")) {
-    p.max_inventory = 165;
-  }
-
-  let quest_items = 0;
-  top.inventory.forEach(item => {
-    if (getType(item) == 11) {
-      quest_items++;
-    }
-  });
-
-  p.max_inventory = p.max_inventory - quest_items;
-}
-
 function essences() {
   let eeot = 0;
   let eeogt = 0;
@@ -606,11 +579,9 @@ function essences() {
 
 setTimeout(function () {
   genfull('chat', '/dis', 0);
-  curInv();
   domes('Addon Version:' + p.version + ' Loaded successfully.');
   domes("You can now ash items by clicking on the Ash Junk items in the addon bar, or Using 'Q' while hotkeys are active. Use this at your own risk, and at your items risk.");
   upbuttons();
-  maxInv();
 }, 500);
 
 function craft() {
@@ -1939,7 +1910,6 @@ function upbuttons() {
   }
 
   top.frames.main.s_FightWin.innerHTML = tempstr;
-  curInv();
   essences();
   if (percs) {
     getPercents();
@@ -1948,6 +1918,33 @@ function upbuttons() {
     update_crafted_items();
     update_chanting();
   }
+  genInventoryDisplay();
+}
+
+
+function genInventoryDisplay() {
+  let current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
+  let inv_count = current_inventory.length;
+  let quest_items = 0;
+  let max_inventory = 50;
+
+  if (current_inventory.includes("11042") || current_inventory.includes("11050")) {
+    max_inventory = 75;
+  }
+  if (current_inventory.includes("11082") || current_inventory.includes("11087")) {
+    max_inventory = 90;
+  }
+  if (current_inventory.includes("11110")) {
+    max_inventory = 165;
+  }
+
+  top.inventory.forEach(item => {
+    if (getType(item) == 11) {
+      quest_items++;
+    }
+  });
+
+  document.getElementById("inv_Space").innerText = `${inv_count - quest_items}/${max_inventory - quest_items} Ashable: ${findJunk(true)}`
 }
 
 upchat("");

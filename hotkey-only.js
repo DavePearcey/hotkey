@@ -1796,9 +1796,6 @@ setTimeout(() => {
   update_crafted_items();
 }, 1000);
 
-top.hotlist.unshift('Rune+Keeper');
-top.hotlist.unshift('Nobody');
-
 function savePersonalWaypoints() {
   let server;
   if (location.host.indexOf("rwk1") == -1) {
@@ -1959,29 +1956,5 @@ function upbuttons() {
 upchat("");
 up("");
 upbuttons();
-
-/*
-function testItem(itemnumber) {
-  let equipped_items = [
-    top.Weapon,
-    top.Shield,
-    top.Cast,
-    top.Heal,
-    top.Helmet,
-    top.Mantle,
-    top.Sleeves,
-    top.Leggings,
-    top.Boots,
-    top.Gauntlets
-  ];
-  if (getType(itemnumber) != 11 || getType(itemnumber) != 27) {
-    if (getEnch(itemnumber) != -1) {
-      if (getValue(itemnumber) < 70) {
-        if (!equipped_items.includes(itemnumber)) {
-          domes(getitem(itemnumber));
-        }
-      }
-    }
-  }
-}
-*/
+top.hotlist.unshift('Rune+Keeper');
+top.hotlist.unshift('Nobody');

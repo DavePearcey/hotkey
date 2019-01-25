@@ -1921,7 +1921,6 @@ function upbuttons() {
   genInventoryDisplay();
 }
 
-
 function genInventoryDisplay() {
   let current_inventory = top.Inventory.split("-").filter(e => String(e).trim());
   let inv_count = current_inventory.length;

@@ -540,6 +540,8 @@ function essences() {
   let emerald = 0;
   let fire = 0;
   let ice = 0;
+  let tects = 0;
+  let stones = 0;
   let light = 0;
   let blood = 0;
   let lava = 0;

@@ -1175,7 +1175,7 @@ var mainLoad = (function () {
   <tr>
     <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Space</a>: <span id="inv_Space"> </span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">War</a>: <span id="s_War">T: 0 | S: 0 </span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Treasure</a>: <span id="s_Treasure">T: 0 | GT: 0 | ST: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Tres</a>: <span id="s_Treasure">T: 0 | GT: 0 | ST: 0</span></td>
     <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Gems</a>: <span id="s_Gems">E: 0 | S: 0 | R: 0</span></td>
   </tr>
   <tr>

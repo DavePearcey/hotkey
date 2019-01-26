@@ -538,43 +538,93 @@ function essences() {
   let ruby = 0;
   let sapphire = 0;
   let emerald = 0;
+  let fire = 0;
+  let ice = 0;
+  let light = 0;
+  let blood = 0;
+  let lava = 0;
+  let storm = 0;
+  let shards = 0;
+  let flames = 0;
   for (let i in top.inventory) {
-    switch (parseInt(top.inventory[i])) {
-      case 27018:
-        eeot++;
-        break;
-      case 27019:
-        eeogt++;
-        break;
-      case 27030:
-        eeost++;
-        break;
-      case 27027:
-        ruby++;
-        break;
-      case 27028:
-        sapphire++;
-        break;
-      case 27029:
-        emerald++;
-        break;
-      case 27031:
-        ruby += 32;
-        break;
-      case 27032:
-        sapphire += 32;
-        break;
-      case 27033:
-        emerald += 32;
-        break;
+    if (getType == 27) {
+      switch (parseInt(top.inventory[i])) {
+        case 27000:
+          fire++;
+          break;
+        case 27001:
+          light++;
+          break;
+        case 27002:
+          ice++;
+          break;
+        case 27003:
+          lava++;
+          break;
+        case 27004:
+          storm++;
+          break;
+        case 27005:
+          blood++;
+          break;
+        case 27020:
+          tect++;
+          break;
+        case 27021:
+          stone++;
+          break;
+        case 27022:
+          flames++;
+          break;
+        case 27023:
+          shards++;
+          break;
+        case 27024:
+          storm++;
+          break;
+        case 27018:
+          eeot++;
+          break;
+        case 27019:
+          eeogt++;
+          break;
+        case 27030:
+          eeost++;
+          break;
+        case 27027:
+          ruby++;
+          break;
+        case 27028:
+          sapphire++;
+          break;
+        case 27029:
+          emerald++;
+          break;
+        case 27031:
+          ruby += 32;
+          break;
+        case 27032:
+          sapphire += 32;
+          break;
+        case 27033:
+          emerald += 32;
+          break;
+      }
     }
   }
-  document.getElementById('s_Eeot').innerHTML = eeot;
-  document.getElementById('s_Eeogt').innerHTML = eeogt;
-  document.getElementById('s_Eeost').innerHTML = eeost;
-  document.getElementById('s_Ruby').innerHTML = ruby;
-  document.getElementById('s_Sapphire').innerHTML = sapphire;
-  document.getElementById('s_Emerald').innerHTML = emerald;
+  let pe_html = `L: ${lava} | B: ${blood} | S: ${storm}`;
+  let ut_html = `F: ${fire} | L: ${light} | I: ${ice}`;
+  let de_html = `ST: ${storm} | FL: ${flames} | SH: ${shards}`;
+  let ts_html = `T: ${tects} | S: ${stones}`;
+  let tres_html = `T: ${eeot} | GT: ${eeogt} | ST: ${eeost}`;
+  let gem_html = `E: ${emerald} | S: ${sapphire} | R: ${ruby}`;
+
+  document.getElementById('s_Pe').innerHTML = pe_html;
+  document.getElementById('s_Ut').innerHTML = ut_html;
+  document.getElementById('s_De').innerHTML = de_html;
+  document.getElementById('s_War').innerHTML = ts_html;
+  document.getElementById('s_Treasure').innerHTML = tres_html;
+  document.getElementById('s_Gems').innerHTML = gem_html;
 }
 
 setTimeout(function () {
@@ -1115,16 +1165,16 @@ var mainLoad = (function () {
     <td width="25%" bgcolor="0"> <a target="_blank" href="../info.htm#cnt">Cnt</a>: <span id="s_Cnt">${mc(top.Cnt)}</span></td>
   </tr>
   <tr>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">Inventory Counts</a>: </td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoT</a>: <span id="s_Eeot">0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoGT</a>: <span id="s_Eeogt">0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://rwkservice.com/quests.htm#treasures">EEoST</a>: <span id="s_Eeost">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Essence Counts</a>: </td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">PEs</a>: <span id="s_Eeot">L: 0 | B: 0 | S: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">UTs</a>: <span id="s_Eeogt">T: F | L: 0 | I: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">DEs</a>: <span id="s_Eeost">ST: 0 | FL: 0 | SH: 0</span></td>
   </tr>
   <tr>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Space</a>: <span id="inv_Space"> </span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Ruby</a>: <span id="s_Ruby">0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Emerald</a>: <span id="s_Emerald">0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="https://www.reddit.com/r/rwk/comments/6m8lux/the_forge_major_update/">Sapphire</a>: <span id="s_Sapphire">0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Space</a>: <span id="inv_Space"> </span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">War</a>: <span id="s_War">T: 0 | S: 0 </span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Treasure</a>: <span id="s_Treasure">T: 0 | GT: 0 | ST: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Gems</a>: <span id="s_Gems">E: 0 | S: 0 | R: 0</span></td>
   </tr>
   <tr>
     <td width="0" height="0"><img border="0" src="../corner.jpg" width="10" height="10"></td>
@@ -1943,7 +1993,7 @@ function genInventoryDisplay() {
     }
   });
 
-  document.getElementById("inv_Space").innerText = `${inv_count - quest_items}/${max_inventory - quest_items} Ashable: ${findJunk(true)}`
+  document.getElementById("inv_Space").innerText = `${inv_count - quest_items}/${max_inventory - quest_items} Ashable: ${findJunk(true)}`;
 }
 
 upchat("");

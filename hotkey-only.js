@@ -549,6 +549,7 @@ function essences() {
   let shards = 0;
   let flames = 0;
   let storms = 0;
+
   for (let i in top.inventory) {
     if (getType(top.inventory[i]) == 27) {
       switch (parseInt(top.inventory[i])) {
@@ -590,6 +591,12 @@ function essences() {
           break;
         case 27019:
           eeogt++;
+          break;
+        case 27020:
+          tect++;
+          break;
+        case 27021:
+          stone++;
           break;
         case 27030:
           eeost++;

@@ -549,7 +549,7 @@ function essences() {
   let shards = 0;
   let flames = 0;
   for (let i in top.inventory) {
-    if (getType == 27) {
+    if (getType(top.inventory[i]) == 27) {
       switch (parseInt(top.inventory[i])) {
         case 27000:
           fire++;

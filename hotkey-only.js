@@ -548,6 +548,7 @@ function essences() {
   let storm = 0;
   let shards = 0;
   let flames = 0;
+  let storms = 0;
   for (let i in top.inventory) {
     if (getType(top.inventory[i]) == 27) {
       switch (parseInt(top.inventory[i])) {
@@ -582,7 +583,7 @@ function essences() {
           shards++;
           break;
         case 27024:
-          storm++;
+          storms++;
           break;
         case 27018:
           eeot++;
@@ -616,7 +617,7 @@ function essences() {
   }
   let pe_html = `L: ${lava} | B: ${blood} | S: ${storm}`;
   let ut_html = `F: ${fire} | L: ${light} | I: ${ice}`;
-  let de_html = `ST: ${storm} | FL: ${flames} | SH: ${shards}`;
+  let de_html = `ST: ${storms} | FL: ${flames} | SH: ${shards}`;
   let ts_html = `T: ${tects} | S: ${stones}`;
   let tres_html = `T: ${eeot} | GT: ${eeogt} | ST: ${eeost}`;
   let gem_html = `E: ${emerald} | S: ${sapphire} | R: ${ruby}`;

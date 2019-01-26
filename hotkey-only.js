@@ -5,7 +5,7 @@
 }());
 
 var newbar = true;
-let max_level = 3180;
+let max_level = 3190;
 
 var p = {
   version: "13",

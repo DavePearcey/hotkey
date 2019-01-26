@@ -1168,9 +1168,9 @@ var mainLoad = (function () {
   </tr>
   <tr>
     <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Essence Counts</a>: </td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">PEs</a>: <span id="s_Eeot">L: 0 | B: 0 | S: 0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">UTs</a>: <span id="s_Eeogt">T: F | L: 0 | I: 0</span></td>
-    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">DEs</a>: <span id="s_Eeost">ST: 0 | FL: 0 | SH: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">PEs</a>: <span id="s_Pe">L: 0 | B: 0 | S: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">UTs</a>: <span id="s_Ut">T: F | L: 0 | I: 0</span></td>
+    <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">DEs</a>: <span id="s_De">ST: 0 | FL: 0 | SH: 0</span></td>
   </tr>
   <tr>
     <td width="25%" bgcolor="0"> <a target="_blank" href="http://jimcav.com">Space</a>: <span id="inv_Space"> </span></td>

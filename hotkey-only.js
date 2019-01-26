@@ -8,7 +8,7 @@ var newbar = true;
 let max_level = 3180;
 
 var p = {
-  version: "12",
+  version: "13",
   pwps: [0, 0, 0, 0],
   current_inventory: [],
   current_inventory_length: 0,
@@ -570,7 +570,7 @@ function essences() {
           blood++;
           break;
         case 27020:
-          tect++;
+          tects++;
           break;
         case 27021:
           stone++;

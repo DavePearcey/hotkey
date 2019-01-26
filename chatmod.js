@@ -559,7 +559,7 @@ function pollzero(gg, override, viahotkey) {
     }
     if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "m" && gg.target.value.charAt(2) != "e") {
       domes("<font color=#C1B95F>Message sent to</font> " + gg.target.value.substring(3, gg.target.value.length));
-    } else if (gg.target.value.charAt(0) == "/" && gg.target.value.length < 24 && viahotkey === undefined && gg.target.value.indexOf('/a') == -1) {
+    } else if (gg.target.value.charAt(0) == "/" && gg.target.value.length < 24 && viahotkey === undefined) {
       var newact = "<input type=button value='" + gg.target.value + "' onClick=\"genfull('chat','" + gg.target.value + "',0)\" STYLE='cursor: pointer;font-size:8pt; background-color:000000; color:ABB5BF'>";
       if (gg.target.value != "/cle" && gg.target.value != "/hm" && qa1 != gg.target.value && qa2 != gg.target.value && qa3 != gg.target.value) {
         qa3 = qa2;

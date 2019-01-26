@@ -500,3 +500,307 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
     }
   }
 });
+
+function pollzero(gg, override, viahotkey) {
+  if (top.Update == 1) {
+    domes("You must wait for your first command to be processed or timeout in " + (10000 - top.dActionDelay) / 1000 + " seconds.");
+    top.Visible = 1;
+    return;
+  }
+  if (!top.DisBar && top.ActionDelay > 0 && gg.action.value != "chat" && gg.action.value != "pfold" && gg.action.value != "pcall" && gg.action.value != "pplay" && gg.action.value != "praise1" && gg.action.value != "praise2" && gg.action.value != "praise3" && gg.action.value != "options" && gg.action.value != "refresh" && gg.action.value != "rj1" && gg.action.value != "bj1" && gg.action.value != "rq1" && gg.action.value != "bq1" && gg.action.value != "rk1" && gg.action.value != "bk1" && gg.action.value != "ra1" && gg.action.value != "ba1" && gg.action.value != "rj2" && gg.action.value != "bj2" && gg.action.value != "rq2" && gg.action.value != "bq2" && gg.action.value != "rk2" && gg.action.value != "bk2" && gg.action.value != "ra2" && gg.action.value != "ba2") {
+    domes("You must wait until the delay bar is depleted to do an action.");
+    return;
+  }
+  if ((gg.action.value == "burn" || gg.action.value == "sell") && !override) {
+    if (gg.target.options[gg.target.selectedIndex].text.replace("EQUIPPED", "") != gg.target.options[gg.target.selectedIndex].text) {
+      domes("This item is EQUIPPED and cannot be sold, destroyed, or traded.");
+      return;
+    }
+  }
+  if (gg.action.value == "trade") {
+    if (gg.other.options[gg.other.selectedIndex].text.replace("EQUIPPED", "") != gg.other.options[gg.other.selectedIndex].text) {
+      domes("This item is EQUIPPED and cannot be sold, destroyed, or traded.");
+      return;
+    }
+  }
+  if (gg.action.value == "chat") {
+    if (IgnoreNextEnter) {
+      IgnoreNextEnter = false;
+      return;
+    }
+    ned = gg.target.value.replace("\"", "`");
+    while (ned != gg.target.value) {
+      gg.target.value = ned;
+      ned = gg.target.value.replace("\"", "`");
+    }
+    ned = gg.target.value.replace("'", "`");
+    while (ned != gg.target.value) {
+      gg.target.value = ned;
+      ned = gg.target.value.replace("'", "`");
+    }
+    ned = gg.target.value.replace("<", "(");
+    while (ned != gg.target.value) {
+      gg.target.value = ned;
+      ned = gg.target.value.replace("<", "(");
+    }
+    ned = gg.target.value.replace(">", ")");
+    while (ned != gg.target.value) {
+      gg.target.value = ned;
+      ned = gg.target.value.replace(">", ")");
+    }
+    ned = gg.target.value.replace("|", "l");
+    while (ned != gg.target.value) {
+      gg.target.value = ned;
+      ned = gg.target.value.replace("|", "l");
+    }
+    if (gg.target.value == "" || gg.target.value == " ") {
+      domes("Can't send an empty message.");
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "m" && gg.target.value.charAt(2) != "e") {
+      domes("<font color=#C1B95F>Message sent to</font> " + gg.target.value.substring(3, gg.target.value.length));
+    } else if (gg.target.value.charAt(0) == "/" && gg.target.value.length < 24 && viahotkey === undefined && gg.target.value.indexOf('/a') == -1) {
+      var newact = "<input type=button value='" + gg.target.value + "' onClick=\"genfull('chat','" + gg.target.value + "',0)\" STYLE='cursor: pointer;font-size:8pt; background-color:000000; color:ABB5BF'>";
+      if (gg.target.value != "/cle" && gg.target.value != "/hm" && qa1 != gg.target.value && qa2 != gg.target.value && qa3 != gg.target.value) {
+        qa3 = qa2;
+        qa2 = qa1;
+        qa1 = gg.target.value;
+        s_quickie3.innerHTML = s_quickie2.innerHTML;
+        s_quickie2.innerHTML = s_quickie.innerHTML;
+        s_quickie.innerHTML = newact;
+      }
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "a" && gg.target.value.charAt(2) == "n") {
+      open("../ann.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Announcements. Click <a target=_blank href=../ann.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "g" && gg.target.value.charAt(2) == "i" && gg.target.value.charAt(3) == "r") {
+      open("../girl.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Girlfriend Info Page. Click <a target=_blank href=../girl.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "s" && gg.target.value.charAt(2) == " ") {
+      tehgf = gg.target.value.substring(3, gg.target.value.length);
+      while (tehgf != tehgf.replace(" ", "_")) {
+        tehgf = tehgf.replace(" ", "_");
+      }
+      open("rwk.cgi?swimsuit" + tehgf);
+      upchat(79 + "<" + "<font color=#556633>Opening Swimsuit Pic. Click <a target=_blank href=rwk.cgi?swimsuit" + tehgf + ">here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "g" && gg.target.value.charAt(2) == "f") {
+      tehgf = top.login;
+      if (gg.target.value.charAt(3) == " ") {
+        tehgf = gg.target.value.substring(4, gg.target.value.length);
+      }
+      while (tehgf != tehgf.replace(" ", "_")) {
+        tehgf = tehgf.replace(" ", "_");
+      }
+      open("rwk.cgi?gf" + tehgf);
+      upchat(79 + "<" + "<font color=#556633>Opening Girlfriend Photo Album. Click <a target=_blank href=rwk.cgi?gf" + tehgf + ">here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "f" && gg.target.value.charAt(2) == "a") {
+      open("../faq.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening FAQ. Click <a target=_blank href=../faq.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "p" && gg.target.value.charAt(2) == "o") {
+      genfull("options", 15, 1);
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "h" && gg.target.value.charAt(2) == "e") {
+      open("../help/");
+      upchat(79 + "<" + "<font color=#556633>Opening Help Site. Click <a target=_blank href=../help/>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "s" && gg.target.value.charAt(2) == "p" && gg.target.value.charAt(3) == "r") {
+      open("../spray.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening CS:S Spray Site. Click <a target=_blank href=../spray.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "d" && gg.target.value.charAt(2) == "i" && gg.target.value.charAt(3) == "s") {
+      upchat(79 + "<" + "<font color=#C1B95F>You have chosen to disable the action hindrance of your delay bar, The server STILL RESTRICTS THE SPEED AT WHICH YOU DO ACTIONS. If you are doing actions that require a large delay and you do not wait long enough in between them YOU WILL RECEIVE MULTIPLE 10 SECOND PENALTIES. This is an advanced feature that will not help the average player but instead hurt you. The delay bar is your friend. It helps prevent you from getting 10 second penalties by doing actions too quickly. To enable it type /enable.</font>" + "|");
+      top.DisBar = 1;
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "s" && gg.target.value.charAt(2) == "h" && gg.target.value.charAt(3) == "h") {
+      if (!top.NoBattle) {
+        upchat(79 + "<" + "<font color=#C1B95F>You have chosen to disable battle messages. This is for advanced users only who are trying to avoid battle spam from attackers. Type /shh again if you didn't mean to do this.</font>" + "|");
+        top.NoBattle = 1;
+      } else {
+        upchat(79 + "<" + "<font color=#C1B95F>You have chosen to re-enable battle messages.</font>" + "|");
+        top.NoBattle = 0;
+      }
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "e" && gg.target.value.charAt(2) == "n" && gg.target.value.charAt(3) == "a") {
+      upchat(79 + "<" + "<font color=#C1B95F>Delay bar enabled.</font>" + "|");
+      top.DisBar = 0;
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "a" && gg.target.value.charAt(2) == "d") {
+      hl(gg.target.value.substring(5, gg.target.value.length));
+      gg.target.value = "";
+      upplayers();
+      return;
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1).toLowerCase() == "s" && gg.target.value.charAt(2).toLowerCase() == "u" && gg.target.value.charAt(3).toLowerCase() == "s") {
+      kd_value = parseInt(parseFloat(top.Tres) + parseFloat(top.Food) + parseFloat(top.Runes) * 1000000000 + parseFloat(top.Soldiers) + parseFloat(top.Archers) + parseFloat(top.Catapults) + parseFloat(top.Trebuchets) + parseFloat(top.WallN) + parseFloat(top.WallS) + parseFloat(top.WallE) + parseFloat(top.WallW) + parseFloat(top.MoatN) + parseFloat(top.MoatS) + parseFloat(top.MoatE) + parseFloat(top.MoatW) + parseFloat(top.CannonN) + parseFloat(top.CannonS) + parseFloat(top.CannonE) + parseFloat(top.CannonW) + .99);
+      if (kd_value < 10000000000)
+        domes("Kingdom UNABLE to sustain. Value: " + mc(kd_value) + ".");
+      else
+        domes("Kingdom is sustainable. Value: " + mc(kd_value) + "!")
+      gg.target.value = "";
+      return;
+    }
+    if (gg.other.value != 0 && gg.other.value != 1 && gg.other.value != 2 && gg.other.value != 3) {
+      domes("<font color=#C1B95F>Message sent to</font> " + gg.other.value + ": " + gg.target.value);
+    }
+    if (gg.target.value.charAt(0) == "/" && gg.target.value.charAt(1) == "l" && gg.target.value.charAt(2) == "i") {
+      upchat(79 + "<" + "<font color=#C1B95F>Referral system deactivated.</font>" + "|");
+      gg.target.value = "";
+      return;
+    }
+    firstpart = gg.target.value.substring(0, 8);
+    lastpart = gg.target.value.substring(8, gg.target.value.length);
+    if (firstpart == "/ignore ") {
+      il(mn(lastpart));
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value == "/ignore") {
+      for (var ii = 19; ii >= 0; ii--) {
+        if (top.ignorelist[ii] != "") {
+          upchat(79 + "<" + top.ignorelist[ii] + "|");
+        }
+      }
+      upchat(79 + "<Ignored Players:|");
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value == "/inv") {
+      top.frames.main.document.getElementById('general').action.options.selectedIndex = 9;
+      top.frames.main.updateaction(top.frames.main.document.getElementById('general').action.options[top.frames.main.document.getElementById('general').action.options.selectedIndex].value, top.frames.main.document.getElementById('general'));
+      for (var ii = top.frames.main.document.getElementById('general').target.length - 1; ii >= 0; ii--) domes(top.frames.main.document.getElementById('general').target.options[ii].text);
+      gg.target.value = "";
+      return;
+    }
+    if (gg.target.value == "/equip") {
+      var dainv = [];
+      dainv[0] = "Extra Relic 4: " + getitem(top.ExtraRelic4);
+      dainv[1] = "Extra Relic 3: " + getitem(top.ExtraRelic3);
+      dainv[2] = "Extra Relic 2: " + getitem(top.ExtraRelic2);
+      dainv[3] = "Extra Relic 1: " + getitem(top.ExtraRelic1);
+      dainv[4] = "Relic 6: " + getitem(top.Relic6);
+      dainv[5] = "Relic 5: " + getitem(top.Relic5);
+      dainv[6] = "Relic 4: " + getitem(top.Relic4);
+      dainv[7] = "Relic 3: " + getitem(top.Relic3);
+      dainv[8] = "Relic 2: " + getitem(top.Relic2);
+      dainv[9] = "Relic 1: " + getitem(top.Relic1);
+      dainv[10] = "Right Spell: " + getitem(top.Heal);
+      dainv[11] = "Feet: " + getitem(top.Boots);
+      dainv[12] = "Legs: " + getitem(top.Leggings);
+      dainv[13] = "Left Spell: " + getitem(top.Cast);
+      dainv[14] = "Arms: " + getitem(top.Sleeves);
+      dainv[15] = "Chest: " + getitem(top.Mantle);
+      dainv[16] = "Hands: " + getitem(top.Gauntlets);
+      dainv[17] = "Right Hand: " + getitem(top.Shield);
+      dainv[18] = "Head: " + getitem(top.Helmet);
+      dainv[19] = "Left Hand: " + getitem(top.Weapon);
+      for (var ii = 0; ii < 20; ii++)
+        domes(dainv[ii]);
+      gg.target.value = "";
+      domes("Currently Equipped Items");
+      return;
+    }
+  }
+  if (gg.action.value == "ts") {
+    itype = gg.target.value;
+    tradeskill = 0;
+    if (itype == 0 || itype == 14 || itype == 15 || itype == 16) //weapon
+    {
+      tradeskill = 0;
+    } else if (itype == 6 || itype == 9 || itype == 17 || itype == 18 || itype == 19) //spell
+    {
+      tradeskill = 3;
+    } else if (itype == 12 || itype == 13) //bow
+    {
+      tradeskill = 2;
+    } else if (itype == 10 || itype == 27) //relic
+    {
+      tradeskill = 4;
+    } else //armor
+    {
+      tradeskill = 1;
+    }
+    upwindow(10 + tradeskill);
+  }
+  if (gg.action.value == "viewtops") {
+    top.TopList = gg.target.value;
+    if (top.TopList == "msky") {
+      open("../msky.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Sky Map. Click <a target=_blank href=../msky.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    if (top.TopList == "msur") {
+      open("../msur.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Surface Map. Click <a target=_blank href=../msur.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    if (top.TopList == "mdun") {
+      open("../mdun.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Dungeon Map. Click <a target=_blank href=../mdun.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    if (top.TopList == "mhel") {
+      open("../mhel.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Hell Map. Click <a target=_blank href=../mhel.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    if (top.TopList == "mhev") {
+      open("../mhev.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening Heaven Map. Click <a target=_blank href=../mhev.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    if (top.TopList == "mfor") {
+      open("../mfor.htm");
+      upchat(79 + "<" + "<font color=#556633>Opening the Forge Map. Click <a target=_blank href=../mfor.htm>here</a> if it fails to open due to your pop up blockers.</font>" + "|");
+      return;
+    }
+    upwindow(3);
+    return;
+  }
+  top.PendingLastAction = gg.action.value;
+  top.pollcount = 0;
+  top.Update = 1;
+  top.frames.main.s_chatbut.style.display = top.frames.main.s_subbut2.style.display = top.frames.main.s_subbut.style.display = "none";
+  top.frames.main.s_chatbutNO.style.display = top.frames.main.s_subbut2NO.style.display = top.frames.main.s_subbutNO.style.display = "inline";
+
+  top.LastPoll = new Date().getTime();
+
+  var actionstr = "";
+  var elements = gg.elements;
+  for (var i = 0; i < elements.length; i++) {
+    var item = elements.item(i);
+    actionstr += encodeURIComponent(item.name).replace(/%20/g, "+") + "=" + encodeURIComponent(item.value).replace(/%20/g, "+") + "&";
+  }
+  ajax.post(httpspath() + "rwk.cgi", actionstr, GotActionData, true);
+
+  top.Visible = 0;
+  top.dActionDelay = 0;
+  top.dActionInc = 10000;
+  downdelay();
+}

@@ -811,17 +811,17 @@ document.addEventListener("keydown", (event) => {
 
 function peaValue() {
   let kingdoms = parseInt(prompt("Number of kingdoms"), 10);
-  if (kingdoms > 0) {
+  if (kingdoms <= 0) {
     domes("Stopped calculating pea value.");
     return;
   }
   let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10);
-  if (kings > 0) {
+  if (kings <= 0) {
     domes("Stopped calculating pea value.");
     return;
   }
   let hours = parseInt(prompt("Number of hours"), 10);
-  if (hours > 0) {
+  if (hours <= 0) {
     domes("Stopped calculating pea value.");
     return;
   }

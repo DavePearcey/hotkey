@@ -498,7 +498,7 @@ document.getElementById("chattybox").addEventListener("keydown", (event) => {
       event.preventDefault();
       document.getElementById("chattybox").value = "";
     }
-    if (document.getElementById("chattybox").value === "/clearimg" || document.getElementById("chattybox").value === "/clearimage") {
+    if (document.getElementById("chattybox").value === "/clearimg" || document.getElementById("chattybox").value === "/clearimage" || document.getElementById("chattybox").value === "/clearimages") {
       for (x in top.OldChat) {
         if (top.OldChat[x].indexOf("<img") > -1) {
           top.OldChat[x] = "";

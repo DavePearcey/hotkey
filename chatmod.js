@@ -466,7 +466,7 @@ function upchat(thecdata) {
   top.frames.main.s_Chat.innerHTML = NewChat;
 }
 
-domes("Reminder: /rwk1 /rwk2 /jimcav /rwkhelp /clear chat commands are all now valid.");
+domes("Reminder: /rwk1 /rwk2 /jimcav /rwkhelp /clear /clearimages chat commands are all now valid.");
 
 document.getElementById("chattybox").addEventListener("keydown", (event) => {
   if (event.keyCode === 13) {

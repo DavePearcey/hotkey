@@ -810,10 +810,26 @@ document.addEventListener("keydown", (event) => {
 });
 
 function peaValue() {
-  let kingdoms = parseInt(prompt("Number of kingdoms"), 10) || 0;
-  let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10) || 0;
-  let hours = parseInt(prompt("Number of hours"), 10) || 24;
-  let collectia = confirm("Do you have collectia") || false;
+  let kingdoms = parseInt(prompt("Number of kingdoms"), 10);
+  if (kingdoms > 0) {
+    domes("Stopped calculating pea value.");
+    return;
+  }
+  let kings = parseInt(prompt("What is your Kingsmanship Skill"), 10);
+  if (kings > 0) {
+    domes("Stopped calculating pea value.");
+    return;
+  }
+  let hours = parseInt(prompt("Number of hours"), 10);
+  if (hours > 0) {
+    domes("Stopped calculating pea value.");
+    return;
+  }
+  let collectia = confirm("Do you have collectia");
+  if (!collectia) {
+    domes("")
+    return;
+  }
   if (kingdoms != 0 && kings != 0 && hours != 0) {
     let corruption = 0;
     let interest = 0.0;
@@ -838,7 +854,7 @@ function peaValue() {
     genfull("chat", `/pea ${embezzle}`, 0);
     domes("<font color='red'>Total Bezz: " + parseInt(embezzle * kingdoms, 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</font>");
   } else {
-    domes("Cancled.");
+    domes("Stopped calculating pea value.");
   }
 }
 

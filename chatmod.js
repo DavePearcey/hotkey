@@ -131,70 +131,70 @@ var chatmodder = setInterval(() => {
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":corymoon:") > -1) {
-          top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img title=":corymoon:" width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
+          top.OldChat[x] = msg.replace(/:corymoon:/gi, '<img title="corymoon" width="32px" height="32px" src="http://i.imgur.com/skHiT8d.jpg">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":surrender:") > -1) {
-          top.OldChat[x] = msg.replace(/:surrender:/gi, '<img title=":surrender:" width="32px" height="32px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/148/white-flag_2690.png">');
+          top.OldChat[x] = msg.replace(/:surrender:/gi, '<img title="surrender" width="32px" height="32px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/148/white-flag_2690.png">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":calemoon:") > -1) {
-          top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img title=":calemoon:" width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+          top.OldChat[x] = msg.replace(/:calemoon:/gi, '<img title="calemoon" width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":kalemoon:") > -1) {
-          top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img title=":kalemoon:" width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
+          top.OldChat[x] = msg.replace(/:kalemoon:/gi, '<img title="kalemoon" width="32px" height="32px" src="http://i.imgur.com/zVgLXzs.png">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":hadoken:") > -1) {
-          top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img title=":hadoken:" width="32px" height="32px" src="https://imgur.com/Ds160kg.gif">');
+          top.OldChat[x] = msg.replace(/:hadoken:/gi, '<img title="hadoken" width="32px" height="32px" src="https://imgur.com/Ds160kg.gif">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":adumb:") > -1) {
-          top.OldChat[x] = msg.replace(/:adumb:/gi, '<img title=":adumb:" width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
+          top.OldChat[x] = msg.replace(/:adumb:/gi, '<img title="adumb" width="32px" height="32px" src="http://i.imgur.com/GgEVho6.jpg">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":migs:") > -1) {
-          top.OldChat[x] = msg.replace(/:migs:/gi, '<img title=":migs:" width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
+          top.OldChat[x] = msg.replace(/:migs:/gi, '<img title="migs" width="32px" height="32px" src="http://i.imgur.com/tLkj3x1.png">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":kaledance:") > -1) {
-          top.OldChat[x] = msg.replace(/:kaledance:/gi, '<img title=":kaledance:" width="300px" height="300px" src="https://66.media.tumblr.com/tumblr_m8q9pdStFk1qawpudo1_r1_250.gif">');
+          top.OldChat[x] = msg.replace(/:kaledance:/gi, '<img title="kaledance" width="300px" height="300px" src="https://66.media.tumblr.com/tumblr_m8q9pdStFk1qawpudo1_r1_250.gif">');
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":hevmap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:hevmap:/gi, `<img title=":hevmap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hev.bmp">`);
+          top.OldChat[x] = msg.replace(/:hevmap:/gi, `<img title="hevmap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hev.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":skymap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:skymap:/gi, `<img title=":skymap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sky.bmp">`);
+          top.OldChat[x] = msg.replace(/:skymap:/gi, `<img title="skymap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sky.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":surmap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:surmap:/gi, `<img title=":surmap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sur.bmp">`);
+          top.OldChat[x] = msg.replace(/:surmap:/gi, `<img title="surmap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Sur.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":dunmap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:dunmap:/gi, `<img title=":dunmap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Dun.bmp">`);
+          top.OldChat[x] = msg.replace(/:dunmap:/gi, `<img title="dunmap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Dun.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":helmap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:helmap:/gi, `<img title=":helmap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hel.bmp">`);
+          top.OldChat[x] = msg.replace(/:helmap:/gi, `<img title="helmap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/Hel.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":formap:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:formap:/gi, `<img title=":formap:" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/For.bmp">`);
+          top.OldChat[x] = msg.replace(/:formap:/gi, `<img title="formap" width="300px" height="300px" src="http://${url}.racewarkingdoms.com/For.bmp">`);
           upchat("");
         }
         if (msg.toLowerCase().indexOf(":bighadoken:") > -1) {
           let url = top.location.toString().substring(top.location.toString().indexOf('rwk'), top.location.toString().indexOf('rwk') + 4);
-          top.OldChat[x] = msg.replace(/:bighadoken:/gi, `<img title=":bighadoken:" width="300px" height="300px" src="https://imgur.com/Ds160kg.gif">`);
+          top.OldChat[x] = msg.replace(/:bighadoken:/gi, `<img title="bighadoken" width="300px" height="300px" src="https://imgur.com/Ds160kg.gif">`);
           upchat("");
         }
       }

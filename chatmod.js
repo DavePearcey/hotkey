@@ -31,18 +31,18 @@ var donor_names = [{
     "expire": "never"
   },
   {
-    "name": "Jigfig2",
-    "color": "31e9bc",
+    "name": "Thoth",
+    "color": "9932CC",
     "expire": "never"
   },
   {
-    "name": "Necrophilia",
-    "color": "4ed1e6",
+    "name": "Mercury",
+    "color": "d5d2d1",
     "expire": "never"
   },
   {
-    "name": "Nemo The Necro",
-    "color": "f90144",
+    "name": "Set",
+    "color": "8FBC8B",
     "expire": "never"
   },
   {

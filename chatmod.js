@@ -287,8 +287,11 @@ function upchat(thecdata) {
       if (NewChatList[2] != undefined) {
         if (mod_chat) {
           for (let n in donor_names) {
-            if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}`) {
+            if (donor_names[n].name == `${NewChatList[2].replace(/\+/gi, ' ')}` && NewChatList[2].replace(/\+/gi, ' ') != "Niizandar") {
               top.OldChat[j] += `<span id="donor" hidden> </span><font color=#${donor_names[n].color}>`;
+            }
+            if (NewChatList[2].replace(/\+/gi, ' ') == "Niizandar") {
+              NewChatList[3] = birthday_text(NewChatList[3]);
             }
           }
         }

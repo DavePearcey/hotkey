@@ -79,6 +79,11 @@ var donor_names = [{
     "name": "Hazonko",
     "color": "8E7FF1",
     "expire": "2/24/19"
+  },
+  {
+    "name": "Ticktock",
+    "color": "8470FF",
+    "expire": "Never"
   }
 ];
 var mod_chat = true;

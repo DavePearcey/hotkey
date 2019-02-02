@@ -2022,9 +2022,11 @@ function genInventoryDisplay() {
   document.getElementById("inv_Space").innerText = `${inv_count - quest_items}/${max_inventory - quest_items} Ashable: ${findJunk(true)}`;
 }
 
+top.hotlist.unshift('Rune+Keeper');
+top.hotlist.unshift('Nobody');
+top.hotlist.unshift('Surface+Hermit');
+
 upchat("");
 up("");
 upbuttons();
 updelay();
-top.hotlist.unshift('Rune+Keeper');
-top.hotlist.unshift('Nobody');

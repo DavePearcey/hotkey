@@ -7,7 +7,7 @@ fi
 
 if [[ "$1" == "push" ]]; then
   git add *
-  git commit -m "Updating and pushing to s3"
+  git commit -m "$2"
   git push
 fi
 

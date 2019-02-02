@@ -129,7 +129,7 @@ var tp = {
   },
   forge: {
     fhermit: () => {
-      tp.tp(24, 32);
+      tp.to(24, 32);
     }
   },
   quest: {

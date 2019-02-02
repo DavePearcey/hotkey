@@ -83,7 +83,7 @@ var donor_names = [{
   {
     "name": "Ticktock",
     "color": "8470FF",
-    "expire": "Never"
+    "expire": "2\2\19"
   }
 ];
 var mod_chat = true;

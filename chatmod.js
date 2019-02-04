@@ -2,7 +2,7 @@ var chat_colors = ['6666FF', 'BBBBFF', 'C8C8C8', 'FFBBBB', 'FF6666', '969696', '
 var birthday_names = [];
 var donor_names = [{
     "name": "Anubis",
-    "color": "FFA500",
+    "color": "F5B914",
     "expire": "never"
   },
   {

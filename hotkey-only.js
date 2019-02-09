@@ -1025,36 +1025,6 @@ var mainLoad = (function () {
   updelay();
 })();
 
-function convertserver(name) {
-  let load = `http://rwkpd.s3.amazonaws.com/rwk2-${name}.json`;
-  let save = `http://rwkpd.s3.amazonaws.com/rwk1-${name}.json`;
-
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let response = this.responseText;
-      let xhttp2 = new XMLHttpRequest();
-      xhttp2.open('PUT', save, true);
-      xhttp2.send(response);
-    }
-  };
-  xhttp.open('GET', load, true);
-  xhttp.send(null);
-}
-
-function autoFill(info) {
-  let save = `http://rwkpd.s3.amazonaws.com/${info[0]}-${info[1].toLowerCase()}.json`;
-
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log("Saved data");
-    }
-  };
-  xhttp.open('PUT', save, true);
-  xhttp.send(info[2]);
-}
-
 function upbuttons() {
   tempstr = "";
 

@@ -924,7 +924,10 @@ var mainLoad = (function () {
   cm.type = 'text/javascript';
   cm.src = 'https://s3.amazonaws.com/rwk-assets/chatmod.js';
   document.getElementsByTagName('head')[0].appendChild(cm);
-  let xlr = `
+  let abc = document.getElementsByTagName("table")[0].childNodes[0];
+  let xxz = document.getElementsByTagName("table")[0].childNodes[0].childNodes[2];
+  abc.insertBefore(document.createElement("tr"), xxz);
+  let html = `
   <td width="100%" colspan="2" id="addon">
     <table id="addon-table" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#808080" text-align='center'>
         <tbody>
@@ -1025,6 +1028,6 @@ var mainLoad = (function () {
         </tbody>
     </table>
 </td>`;
-  document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = xlr;
+  document.getElementsByTagName('table')[0].childNodes[0].childNodes[2].innerHTML = html;
   chat.target.focus();
 })();

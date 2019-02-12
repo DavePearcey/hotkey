@@ -51,8 +51,8 @@ var fields = {
 var tp = {
   form: {
     act: () => {
-      document.getElementsByName("action")[0].value = "tele";
-      updateaction("tele", document.getElementById("general"));
+      fields.general.action = "tele";
+      fields.general.upaction();
     },
     x: document.getElementsByName("target")[0],
     y: document.getElementsByName("other")[0],
@@ -61,10 +61,11 @@ var tp = {
     },
   },
   to: (x, y) => {
-    tp.form.act();
-    tp.form.x.value = x;
-    tp.form.y.value = y;
-    tp.form.sub();
+    fields.general.action = "tele";
+    fields.general.upaction();
+    fields.general.target = x;
+    fields.general.other = y
+    fields.general.submit();
   },
   heaven: {
     palace: () => {

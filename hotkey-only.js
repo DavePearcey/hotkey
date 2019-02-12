@@ -61,10 +61,10 @@ var tp = {
     },
   },
   to: (x, y) => {
-    fields.general.action = "tele";
+    fields.general.action.value = "tele";
     fields.general.upaction();
-    fields.general.target = x;
-    fields.general.other = y;
+    fields.general.target.value = x;
+    fields.general.other.value = y;
     fields.general.submit();
   },
   heaven: {

@@ -6,7 +6,11 @@
 
 let max_level = 3190;
 
-var fields = {
+let fields = {
+  messages: {
+    security: document.getElementById("s_Response"),
+    general: document.getElementById("s_FightWin")
+  },
   general: {
     main: document.getElementById("general0"),
     action: document.getElementsByName("action")[0],
@@ -25,10 +29,6 @@ var fields = {
       updatetarget(fields.general.action.value, fields.general.target.value, fields.general.main);
       return true;
     }
-  },
-  misc: {
-    security: document.getElementById("s_Response"),
-    message: document.getElementById("s_FightWin")
   },
   kingdom: {
     action: document.getElementsByName("action")[1],
@@ -64,7 +64,7 @@ var tp = {
     fields.general.action = "tele";
     fields.general.upaction();
     fields.general.target = x;
-    fields.general.other = y
+    fields.general.other = y;
     fields.general.submit();
   },
   heaven: {

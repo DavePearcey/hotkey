@@ -31,11 +31,11 @@ let fields = {
     }
   },
   kingdom: {
-    action: document.getElementsByName("action")[1],
+    action: document.getElementsByName("action")[4],
     form: document.getElementById("king0"),
-    target: document.getElementsByName("target")[1],
-    other: document.getElementsByName("other")[1],
-    othera: document.getElementsByName("othera")[1],
+    target: document.getElementsByName("target")[4],
+    other: document.getElementsByName("other")[4],
+    othera: document.getElementsByName("othera")[4],
     submit: () => {
       document.getElementById("s_subbutk0").childNodes[0].click();
     },
